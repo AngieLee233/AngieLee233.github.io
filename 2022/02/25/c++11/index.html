@@ -15,17 +15,18 @@
 
 
 
-<meta name="description" content="233">
+<meta name="description" content="c++11增添了很多新特性，主要表现在如下几个方面：  提高运行效率的语言特性：右值引用、泛化常量表达式 原有语法的增强：初始化列表、统⼀的初始化语法、类型推导、范围for循环、Lambda表达式、final和override、构造函数委托 语言能力的提升：空指针nullptr、default和delete、⻓整数、静态assert c++标准库的更新：智能指针、正则表达式、哈希表等">
 <meta property="og:type" content="article">
-<meta property="og:title" content="title">
-<meta property="og:url" content="https://angielee233.github.io/2022/02/25/test/index.html">
+<meta property="og:title" content="C++11特性">
+<meta property="og:url" content="https://angielee233.github.io/2022/02/25/c++11/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="233">
+<meta property="og:description" content="c++11增添了很多新特性，主要表现在如下几个方面：  提高运行效率的语言特性：右值引用、泛化常量表达式 原有语法的增强：初始化列表、统⼀的初始化语法、类型推导、范围for循环、Lambda表达式、final和override、构造函数委托 语言能力的提升：空指针nullptr、default和delete、⻓整数、静态assert c++标准库的更新：智能指针、正则表达式、哈希表等">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-02-25T12:42:48.560Z">
-<meta property="article:modified_time" content="2022-02-25T12:48:50.326Z">
+<meta property="article:published_time" content="2022-02-25T15:34:07.133Z">
+<meta property="article:modified_time" content="2022-02-25T15:52:52.125Z">
 <meta property="article:author" content="Angie Lee">
-<meta property="article:tag" content="test">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="d">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -60,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>title | 小黎的小窝</title>
+<title>C++11特性 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -221,11 +222,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-c++11" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/02/25/test/" class="article-date">
-      <time datetime="2022-02-25T12:42:48.560Z" itemprop="datePublished">2022-02-25</time>
+      <a href="/2022/02/25/c++11/" class="article-date">
+      <time datetime="2022-02-25T15:34:07.133Z" itemprop="datePublished">2022-02-25</time>
 </a>
 
 
@@ -240,7 +241,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      title
+      C++11特性
     </h1>
   
 
@@ -248,10 +249,14 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8EC-%E7%9A%84%E4%BA%92%E7%9B%B8%E6%8B%89%E6%89%AF/">小黎与C++的互相拉扯</a>
+    </div>
+
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d/" rel="tag">d</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -261,10 +266,16 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>233</p>
+        <p>c++11增添了很多新特性，主要表现在如下几个方面：</p>
+<ul>
+<li>提高运行效率的语言特性：右值引用、泛化常量表达式</li>
+<li>原有语法的增强：初始化列表、统⼀的初始化语法、类型推导、范围for循环、Lambda表达式、final和override、构造函数委托</li>
+<li>语言能力的提升：空指针nullptr、default和delete、⻓整数、静态assert</li>
+<li>c++标准库的更新：智能指针、正则表达式、哈希表等</li>
+</ul>
 <span id="more"></span>
-<p>233</p>
 
+<h1 id="提高运行效率"><a href="#提高运行效率" class="headerlink" title="提高运行效率"></a>提高运行效率</h1><h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><h2 id="泛化常量表达式"><a href="#泛化常量表达式" class="headerlink" title="泛化常量表达式"></a>泛化常量表达式</h2><h1 id="原有语法的增强"><a href="#原有语法的增强" class="headerlink" title="原有语法的增强"></a>原有语法的增强</h1><h2 id="初始化列表"><a href="#初始化列表" class="headerlink" title="初始化列表"></a>初始化列表</h2><h2 id="统一的初始化语法"><a href="#统一的初始化语法" class="headerlink" title="统一的初始化语法"></a>统一的初始化语法</h2><h2 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h2><h2 id="范围for循环"><a href="#范围for循环" class="headerlink" title="范围for循环"></a>范围for循环</h2><h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><h2 id="final和overri"><a href="#final和overri" class="headerlink" title="final和overri"></a>final和overri</h2><h2 id="构造函数委托"><a href="#构造函数委托" class="headerlink" title="构造函数委托"></a>构造函数委托</h2><h1 id="语言能力提升"><a href="#语言能力提升" class="headerlink" title="语言能力提升"></a>语言能力提升</h1><h2 id="空指针nullptr"><a href="#空指针nullptr" class="headerlink" title="空指针nullptr"></a>空指针nullptr</h2><h2 id="default和delete"><a href="#default和delete" class="headerlink" title="default和delete"></a>default和delete</h2><h2 id="长整数"><a href="#长整数" class="headerlink" title="长整数"></a>长整数</h2><h2 id="静态assert"><a href="#静态assert" class="headerlink" title="静态assert"></a>静态assert</h2><h1 id="c-标准库更新"><a href="#c-标准库更新" class="headerlink" title="c++标准库更新"></a>c++标准库更新</h1><h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2>
       
     </div>
     
@@ -272,13 +283,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/02/25/test/">title</a></p>
+        <p><span>Title:</span><a href="/2022/02/25/c++11/">C++11特性</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-02-25, 20:42:48</p>
-        <p><span>Updated:</span>2022-02-25, 20:48:50</p>
+        <p><span>Created:</span>2022-02-25, 23:34:07</p>
+        <p><span>Updated:</span>2022-02-25, 23:52:52</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/02/25/test/" title="title">https://angielee233.github.io/2022/02/25/test/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/02/25/test/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/02/25/c++11/" title="C++11特性">https://angielee233.github.io/2022/02/25/c++11/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/02/25/c++11/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -290,16 +301,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/02/25/x&(x-1)/">
-                    x&amp;(x-1)的使用
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/02/25/hello-world/">
-                    Hello World
+                <a href="/2022/02/25/x&(x-1)/">
+                    x&amp;(x-1)的使用
                 </a>
             </div>
         
@@ -311,7 +316,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87"><span class="toc-number">1.</span> <span class="toc-text">提高运行效率</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">右值引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96%E5%B8%B8%E9%87%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">泛化常量表达式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E6%9C%89%E8%AF%AD%E6%B3%95%E7%9A%84%E5%A2%9E%E5%BC%BA"><span class="toc-number">2.</span> <span class="toc-text">原有语法的增强</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">初始化列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">统一的初始化语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="toc-number">2.3.</span> <span class="toc-text">类型推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4for%E5%BE%AA%E7%8E%AF"><span class="toc-number">2.4.</span> <span class="toc-text">范围for循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.5.</span> <span class="toc-text">lambda表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final%E5%92%8Coverri"><span class="toc-number">2.6.</span> <span class="toc-text">final和overri</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%A7%94%E6%89%98"><span class="toc-number">2.7.</span> <span class="toc-text">构造函数委托</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E8%83%BD%E5%8A%9B%E6%8F%90%E5%8D%87"><span class="toc-number">3.</span> <span class="toc-text">语言能力提升</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88nullptr"><span class="toc-number">3.1.</span> <span class="toc-text">空指针nullptr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#default%E5%92%8Cdelete"><span class="toc-number">3.2.</span> <span class="toc-text">default和delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E6%95%B4%E6%95%B0"><span class="toc-number">3.3.</span> <span class="toc-text">长整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81assert"><span class="toc-number">3.4.</span> <span class="toc-text">静态assert</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#c-%E6%A0%87%E5%87%86%E5%BA%93%E6%9B%B4%E6%96%B0"><span class="toc-number">4.</span> <span class="toc-text">c++标准库更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">4.1.</span> <span class="toc-text">智能指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">4.3.</span> <span class="toc-text">哈希表</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -347,7 +352,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"title　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"C++11特性　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -367,15 +372,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/02/25/x&(x-1)/" title="Pre: x&amp;(x-1)的使用">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/02/25/hello-world/" title="Next: Hello World">
+            <a href="/2022/02/25/x&(x-1)/" title="Next: x&amp;(x-1)的使用">
                 <i class="fa fa-angle-right"></i>
             </a>
         
