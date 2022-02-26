@@ -15,18 +15,24 @@
 
 
 
-<meta name="description" content="c++11增添了很多新特性，主要表现在如下几个方面：  提高运行效率的语言特性：右值引用、泛化常量表达式 原有语法的增强：初始化列表、统⼀的初始化语法、类型推导、范围for循环、Lambda表达式、final和override、构造函数委托 语言能力的提升：空指针nullptr、default和delete、⻓整数、静态assert c++标准库的更新：智能指针、正则表达式、哈希表等">
+<meta name="description" content="提高运行效率的语言特性：右值引用、泛化常量表达式 原有语法的增强：初始化列表、统⼀的初始化语法、类型推导、范围for循环、Lambda表达式、final和override、构造函数委托 语言能力的提升：空指针nullptr、default和delete、⻓整数、静态assert c++标准库的更新：智能指针、正则表达式、哈希表等">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++11特性">
 <meta property="og:url" content="https://angielee233.github.io/2022/02/25/c++11/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="c++11增添了很多新特性，主要表现在如下几个方面：  提高运行效率的语言特性：右值引用、泛化常量表达式 原有语法的增强：初始化列表、统⼀的初始化语法、类型推导、范围for循环、Lambda表达式、final和override、构造函数委托 语言能力的提升：空指针nullptr、default和delete、⻓整数、静态assert c++标准库的更新：智能指针、正则表达式、哈希表等">
+<meta property="og:description" content="提高运行效率的语言特性：右值引用、泛化常量表达式 原有语法的增强：初始化列表、统⼀的初始化语法、类型推导、范围for循环、Lambda表达式、final和override、构造函数委托 语言能力的提升：空指针nullptr、default和delete、⻓整数、静态assert c++标准库的更新：智能指针、正则表达式、哈希表等">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-25T15:34:07.133Z">
-<meta property="article:modified_time" content="2022-02-25T15:52:52.125Z">
+<meta property="article:modified_time" content="2022-02-26T07:26:39.803Z">
 <meta property="article:author" content="Angie Lee">
 <meta property="article:tag" content="c++">
-<meta property="article:tag" content="d">
+<meta property="article:tag" content="右值引用">
+<meta property="article:tag" content="泛化常量表达式">
+<meta property="article:tag" content="初始化列表">
+<meta property="article:tag" content="初始化语法">
+<meta property="article:tag" content="类型推导">
+<meta property="article:tag" content="范围for循环">
+<meta property="article:tag" content="lambda表达式">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -258,7 +264,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/d/" rel="tag">d</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/" rel="tag">c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">lambda表达式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8/" rel="tag">初始化列表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E6%B3%95/" rel="tag">初始化语法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8/" rel="tag">右值引用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B3%9B%E5%8C%96%E5%B8%B8%E9%87%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">泛化常量表达式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/" rel="tag">类型推导</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%8C%83%E5%9B%B4for%E5%BE%AA%E7%8E%AF/" rel="tag">范围for循环</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -268,8 +274,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>c++11增添了很多新特性，主要表现在如下几个方面：</p>
-<ul>
+        <ul>
 <li>提高运行效率的语言特性：右值引用、泛化常量表达式</li>
 <li>原有语法的增强：初始化列表、统⼀的初始化语法、类型推导、范围for循环、Lambda表达式、final和override、构造函数委托</li>
 <li>语言能力的提升：空指针nullptr、default和delete、⻓整数、静态assert</li>
@@ -277,7 +282,53 @@
 </ul>
 <span id="more"></span>
 
-<h1 id="提高运行效率"><a href="#提高运行效率" class="headerlink" title="提高运行效率"></a>提高运行效率</h1><h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><h2 id="泛化常量表达式"><a href="#泛化常量表达式" class="headerlink" title="泛化常量表达式"></a>泛化常量表达式</h2><h1 id="原有语法的增强"><a href="#原有语法的增强" class="headerlink" title="原有语法的增强"></a>原有语法的增强</h1><h2 id="初始化列表"><a href="#初始化列表" class="headerlink" title="初始化列表"></a>初始化列表</h2><h2 id="统一的初始化语法"><a href="#统一的初始化语法" class="headerlink" title="统一的初始化语法"></a>统一的初始化语法</h2><h2 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h2><h2 id="范围for循环"><a href="#范围for循环" class="headerlink" title="范围for循环"></a>范围for循环</h2><h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><h2 id="final和overri"><a href="#final和overri" class="headerlink" title="final和overri"></a>final和overri</h2><h2 id="构造函数委托"><a href="#构造函数委托" class="headerlink" title="构造函数委托"></a>构造函数委托</h2><h1 id="语言能力提升"><a href="#语言能力提升" class="headerlink" title="语言能力提升"></a>语言能力提升</h1><h2 id="空指针nullptr"><a href="#空指针nullptr" class="headerlink" title="空指针nullptr"></a>空指针nullptr</h2><h2 id="default和delete"><a href="#default和delete" class="headerlink" title="default和delete"></a>default和delete</h2><h2 id="长整数"><a href="#长整数" class="headerlink" title="长整数"></a>长整数</h2><h2 id="静态assert"><a href="#静态assert" class="headerlink" title="静态assert"></a>静态assert</h2><h1 id="c-标准库更新"><a href="#c-标准库更新" class="headerlink" title="c++标准库更新"></a>c++标准库更新</h1><h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2>
+<h1 id="提高运行效率"><a href="#提高运行效率" class="headerlink" title="提高运行效率"></a>提高运行效率</h1><h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><p>C++03及之前的标准中，右值是不允许被改变的，实践中也通常使⽤<code>const T&amp;</code>的⽅式传递右值。然⽽这是效率低下的做法，例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Person <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Person p;</span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line">Person p = <span class="built_in">get</span>();</span><br></pre></td></tr></table></figure>
+<p>上述获取右值并初始化<code>p</code>的过程包含了<code>Person</code>的3个构造过程和2个析构过程，这是C++⼴受诟病的⼀点，但C++11 的右值引⽤特性允许我们对右值进⾏修改。借此可以实现<strong>move语义</strong>，即从右值中直接拿数据过来初始化或修改左值，⽽不需要重新构造左值后再析构右值。⼀个move构造函数是这样声明的：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Person</span>(Person&amp;&amp; rhs)&#123;...&#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="泛化常量表达式"><a href="#泛化常量表达式" class="headerlink" title="泛化常量表达式"></a>泛化常量表达式</h2><h1 id="原有语法的增强"><a href="#原有语法的增强" class="headerlink" title="原有语法的增强"></a>原有语法的增强</h1><h2 id="初始化列表"><a href="#初始化列表" class="headerlink" title="初始化列表"></a>初始化列表</h2><h2 id="统一的初始化语法"><a href="#统一的初始化语法" class="headerlink" title="统一的初始化语法"></a>统一的初始化语法</h2><h2 id="类型推导"><a href="#类型推导" class="headerlink" title="类型推导"></a>类型推导</h2><h2 id="范围for循环"><a href="#范围for循环" class="headerlink" title="范围for循环"></a>范围for循环</h2><h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><p>lambda表达式实际上就是提供了⼀个类似匿名函数的特性，⽽匿名函数则是在需要⼀个函数，但是⼜不想费⼒去命名⼀个函数的情况下去使⽤的。利⽤lambda表达式可以编写内嵌的匿名函数，⽤以替换独⽴函数或者函数对象，并且使代码更可读。</p>
+<p>从本质上来讲，lambda表达式只是⼀种语法糖，因为所有其能完成的⼯作都可以⽤其它稍微复杂的代码来实现，但是它简便的语法却给C++带来了深远的影响。从⼴义上说，lamdba表达式产⽣的是函数对象。在类中，可以<strong>重载函数调⽤运算符<code>()</code><strong>，此时类的对象可以将具有类似函数的⾏为，我们称这些对象为</strong>函数对象（Function Object）</strong>或者<strong>仿函数（Functor）</strong>。相⽐ lambda表达式，函数对象有⾃⼰独特的优势。</p>
+<p>lambda表达式⼀般都是从⽅括号[]开始，结束于花括号{}，花括号⾥⾯就像定义函数那样，包含了lamdba表达式体，⼀个最简单的例⼦如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义简单的lambda表达式</span></span><br><span class="line"><span class="keyword">auto</span> basicLambda = [] &#123; cout &lt;&lt; <span class="string">&quot;Hello, world!&quot;</span> &lt;&lt; endl; &#125;;</span><br><span class="line"><span class="built_in">basicLambda</span>(); <span class="comment">// 输出：Hello, world!</span></span><br></pre></td></tr></table></figure>
+<p>（hello world百用不厌嗷兄弟们</p>
+<p>上⾯是最简单的lambda表达式，没有参数。如果需要参数，那么就要像函数那样，放在圆括号⾥⾯，如果有返回值，返回类型要放在-&gt;后⾯，即拖尾返回类型，当然你也可以忽略返回类型，<strong>lambda会帮你⾃动推断出返回类型：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 指明返回类型，托尾返回类型</span></span><br><span class="line"><span class="keyword">auto</span> add = [](<span class="type">int</span> a, <span class="type">int</span> b) -&gt; <span class="type">int</span> &#123; <span class="keyword">return</span> a + b; &#125;;</span><br><span class="line"><span class="comment">// ⾃动推断返回类型</span></span><br><span class="line"><span class="keyword">auto</span> multiply = [](<span class="type">int</span> a, <span class="type">int</span> b) &#123; <span class="keyword">return</span> a * b; &#125;;</span><br><span class="line"><span class="type">int</span> sum = <span class="built_in">add</span>(<span class="number">2</span>, <span class="number">5</span>); <span class="comment">// 输出：7</span></span><br><span class="line"><span class="type">int</span> product = <span class="built_in">multiply</span>(<span class="number">2</span>, <span class="number">5</span>); <span class="comment">// 输出：10</span></span><br></pre></td></tr></table></figure>
+
+<p>最前边的<code>[]</code>是lambda表达式的⼀个很重要的功能，就是闭包。先说明⼀下lambda表达式的⼤致原理：每当你定义⼀个lambda表达式后，编译器会⾃动⽣成⼀个匿名类（这个类重载了<code>()</code>运算符），我们称为闭包类型（closure type）。那么在运⾏时，这个lambda表达式就会返回⼀个匿名的闭包实例，其是⼀个右值。所以，上⾯lambda表达式的结果就是⼀个个闭包实例。<strong>闭包的⼀个强⼤之处是可以通过传值或者引⽤的⽅式捕捉其封装作⽤域内的变量</strong>，前⾯的⽅括号就是⽤来定义捕捉模式以及变量，⼜将其称为 lambda 捕捉块。例⼦如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">auto</span> add_x = [x](<span class="type">int</span> a) &#123; <span class="keyword">return</span> a + x; &#125;;</span><br><span class="line">    <span class="comment">// 复制捕捉x,lambda表达式⽆法修改此变量</span></span><br><span class="line">    <span class="keyword">auto</span> multiply_x = [&amp;x](<span class="type">int</span> a) &#123; <span class="keyword">return</span> a * x; &#125;;</span><br><span class="line">    <span class="comment">// 引⽤捕捉x，lambda表达式可以修改此变量</span></span><br><span class="line">    cout &lt;&lt; <span class="built_in">add_x</span>(<span class="number">10</span>) &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; <span class="built_in">multiply_x</span>(<span class="number">10</span>) &lt;&lt; endl;</span><br><span class="line">    <span class="comment">// 输出：20 100</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>捕获的⽅式可以是引⽤也可以是复制，但是具体说来会有以下⼏种情况来捕获其所在作⽤域中的变量：</p>
+<ul>
+<li><code>[]</code>：默认不捕获任何变量；</li>
+<li><code>[=]</code>：默认以值捕获所有变量；</li>
+<li><code>[&amp;]</code>：默认以引⽤捕获所有变量；</li>
+<li><code>[a]</code>：仅以值捕获a，其它变量不捕获；</li>
+<li><code>[&amp;a]</code>：仅以引⽤捕获a，其它变量不捕获；</li>
+<li><code>[=, &amp;a]</code>：默认以值捕获所有变量，但a是例外，通过引⽤捕获；</li>
+<li><code>[&amp;, a]</code>：默认以引⽤捕获所有变量，但是a是例外，通过值捕获；</li>
+<li><code>[this]</code>：通过引⽤捕获当前对象（其实是复制指针）；</li>
+<li><code>[*this]</code>：通过传值⽅式捕获当前对象；</li>
+</ul>
+<p>⽽<strong>lambda表达式⼀个更重要的应⽤是其可以⽤于函数的参数，通过这种⽅式可以实现回调函数。</strong>其实最常⽤的是在STL算法中，⽐如要统计⼀个数组中满⾜特定条件的元素数量，通过lambda表达式给出条件，传递给<code>count_if</code>函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> val = <span class="number">3</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; v &#123;<span class="number">1</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">10</span>&#125;;</span><br><span class="line"><span class="type">int</span> count = std::<span class="built_in">count_if</span>(v.<span class="built_in">beigin</span>(), v.<span class="built_in">end</span>(), [val](<span class="type">int</span> x) &#123; <span class="keyword">return</span> x &gt; val; &#125;);</span><br><span class="line"><span class="comment">// v中⼤于3的元素数量</span></span><br></pre></td></tr></table></figure>
+
+<p>最后给出lambda表达式的完整语法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[capture-list] (params) <span class="built_in">mutable</span>(optional) <span class="built_in">constexpr</span>(optional)(c++<span class="number">17</span>) exception attribute -&gt; ret &#123; body &#125;</span><br><span class="line"><span class="comment">// 可选的简化语法</span></span><br><span class="line">[capture-list] (params) -&gt; ret &#123;body&#125; </span><br><span class="line">[capture-list] (params) &#123;body&#125; </span><br><span class="line">[capture-list] &#123;body&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>capture-list：捕捉列表，前⾯已经讲过，不能省略；</li>
+<li>params：参数列表，可以省略（但是后⾯必须紧跟函数体）；</li>
+<li>mutable：可选，将lambda表达式标记为mutable后，函数体就可以修改传值⽅式捕获的变量；</li>
+<li>constexpr：可选，C++17，可以指定lambda表达式是⼀个常量函数；</li>
+<li>exception：可选，指定lambda表达式可以抛出的异常；</li>
+<li>attribute：可选，指定lambda表达式的特性；</li>
+<li>ret：可选，返回值类型；</li>
+<li>body：函数执⾏体。</li>
+</ul>
+<h2 id="final和override"><a href="#final和override" class="headerlink" title="final和override"></a>final和override</h2><h2 id="构造函数委托"><a href="#构造函数委托" class="headerlink" title="构造函数委托"></a>构造函数委托</h2><h1 id="语言能力提升"><a href="#语言能力提升" class="headerlink" title="语言能力提升"></a>语言能力提升</h1><h2 id="空指针nullptr"><a href="#空指针nullptr" class="headerlink" title="空指针nullptr"></a>空指针nullptr</h2><p>nullptr的出现是为了替代原有的NULL。在某种意义上来说，传统C++会把NULL和0视为相同，取决于编译器如何定义NULL：有些编译器会将NULL定义为<code>((void*)0)</code>，有些则直接定义为0。C++不允许将<code>void*</code>隐式转换到其他类型，但如果NULL被定义为<code>((void*)0)</code>，那么当编译<code>char *ch = NULL</code>时，NULL只能被定义为0。但是依然会产生问题，将导致C++中重载特性发生混乱。考虑如下代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">func</span><span class="params">(<span class="type">char</span> *)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>对于这两个函数来说，如果NULL为0那么<code>func(NULL)</code>将会去调用<code>func(int)</code>，导致代码违反直观。</p>
+<p>为了解决该问题，C++11引入关键字<code>nullptr</code>专门用于区分空指针和0。<code>nullptr</code>的类型为<code>nullptr_t</code>，能够隐式地转换为任何指针或成员指针的类型，也能和他们进行相等或不等的比较。<br>（所以养成用<code>nullptr</code>取代<code>NULL</code>的好习惯噢</p>
+<h2 id="default和delete"><a href="#default和delete" class="headerlink" title="default和delete"></a>default和delete</h2><h2 id="长整数"><a href="#长整数" class="headerlink" title="长整数"></a>长整数</h2><h2 id="静态assert"><a href="#静态assert" class="headerlink" title="静态assert"></a>静态assert</h2><h1 id="c-标准库更新"><a href="#c-标准库更新" class="headerlink" title="c++标准库更新"></a>c++标准库更新</h1><h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2>
       
     </div>
     
@@ -288,7 +339,7 @@
         <p><span>Title:</span><a href="/2022/02/25/c++11/">C++11特性</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
         <p><span>Created:</span>2022-02-25, 23:34:07</p>
-        <p><span>Updated:</span>2022-02-25, 23:52:52</p>
+        <p><span>Updated:</span>2022-02-26, 15:26:39</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/02/25/c++11/" title="C++11特性">https://angielee233.github.io/2022/02/25/c++11/</a>
             <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/02/25/c++11/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -302,6 +353,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2022/02/26/computerInternet/">
+                    计算机网络网课笔记
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -318,7 +375,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87"><span class="toc-number">1.</span> <span class="toc-text">提高运行效率</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">右值引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96%E5%B8%B8%E9%87%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">泛化常量表达式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E6%9C%89%E8%AF%AD%E6%B3%95%E7%9A%84%E5%A2%9E%E5%BC%BA"><span class="toc-number">2.</span> <span class="toc-text">原有语法的增强</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">初始化列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">统一的初始化语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="toc-number">2.3.</span> <span class="toc-text">类型推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4for%E5%BE%AA%E7%8E%AF"><span class="toc-number">2.4.</span> <span class="toc-text">范围for循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.5.</span> <span class="toc-text">lambda表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final%E5%92%8Coverri"><span class="toc-number">2.6.</span> <span class="toc-text">final和overri</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%A7%94%E6%89%98"><span class="toc-number">2.7.</span> <span class="toc-text">构造函数委托</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E8%83%BD%E5%8A%9B%E6%8F%90%E5%8D%87"><span class="toc-number">3.</span> <span class="toc-text">语言能力提升</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88nullptr"><span class="toc-number">3.1.</span> <span class="toc-text">空指针nullptr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#default%E5%92%8Cdelete"><span class="toc-number">3.2.</span> <span class="toc-text">default和delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E6%95%B4%E6%95%B0"><span class="toc-number">3.3.</span> <span class="toc-text">长整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81assert"><span class="toc-number">3.4.</span> <span class="toc-text">静态assert</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#c-%E6%A0%87%E5%87%86%E5%BA%93%E6%9B%B4%E6%96%B0"><span class="toc-number">4.</span> <span class="toc-text">c++标准库更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">4.1.</span> <span class="toc-text">智能指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">4.3.</span> <span class="toc-text">哈希表</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87"><span class="toc-number">1.</span> <span class="toc-text">提高运行效率</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">右值引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%8C%96%E5%B8%B8%E9%87%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">泛化常量表达式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E6%9C%89%E8%AF%AD%E6%B3%95%E7%9A%84%E5%A2%9E%E5%BC%BA"><span class="toc-number">2.</span> <span class="toc-text">原有语法的增强</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">初始化列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">统一的初始化语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="toc-number">2.3.</span> <span class="toc-text">类型推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4for%E5%BE%AA%E7%8E%AF"><span class="toc-number">2.4.</span> <span class="toc-text">范围for循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.5.</span> <span class="toc-text">lambda表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final%E5%92%8Coverride"><span class="toc-number">2.6.</span> <span class="toc-text">final和override</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%A7%94%E6%89%98"><span class="toc-number">2.7.</span> <span class="toc-text">构造函数委托</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E8%83%BD%E5%8A%9B%E6%8F%90%E5%8D%87"><span class="toc-number">3.</span> <span class="toc-text">语言能力提升</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E6%8C%87%E9%92%88nullptr"><span class="toc-number">3.1.</span> <span class="toc-text">空指针nullptr</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#default%E5%92%8Cdelete"><span class="toc-number">3.2.</span> <span class="toc-text">default和delete</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E6%95%B4%E6%95%B0"><span class="toc-number">3.3.</span> <span class="toc-text">长整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81assert"><span class="toc-number">3.4.</span> <span class="toc-text">静态assert</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#c-%E6%A0%87%E5%87%86%E5%BA%93%E6%9B%B4%E6%96%B0"><span class="toc-number">4.</span> <span class="toc-text">c++标准库更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">4.1.</span> <span class="toc-text">智能指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">4.3.</span> <span class="toc-text">哈希表</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -374,7 +431,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/2022/02/26/computerInternet/" title="Pre: 计算机网络网课笔记">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -386,7 +445,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/c++11/">C++11特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/x&(x-1)/">x&(x-1)的使用</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/02/26/computerInternet/">计算机网络网课笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/c++11/">C++11特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/x&(x-1)/">x&(x-1)的使用</a></li></ul>
 
 
 
