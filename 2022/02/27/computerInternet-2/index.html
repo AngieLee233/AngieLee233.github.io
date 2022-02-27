@@ -23,7 +23,7 @@
 <meta property="og:description" content="小黎学完第一章啦继续向第二章前进（嘿哈嘿哈">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-27T09:57:26.362Z">
-<meta property="article:modified_time" content="2022-02-27T12:47:56.351Z">
+<meta property="article:modified_time" content="2022-02-27T13:48:14.224Z">
 <meta property="article:author" content="Angie Lee">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -286,7 +286,26 @@
 <li>导引型传输媒体（电磁波被导引沿着固体媒体传播）：双绞线、同轴电缆、光纤、电力线</li>
 <li>非导引型传输媒体（自由空间）：无线电波、微波、红外线、可见光</li>
 </ul>
+<p>（没太听进去，主要讲硬件部分，想看详细的可以看老师的原视频</p>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+<iframe src="//player.bilibili.com/player.html?aid=64605483&bvid=BV1c4411d7jb&cid=114529069&page=15" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"> </iframe>
+</div>
 
+<h1 id="传输方式"><a href="#传输方式" class="headerlink" title="传输方式"></a>传输方式</h1><h2 id="串行传输和并行传输"><a href="#串行传输和并行传输" class="headerlink" title="串行传输和并行传输"></a>串行传输和并行传输</h2><p>在<strong>远距离传输（如计算机网络）中数据采用串行传输，计算机内部的传输常采用并行传输</strong>，例如CPU与内存之间通过总线进行传输，常见的总线宽度有8位、16位、32位和64位。</p>
+<h3 id="串行传输："><a href="#串行传输：" class="headerlink" title="串行传输："></a>串行传输：</h3><p>数据是一个比特一个比特一次发送的，因此在发送端和接收端之间，只需要一条数据传输线路即可</p>
+<h3 id="并行传输："><a href="#并行传输：" class="headerlink" title="并行传输："></a>并行传输：</h3><p>一次发送n个比特而不是一个比特，因此在发送端和接收端之间需要有n条传输线路。并行传输速度是串行传输的n倍，但成本高。</p>
+<h2 id="同步传输和异步传输"><a href="#同步传输和异步传输" class="headerlink" title="同步传输和异步传输"></a>同步传输和异步传输</h2><h3 id="同步传输："><a href="#同步传输：" class="headerlink" title="同步传输："></a>同步传输：</h3><p>数据块以比特流的形式传输，字节之间没有间隔，接收端在每个比特信号的中间时刻进行检测，以判别接收到的是比特0还是比特1。</p>
+<p>由于不同设备的时钟频率不可能完全相同，在传输大量数据的过程中，所产生的判别时刻的累计误差会导致接收端对比特信号判别错位，因此需要收发双方时钟同步。</p>
+<h4 id="收发双方时钟同步的方法"><a href="#收发双方时钟同步的方法" class="headerlink" title="收发双方时钟同步的方法"></a>收发双方时钟同步的方法</h4><ul>
+<li>外同步：在收发双方之间添加一条单独的时钟信号线</li>
+<li>内同步：发送端将时钟同步信号编码到发送数据中一起传输（例如曼切斯特编码）</li>
+</ul>
+<h3 id="异步传输"><a href="#异步传输" class="headerlink" title="异步传输"></a>异步传输</h3><p>以字节为独立的传输单位，字节之间的时间间隔不固定。接收端仅在每个字节的起始处对字节内的比特实现同步。为此，通常要在每个字节前后分别加上起始位和结束位。</p>
+<p>异步指<strong>字节之间异步</strong>，即字节之间的时间间隔不固定。字节中的每个比特仍然要同步，即各比特的持续时间相同。</p>
+<h2 id="单向通信（单工）、双向交替通信（半双工）、双向同时通信（全双工）"><a href="#单向通信（单工）、双向交替通信（半双工）、双向同时通信（全双工）" class="headerlink" title="单向通信（单工）、双向交替通信（半双工）、双向同时通信（全双工）"></a>单向通信（单工）、双向交替通信（半双工）、双向同时通信（全双工）</h2><h3 id="单向通信"><a href="#单向通信" class="headerlink" title="单向通信"></a>单向通信</h3><p>通信双方只有一个数据传输方向，只需要一条信道</p>
+<h3 id="半双工通信"><a href="#半双工通信" class="headerlink" title="半双工通信"></a>半双工通信</h3><p>通信双方可以相互传输数据，但不能同时进行。需要两条信道，每个方向各一条</p>
+<h3 id="全双工通信"><a href="#全双工通信" class="headerlink" title="全双工通信"></a>全双工通信</h3><p>通信双方可以同时放松和接受信息。需要两条信道，每个方向各一条。</p>
+<h1 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h1>
       
     </div>
     
@@ -297,7 +316,7 @@
         <p><span>Title:</span><a href="/2022/02/27/computerInternet-2/">计算机网络网课笔记-物理层</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
         <p><span>Created:</span>2022-02-27, 17:57:26</p>
-        <p><span>Updated:</span>2022-02-27, 20:47:56</p>
+        <p><span>Updated:</span>2022-02-27, 21:48:14</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/02/27/computerInternet-2/" title="计算机网络网课笔记-物理层">https://angielee233.github.io/2022/02/27/computerInternet-2/</a>
             <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/02/27/computerInternet-2/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -327,7 +346,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">物理层的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text">物理层协议的主要任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.</span> <span class="toc-text">基本概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BD%93"><span class="toc-number">2.</span> <span class="toc-text">物理层下面的传输媒体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BD%93%E5%88%86%E7%B1%BB"><span class="toc-number">2.1.</span> <span class="toc-text">传输媒体分类</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">物理层的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%BB%E8%A6%81%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.1.</span> <span class="toc-text">物理层协议的主要任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.</span> <span class="toc-text">基本概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%8B%E9%9D%A2%E7%9A%84%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BD%93"><span class="toc-number">2.</span> <span class="toc-text">物理层下面的传输媒体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%AA%92%E4%BD%93%E5%88%86%E7%B1%BB"><span class="toc-number">2.1.</span> <span class="toc-text">传输媒体分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">传输方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E8%A1%8C%E4%BC%A0%E8%BE%93%E5%92%8C%E5%B9%B6%E8%A1%8C%E4%BC%A0%E8%BE%93"><span class="toc-number">3.1.</span> <span class="toc-text">串行传输和并行传输</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B2%E8%A1%8C%E4%BC%A0%E8%BE%93%EF%BC%9A"><span class="toc-number">3.1.1.</span> <span class="toc-text">串行传输：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E8%A1%8C%E4%BC%A0%E8%BE%93%EF%BC%9A"><span class="toc-number">3.1.2.</span> <span class="toc-text">并行传输：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E4%BC%A0%E8%BE%93%E5%92%8C%E5%BC%82%E6%AD%A5%E4%BC%A0%E8%BE%93"><span class="toc-number">3.2.</span> <span class="toc-text">同步传输和异步传输</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E4%BC%A0%E8%BE%93%EF%BC%9A"><span class="toc-number">3.2.1.</span> <span class="toc-text">同步传输：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B6%E5%8F%91%E5%8F%8C%E6%96%B9%E6%97%B6%E9%92%9F%E5%90%8C%E6%AD%A5%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">3.2.1.1.</span> <span class="toc-text">收发双方时钟同步的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E4%BC%A0%E8%BE%93"><span class="toc-number">3.2.2.</span> <span class="toc-text">异步传输</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%90%91%E9%80%9A%E4%BF%A1%EF%BC%88%E5%8D%95%E5%B7%A5%EF%BC%89%E3%80%81%E5%8F%8C%E5%90%91%E4%BA%A4%E6%9B%BF%E9%80%9A%E4%BF%A1%EF%BC%88%E5%8D%8A%E5%8F%8C%E5%B7%A5%EF%BC%89%E3%80%81%E5%8F%8C%E5%90%91%E5%90%8C%E6%97%B6%E9%80%9A%E4%BF%A1%EF%BC%88%E5%85%A8%E5%8F%8C%E5%B7%A5%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">单向通信（单工）、双向交替通信（半双工）、双向同时通信（全双工）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%90%91%E9%80%9A%E4%BF%A1"><span class="toc-number">3.3.1.</span> <span class="toc-text">单向通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="toc-number">3.3.2.</span> <span class="toc-text">半双工通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1"><span class="toc-number">3.3.3.</span> <span class="toc-text">全双工通信</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6"><span class="toc-number">4.</span> <span class="toc-text">编码与调制</span></a></li></ol>
         
     </div>
     <style>
