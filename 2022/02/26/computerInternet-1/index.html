@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Angie Lee" />
+
+
+
+<meta name="description" content="学校里没机会上计算机网络的课（因为名额满了就不分给咱学院了），只好自学了…不过也没啥，大学不就是大家来自学的意思嘛（bushi网课是网上推荐较多的，bilibili上面湖科大的视频希望能坚持看完吧…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络网课笔记-概论">
+<meta property="og:url" content="https://angielee233.github.io/2022/02/26/computerInternet-1/index.html">
+<meta property="og:site_name" content="小黎的小窝">
+<meta property="og:description" content="学校里没机会上计算机网络的课（因为名额满了就不分给咱学院了），只好自学了…不过也没啥，大学不就是大家来自学的意思嘛（bushi网课是网上推荐较多的，bilibili上面湖科大的视频希望能坚持看完吧…">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bmoYqK.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bmowPH.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bmosMt.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bmojJJ.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bmTPeK.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bmTVWd.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bmTuOP.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bmT3Fg.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bmTclR.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bm7a3d.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bm7R3j.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/02/27/bm7qC4.png">
+<meta property="article:published_time" content="2022-02-26T07:27:16.074Z">
+<meta property="article:modified_time" content="2022-02-27T09:57:13.197Z">
+<meta property="article:author" content="Angie Lee">
+<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="电路交换">
+<meta property="article:tag" content="分组交换">
+<meta property="article:tag" content="报文交换">
+<meta property="article:tag" content="TCP&#x2F;IP">
+<meta property="article:tag" content="服务">
+<meta property="article:tag" content="协议">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s4.ax1x.com/2022/02/27/bmoYqK.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="小黎的小窝" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/icon/USAO.jpg">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>计算机网络网课笔记-概论 | 小黎的小窝</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/usao.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/"></a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/angielee@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" rel="noopener" href="https://github.com/AngieLee233" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" rel="noopener" href="https://www.zhihu.com/people/li-da-sha-45-40" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" target="_blank" rel="noopener" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于Yeah</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页"></a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/usao.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/angielee@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/AngieLee233" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com/people/li-da-sha-45-40" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-computerInternet-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/02/26/computerInternet-1/" class="article-date">
+      <time datetime="2022-02-26T07:27:16.074Z" itemprop="datePublished">2022-02-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机网络网课笔记-概论
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E8%AE%A1%E7%BD%91%E7%9A%84%E7%88%B1%E6%81%A8%E6%83%85%E4%BB%87/">小黎与计网的爱恨情仇</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/" rel="tag">TCP&#x2F;IP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2/" rel="tag">分组交换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%8F%E8%AE%AE/" rel="tag">协议</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2/" rel="tag">报文交换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1/" rel="tag">服务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2/" rel="tag">电路交换</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>学校里没机会上计算机网络的课（因为名额满了就不分给咱学院了），只好自学了…<br>不过也没啥，大学不就是大家来自学的意思嘛（bushi<br>网课是网上推荐较多的，bilibili上面湖科大的视频<br>希望能坚持看完吧…</p>
+<span id="more"></span>
+
+<h1 id="因特网概述"><a href="#因特网概述" class="headerlink" title="因特网概述"></a>因特网概述</h1><h2 id="网络、互联网和因特网"><a href="#网络、互联网和因特网" class="headerlink" title="网络、互联网和因特网"></a>网络、互联网和因特网</h2><ul>
+<li>网络由若干个结点和这些结点的链路组成</li>
+<li>多个网络还可以通过路由器互连，这样就构成了一个覆盖范围更大的网络，即互联网，因此，互联网是“网络的网络”。</li>
+<li>因特网是世界上最大的互联网络。</li>
+</ul>
+<h2 id="因特网服务提供者ISP-（Internet-Service-Provider）"><a href="#因特网服务提供者ISP-（Internet-Service-Provider）" class="headerlink" title="因特网服务提供者ISP （Internet Service Provider）"></a>因特网服务提供者ISP （Internet Service Provider）</h2><p>（比如我国的中国电信、移动和联通</p>
+<h2 id="因特网的标准化工作"><a href="#因特网的标准化工作" class="headerlink" title="因特网的标准化工作"></a>因特网的标准化工作</h2><p>因特网所有的RFC(Request For Comments)技术文档都可以从因特网上免费下载(<a target="_blank" rel="noopener" href="http://www.ietf.org/rfc.html">http://www.ietf.org/rfc.html</a>)</p>
+<h2 id="因特网的组成"><a href="#因特网的组成" class="headerlink" title="因特网的组成"></a>因特网的组成</h2><ul>
+<li>边缘部分：由所有连接在因特网上的主机组成，这部分是用户直接使用的，用来进行通信和资源共享</li>
+<li>核心部分：由大量网络和连接这些网络的路由器组成，这部分是为边缘部分提供服务的（提供连通性和交换）。</li>
+</ul>
+<h1 id="三种交换方式"><a href="#三种交换方式" class="headerlink" title="三种交换方式"></a>三种交换方式</h1><h2 id="电路交换-Circuit-Switching"><a href="#电路交换-Circuit-Switching" class="headerlink" title="电路交换(Circuit Switching)"></a>电路交换(Circuit Switching)</h2><ul>
+<li>电话交换机接通电话线的方式称为电路交换</li>
+<li>从通信资源的分配角度来看，交换就是按照某种方式动态地分配传输线路的资源</li>
+<li>电路交换的三个步骤：建立连接（分配通信资源）；通话（一直占用通信资源）；释放连接（归还通信资源）</li>
+<li>当使用电路交换来传送计算机数据时，其线路的传输效率往往很低，因为<strong>计算机数据是突发式地出现在传输线路上的</strong>。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bmoYqK"><img src="https://s4.ax1x.com/2022/02/27/bmoYqK.png" alt="bmoYqK.png"></a></p>
+<h2 id="分组交换-Packet-Switching"><a href="#分组交换-Packet-Switching" class="headerlink" title="分组交换(Packet Switching)"></a>分组交换(Packet Switching)</h2><p>将表示消息的数据块称为一个报文，在发送报文之前，先把较长的报文划分成为一个个更小的等长数据段。<strong>在每一个数据段前面，加上一些由必要的控制信息组成的首部</strong>后，就构成了一个分组，也可简称为<strong>包</strong>。相应地，首部也可称为<strong>包头</strong>。</p>
+<p><strong>首部包含了分组的目的地址</strong>，否则分组传输路径中的各分组交换机（路由器）就不知道如何转发分组了。分组交换机收到一个分组后，先暂时将分组存储下来，再检查其首部，按照首部中的目的地址进行查表转发，找到合适的转发接口，通过该接口将分组转发给下一个分组交换机。主机收到数据后，去除首部，再将其还原。</p>
+<p>三方任务：</p>
+<ul>
+<li>发送方：构造分组、发送分组</li>
+<li>分组交换机（路由器）：缓存分组、转发分组</li>
+<li>接收方：接收分组、还原报文</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bmowPH"><img src="https://s4.ax1x.com/2022/02/27/bmowPH.png" alt="bmowPH.png"></a></p>
+<h2 id="报文交换-Message-Switching"><a href="#报文交换-Message-Switching" class="headerlink" title="报文交换(Message Switching)"></a>报文交换(Message Switching)</h2><p>报文交换的交换结点也采用分组转发的方式，但报文交换对报文的大小没有限制，这就要求交换结点有较大的缓存空间。报文交换主要用于早期的电报通信网，目前较少使用，通常被较为先进的分组交换所取代。</p>
+<h2 id="三种交换方式对比"><a href="#三种交换方式对比" class="headerlink" title="三种交换方式对比"></a>三种交换方式对比</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bmosMt"><img src="https://s4.ax1x.com/2022/02/27/bmosMt.png" alt="bmosMt.png"></a></p>
+<h3 id="电路交换："><a href="#电路交换：" class="headerlink" title="电路交换："></a>电路交换：</h3><p><strong>通信之前建立连接</strong>，建立好连接后使用该连接进行数据传送，数据传送结束后释放连接，归还通信资源。一旦建立连接，中间各节点交换机就是直通形式的，比特流可以直达终点。</p>
+<p>优点：</p>
+<ul>
+<li>通信时延小：通信线路为通信双方用户专用，数据直达，因此通信时延小，在连续传输大量数据时，优点明显</li>
+<li>有序传输：双方只有一条专用线路，数据只在这一线路传输，不存在失序问题</li>
+<li>没有冲突：不会出现争用物理信道问题</li>
+<li>适用范围广：可以传输模拟和数字信号</li>
+<li>实时性强</li>
+<li>控制简单</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>建立连接时间长</li>
+<li>线路独占，使用效率低</li>
+<li>灵活性差：只要所连接的物理通路任意一点出现故障，就必须重新拨号建立新的连接</li>
+<li>难以规格化：不同类型、规格、速率的终端很难进行相互通信，也难以在通信过程中进行差错控制</li>
+</ul>
+<h3 id="报文交换："><a href="#报文交换：" class="headerlink" title="报文交换："></a>报文交换：</h3><p><strong>随时可以发送报文，不需要事先建立连接。</strong>整个报文先传送到相邻结点交换机，全部存储下来后进行查表转发，转发到下一个结点交换机。报文需要在各结点交换机上进行存储转发。由于不限制报文的大小，因此需要各结点交换机都具有较大的缓存空间。</p>
+<p>优点：</p>
+<ul>
+<li>无需建立连接：不存在建立通路的时延</li>
+<li>动态分配线路</li>
+<li>提高线路可靠性：如果某条传输路径发生故障，会重新选择另一条路径传输数据，提高了传输可靠性</li>
+<li>提高线路利用率</li>
+<li>提供多目标服务</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>引起了转发时延</li>
+<li>需要较大的存储缓存空间</li>
+<li>需要传输额外的信息量</li>
+</ul>
+<h3 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h3><p><strong>随时可以发送分组，不需要事先建立连接。</strong>构成原始报文的分组，依次在各结点交换机上存储转发。<strong>各结点交换机在发送分组的同时，还缓存接收到的分组。</strong>构成原始报文的分组在各结点交换机上进行存储转发，相比报文交换减少了转发时延，还可以避免过长的报文长时间占用链路，同时也<strong>有利于进行差错控制</strong>。</p>
+<p>优点：</p>
+<ul>
+<li>无需建立连接</li>
+<li>线路利用率高</li>
+<li>简化存储管理：分组长度固定，缓冲区大小固定，管理容易</li>
+<li>加速传输：由于分组逐个传输，后一个分组的存储和前一个分组的转发可以同时进行</li>
+<li>减少出错概率和重发数据量：分组比报文小，出错概率必然减小，即便分组出错也只需重传出错的部分，而不是重传整个报文</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>引起转发时延</li>
+<li>需要传输额外的信息量</li>
+<li>对于数据报服务，存在失序、丢失或重复分组的问题；对于虚电路服务，存在呼叫建立、数据传输和虚电路释放三个过程。</li>
+</ul>
+<h1 id="计算机网络的定义和分类"><a href="#计算机网络的定义和分类" class="headerlink" title="计算机网络的定义和分类"></a>计算机网络的定义和分类</h1><h2 id="计算机网络的定义"><a href="#计算机网络的定义" class="headerlink" title="计算机网络的定义"></a>计算机网络的定义</h2><p>计算机网络的最简单定义：一些<strong>互</strong>相<strong>连</strong>接的、<strong>自治</strong>的计算机的<strong>集合</strong></p>
+<ul>
+<li>互联：计算机之前可以通过有线或无线的方式进行数据通信</li>
+<li>自治：指独立的计算机，拥有自己的硬件和软件，可以单独运行使用</li>
+<li>集合：至少需要两台计算机</li>
+</ul>
+<p>计算机网络较好的定义：计算机网络主要是由一些<strong>通用的、可编程的硬件互连</strong>而成的，而这些硬件并非专门用来实现某一特定目的。这些可编程的硬件能够用来<strong>传送多种不同类型的数据</strong>，并能<strong>支持广泛的日益增长的应用</strong>。</p>
+<ul>
+<li>计算机网络所连接的硬件，并不限于一般的计算机，而是包括了智能手机等智能硬件</li>
+<li>计算机网络并非专们用来传送数据，而是能够支持多种应用。</li>
+</ul>
+<h2 id="计算机网络的分类"><a href="#计算机网络的分类" class="headerlink" title="计算机网络的分类"></a>计算机网络的分类</h2><ul>
+<li>按交换技术分类：电路交换网络、报文交换网络、分组交换网络</li>
+<li>按使用者分类：公用网（公众网）、专用网</li>
+<li>按传输介质分类：有限网络、无线网络</li>
+<li>按覆盖范围分类：广域网WAN、城域网MAN、局域网LAN、个域网PAN</li>
+<li>按拓扑结构分类：总线型网络、星型网络、环型网络、网状型网络</li>
+</ul>
+<h1 id="计算机网络的性能指标"><a href="#计算机网络的性能指标" class="headerlink" title="计算机网络的性能指标"></a>计算机网络的性能指标</h1><h2 id="速率"><a href="#速率" class="headerlink" title="速率"></a>速率</h2><p>连接在计算机网络上的主机在数字信道上传送比特的速率，也称为比特率或数据率。常用数据率单位如下：</p>
+<ul>
+<li>bit&#x2F;s (b&#x2F;s, bps)</li>
+<li>kb&#x2F;s &#x3D; 10^3 b&#x2F;s (bps), KB &#x3D; 2^10B, B &#x3D; 8b</li>
+<li>Mb&#x2F;s &#x3D; 10^6 b&#x2F;s (bps), MB &#x3D; 2^20B, B &#x3D; 8b</li>
+<li>Gb&#x2F;s &#x3D; 10^9 b&#x2F;s (bps), GB &#x3D; 2^30B, B &#x3D; 8b</li>
+<li>Tb&#x2F;s &#x3D; 10^12 b&#x2F;s (bps), TB &#x3D; 2^40B, B &#x3D; 8b</li>
+</ul>
+<h2 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h2><p>带宽在模拟信号系统中的意义：信号所包含的各种不同频率成分所占据的频率范围，基本单位为Hz</p>
+<p>带宽在计算机网络中的意义：表示网络的通信线路所能传送数据的能力，因此网络带宽表示在单位时间内从网络中的某一点到另一点所能通过的最高数据率，基本单位为b&#x2F;s</p>
+<p>带宽的两种表述之间有着密切联系：<strong>一条通信线路的频带宽度越宽，其所传输数据的最高数据率越高。</strong></p>
+<h2 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a>吞吐量</h2><p>吞吐量表示在<strong>单位时间内通过某个网络（或信道、接口）的数据量</strong>。</p>
+<p>被经常用于对现实世界中网络的一种测量，以便知道实际上到底有多少数据量能够通过网络。</p>
+<p>吞吐量<strong>受网络的带宽或额定速率的限制</strong>。</p>
+<h2 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h2><p>网络时延由三部分组成：发送时延、传播时延、处理时延</p>
+<p>发送时延 &#x3D; 分组长度（b）&#x2F;发送速率（b&#x2F;s），发送速率受网卡的发送速率、信道带宽和接口速率影响，取三者最小值。</p>
+<p>传播时延 &#x3D; 信道长度（m）&#x2F;电磁波传播速率（m&#x2F;s），电磁波传播速率受传播介质影响，自由空间为3e8，铜线为2.3e8，光纤为2e8</p>
+<p>处理时延一般不方便计算。处理时延忽略不计时，无法判断哪种时延占主导，需要具体情况具体分析。</p>
+<h2 id="时延带宽积"><a href="#时延带宽积" class="headerlink" title="时延带宽积"></a>时延带宽积</h2><p>传播时延与带宽的乘积</p>
+<p>若发送端持续发送数据，则在所发送的第一个比特即将到达终点时，发送端就已经发送了时延带宽积个比特。</p>
+<p>链路的时延带宽积又称为以比特为单位的链路长度。</p>
+<h2 id="往返时间RTT-Round-Trip-Time"><a href="#往返时间RTT-Round-Trip-Time" class="headerlink" title="往返时间RTT(Round-Trip Time)"></a>往返时间RTT(Round-Trip Time)</h2><p>从源主机发送分组开始，直到源主机收到来自目的主机的确认分组为止所需要的时间。</p>
+<p>在以太网、卫星链路、无线局域网的传播过程中，卫星链路所带来的传播时延比较大（卫星距离远）。</p>
+<h2 id="利用率"><a href="#利用率" class="headerlink" title="利用率"></a>利用率</h2><p>信道利用率：表示某信道有百分之几的时间是被利用的（有数据通过）。</p>
+<p>网络利用率：全网络的信道利用率的加权平均。</p>
+<p>根据排队论，<strong>当某信道的利用率增大时，该信道引起的时延也会迅速增加</strong>，因此<strong>信道利用率并非越高越好</strong>。如果令D0表示网络空闲时的时延，D表示网络当前的时延，那么在适当的假定条件下，可以用D&#x3D;D0&#x2F;(1-U)公式来表示D、D0和利用率U之间的关系：当网络利用率到达50%时，时延加倍；当网络利用率超过50%时，时延急剧增大；当网络利用率接近100%时，时延趋近于无穷。因此，一些拥有较大主干网的ISP通常会控制其信道利用率不超过50%，如果超过就要准备扩容增大带宽。</p>
+<p>也不能使信道利用率太低，会浪费通信资源。应使用一些机制，可以根据情况动态调整输入到网络中的通信量，使网络利用率保持在合理范围内。</p>
+<h2 id="丢包率"><a href="#丢包率" class="headerlink" title="丢包率"></a>丢包率</h2><p>即分组丢失率，是指在一定时间范围内传输过程中<strong>丢失的分组数量与总分组数量的比率</strong>。丢包率可具体分为接口丢包率、结点丢包率、链路丢包率、路径丢包率和网络丢包率等。</p>
+<p>分组丢失主要有两种情况：</p>
+<ul>
+<li>分组在传输过程中出现误码，被结点丢弃；</li>
+<li>分组到达一台队列已满的分组交换机时被丢弃，在通信量较大时可能造成网络拥塞。</li>
+</ul>
+<p>因此丢包率反映了网络的拥塞情况：</p>
+<ul>
+<li>无拥塞时路径丢包率为0</li>
+<li>轻度拥塞时路径丢包率为1%~4%</li>
+<li>严重拥塞时路径丢包率为5%~15%</li>
+</ul>
+<h1 id="计算机体系结构"><a href="#计算机体系结构" class="headerlink" title="计算机体系结构"></a>计算机体系结构</h1><h2 id="常见的计算机体系结构"><a href="#常见的计算机体系结构" class="headerlink" title="常见的计算机体系结构"></a>常见的计算机体系结构</h2><ul>
+<li>开放系统互连参考模型（OSI）：<br>是一个七层协议的体系结构，从下往上依次为物理层、数据链路层、网络层、运输层、会话层、表示层、应用层。是法律上的国际标准。</li>
+<li>TCP&#x2F;IP体系结构：<br>是一个四层协议的体系结构，从下往上依次为网络接口层、网际层、运输层、应用层。是事实上的国际标准。</li>
+</ul>
+<p>TCP&#x2F;IP体系结构相当于将OSI体系结构的物理层和数据链路层合并为网络结构层，并去掉了会话层和表示层。此外，由于TCP&#x2F;IP在网络层使用的协议是IP协议（网际协议），故网络层常被称为网际层。</p>
+<p>用户主机的操作系统和用于网络互连的路由器中通常带有符合TCP&#x2F;IP体系结构标准的TCP&#x2F;IP协议族，但路由器一般只包含网络接口层和网际层。TCP&#x2F;IP体系结构的网络接口层并没有规定具体内容，目的互连全世界不同的接口，因此本质上TCP&#x2F;IP体系结构只有上面的三层。</p>
+<ul>
+<li>网际层：核心协议为IP协议</li>
+<li>运输层：TCP和UDP为两个重要协议</li>
+<li>应用层：包含大量应用层协议，例如HTTP、SMTP、DNS、RTP</li>
+</ul>
+<p>IP协议可以将不同的网络接口互连，并向其上的TCP和UDP协议提供网络互连服务。而TCP协议在享受IP协议提供的网络互连服务的基础上，可向应用层的相应协议（HTTP、SMTP）提供可靠传输的服务；UDP协议在享受IP协议提供的网络互连服务的基础上，可向应用层的相应协议（DNS、RTP）提供不可靠传输的服务。</p>
+<p>IP协议作为TCP&#x2F;IP体系结构中的核心协议，一方面负责互连不同的网络接口（IP over everything），另一方面为各种网络应用提供服务（Everything over IP）。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bmojJJ"><img src="https://s4.ax1x.com/2022/02/27/bmojJJ.png" alt="bmojJJ.png"></a></p>
+<ul>
+<li>原理体系结构：<br>是一个五层协议的体系结构，从下往上依次为物理层、数据链路层、网际层、运输层、应用层。将TCP&#x2F;IP体系结构的网络接口层又重新划分为了物理层和数据链路层，更有利于对计算机网络原理的学习。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bmTPeK"><img src="https://s4.ax1x.com/2022/02/27/bmTPeK.png" alt="bmTPeK.png"></a></p>
+<h1 id="计算机网络体系结构分层的必要性"><a href="#计算机网络体系结构分层的必要性" class="headerlink" title="计算机网络体系结构分层的必要性"></a>计算机网络体系结构分层的必要性</h1><p>将实现计算机网络所需要解决的主要问题划归到各个层</p>
+<ul>
+<li>物理层：使两台计算机通过信号传输比特0或1<br>采用怎样的传输媒体（介质）<br>采用怎样的物理接口<br>使用怎样的信号比特0和1</li>
+<li>数据链路层：实现分组在一个网络上传输<br>如何标识网络中各主机（主机编址问题，例如MAC地址）<br>如何从信号所表示的一连串比特流中区分出地址和数据（分组的封装格式问题）<br>如何协调各主机争用总线</li>
+<li>网络层：实现分组在网络间传输<br>如何标识各网络以及网络中的各主机（网络和主机共同编址的问题，例如IP地址）<br>路由器如何转发分组，如何进行路由选择</li>
+<li>运输层：实现进程之间基于网络的通信<br>如何解决进程之间基于网络通信的问题<br>出现传输错误时如何处理</li>
+<li>应用层：<br>通过应用进程间的交互来完成特定的网络应用</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bmTVWd"><img src="https://s4.ax1x.com/2022/02/27/bmTVWd.png" alt="bmTVWd.png"></a></p>
+<h1 id="计算机网络体系结构分层思想举例"><a href="#计算机网络体系结构分层思想举例" class="headerlink" title="计算机网络体系结构分层思想举例"></a>计算机网络体系结构分层思想举例</h1><p>（老师讲得很好，视频讲解很清晰，所以直接贴视频吧</p>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+<iframe src="//player.bilibili.com/player.html?aid=64605483&bvid=BV1c4411d7jb&cid=112162125&page=9" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"> </iframe>
+</div>
+
+<h1 id="专用术语"><a href="#专用术语" class="headerlink" title="专用术语"></a>专用术语</h1><h2 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h2><ul>
+<li>实体： 任何可发送或接收的硬件或软件进程</li>
+<li>对等实体：收发双方相同层次中的实体</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bmTuOP"><img src="https://s4.ax1x.com/2022/02/27/bmTuOP.png" alt="bmTuOP.png"></a></p>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><ul>
+<li>协议：控制两个对等实体进行逻辑通信的规则的集合<br>逻辑通信实际中并不存在，只是假设出来的一种通信，目的在于方便我们单独研究体系结构某一层时不用考虑其他层</li>
+<li>协议的三要素：语法、语义、同步</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bmT3Fg"><img src="https://s4.ax1x.com/2022/02/27/bmT3Fg.png" alt="bmT3Fg.png"></a></p>
+<h3 id="语法-定义所交换信息的格式"><a href="#语法-定义所交换信息的格式" class="headerlink" title="语法:定义所交换信息的格式"></a>语法:定义所交换信息的格式</h3><p>例如下图为IP数据报的格式，其中的小格子称为字段或域，数字表示字段的长度，单位为位（也就是比特）。语法就是定义了这些小格子的长度和顺序，即语法定义了所交换信息由哪些字段以及何种顺序构成。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bmTclR"><img src="https://s4.ax1x.com/2022/02/27/bmTclR.png" alt="bmTclR.png"></a></p>
+<h3 id="语义-定义收发双方所要完成的操作"><a href="#语义-定义收发双方所要完成的操作" class="headerlink" title="语义:定义收发双方所要完成的操作"></a>语义:定义收发双方所要完成的操作</h3><h3 id="同步-定义收发双方的时序关系"><a href="#同步-定义收发双方的时序关系" class="headerlink" title="同步:定义收发双方的时序关系"></a>同步:定义收发双方的时序关系</h3><p>例如TCP采用“三报文握手”建立连接的过程，要想进行运输层TCP实体间的逻辑通信，首先必须建立连接，从连接建立过程可以看出TCP客户端与TCP服务器之间的时序关系，以及各自的状态转换。只有双方建立连接后，才能进行TCP数据传输。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bm7a3d"><img src="https://s4.ax1x.com/2022/02/27/bm7a3d.png" alt="bm7a3d.png"></a></p>
+<h2 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h2><ul>
+<li>在协议的控制下，<strong>两个对等实体间的逻辑通信使得本层能向上一层提供服务</strong>。<br>例如物理层对等实体在物理层协议的控制下向数据链路层提供服务。</li>
+<li>要实现本层协议，<strong>还需要使用下面一层所提供的服务</strong>。<br>例如数据链路层对等实体享受物理层提供的服务，并在数据链路层协议的控制下进行逻辑通信，给网络层提供服务。</li>
+<li>协议是<strong>“水平的”</strong>，服务是<strong>“垂直的”</strong>。</li>
+<li>实体看得见相邻下层所提供的服务，但并不知道实现该服务的具体协议。也就是说，下层的协议对上层的实体是<strong>“透明”</strong>的。<br>（例如我们享受使用手机打游戏，但是并不知道这个游戏咋做出来的</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bm7R3j"><img src="https://s4.ax1x.com/2022/02/27/bm7R3j.png" alt="bm7R3j.png"></a></p>
+<ul>
+<li>服务访问点：在<strong>同一系统中相邻两层的实体交换信息的逻辑接口</strong>，用于区分不同的服务类型。<br>数据链路层的服务访问点为帧的“类型”字段<br>网络层的服务访问点为IP数据报首部中的“协议字段”<br>运输层的服务访问点为“端口号”</li>
+<li>服务原语：<strong>上层使用下层所提供的服务必须通过与下层交换一些命令</strong>，这些命令称为服务原语。</li>
+<li>协议数据单元PDU：<strong>对等层次之间传送的数据包</strong>称为该层的协议数据单元。<br>物理层对等实体逻辑通信的数据包称为比特流<br>数据链路层对等实体逻辑通信的数据包为帧<br>网络层对等实体逻辑通信的数据包称为分组。如果使用IP协议，也称为IP数据报<br>运输层对等实体逻辑通信的数据包一般根据协议而定，使用TCP协议则称为TCP报文段；使用UDP协议则称为UDP用户数据报<br>应用层对等实体逻辑通信数据包一般称为应用报文<br>上述各层数据包可以统称为协议数据单元PDU</li>
+<li>服务数据单元SDU：同一系统内，<strong>层与层之间交换的数据包</strong>称为服务数据单元</li>
+<li>多个SDU可以合成一个PDU，一个SDU也可划分为几个PDU</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bm7qC4"><img src="https://s4.ax1x.com/2022/02/27/bm7qC4.png" alt="bm7qC4.png"></a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2022/02/26/computerInternet-1/">计算机网络网课笔记-概论</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
+        <p><span>Created:</span>2022-02-26, 15:27:16</p>
+        <p><span>Updated:</span>2022-02-27, 17:57:13</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2022/02/26/computerInternet-1/" title="计算机网络网课笔记-概论">https://angielee233.github.io/2022/02/26/computerInternet-1/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/02/26/computerInternet-1/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2022/02/27/computerInternet-2/">
+                    计算机网络网课笔记-物理层
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2022/02/25/c++11/">
+                    C++11特性
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">因特网概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E3%80%81%E4%BA%92%E8%81%94%E7%BD%91%E5%92%8C%E5%9B%A0%E7%89%B9%E7%BD%91"><span class="toc-number">1.1.</span> <span class="toc-text">网络、互联网和因特网</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E8%80%85ISP-%EF%BC%88Internet-Service-Provider%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">因特网服务提供者ISP （Internet Service Provider）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">因特网的标准化工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.4.</span> <span class="toc-text">因特网的组成</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">三种交换方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2-Circuit-Switching"><span class="toc-number">2.1.</span> <span class="toc-text">电路交换(Circuit Switching)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2-Packet-Switching"><span class="toc-number">2.2.</span> <span class="toc-text">分组交换(Packet Switching)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2-Message-Switching"><span class="toc-number">2.3.</span> <span class="toc-text">报文交换(Message Switching)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F%E5%AF%B9%E6%AF%94"><span class="toc-number">2.4.</span> <span class="toc-text">三种交换方式对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%EF%BC%9A"><span class="toc-number">2.4.1.</span> <span class="toc-text">电路交换：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2%EF%BC%9A"><span class="toc-number">2.4.2.</span> <span class="toc-text">报文交换：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2"><span class="toc-number">2.4.3.</span> <span class="toc-text">分组交换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E5%88%86%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">计算机网络的定义和分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">3.1.</span> <span class="toc-text">计算机网络的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">3.2.</span> <span class="toc-text">计算机网络的分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-number">4.</span> <span class="toc-text">计算机网络的性能指标</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9F%E7%8E%87"><span class="toc-number">4.1.</span> <span class="toc-text">速率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%A6%E5%AE%BD"><span class="toc-number">4.2.</span> <span class="toc-text">带宽</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%9E%E5%90%90%E9%87%8F"><span class="toc-number">4.3.</span> <span class="toc-text">吞吐量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E5%BB%B6"><span class="toc-number">4.4.</span> <span class="toc-text">时延</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E5%BB%B6%E5%B8%A6%E5%AE%BD%E7%A7%AF"><span class="toc-number">4.5.</span> <span class="toc-text">时延带宽积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%80%E8%BF%94%E6%97%B6%E9%97%B4RTT-Round-Trip-Time"><span class="toc-number">4.6.</span> <span class="toc-text">往返时间RTT(Round-Trip Time)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E7%8E%87"><span class="toc-number">4.7.</span> <span class="toc-text">利用率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A2%E5%8C%85%E7%8E%87"><span class="toc-number">4.8.</span> <span class="toc-text">丢包率</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">5.</span> <span class="toc-text">计算机体系结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">5.1.</span> <span class="toc-text">常见的计算机体系结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%88%86%E5%B1%82%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">6.</span> <span class="toc-text">计算机网络体系结构分层的必要性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%88%86%E5%B1%82%E6%80%9D%E6%83%B3%E4%B8%BE%E4%BE%8B"><span class="toc-number">7.</span> <span class="toc-text">计算机网络体系结构分层思想举例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%93%E7%94%A8%E6%9C%AF%E8%AF%AD"><span class="toc-number">8.</span> <span class="toc-text">专用术语</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93"><span class="toc-number">8.1.</span> <span class="toc-text">实体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE"><span class="toc-number">8.2.</span> <span class="toc-text">协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-%E5%AE%9A%E4%B9%89%E6%89%80%E4%BA%A4%E6%8D%A2%E4%BF%A1%E6%81%AF%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-number">8.2.1.</span> <span class="toc-text">语法:定义所交换信息的格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E4%B9%89-%E5%AE%9A%E4%B9%89%E6%94%B6%E5%8F%91%E5%8F%8C%E6%96%B9%E6%89%80%E8%A6%81%E5%AE%8C%E6%88%90%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">8.2.2.</span> <span class="toc-text">语义:定义收发双方所要完成的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5-%E5%AE%9A%E4%B9%89%E6%94%B6%E5%8F%91%E5%8F%8C%E6%96%B9%E7%9A%84%E6%97%B6%E5%BA%8F%E5%85%B3%E7%B3%BB"><span class="toc-number">8.2.3.</span> <span class="toc-text">同步:定义收发双方的时序关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1"><span class="toc-number">8.3.</span> <span class="toc-text">服务</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"计算机网络网课笔记-概论　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2022/02/27/computerInternet-2/" title="Pre: 计算机网络网课笔记-物理层">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2022/02/25/c++11/" title="Next: C++11特性">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/02/27/computerInternet-2/">计算机网络网课笔记-物理层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/26/computerInternet-1/">计算机网络网课笔记-概论</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/c++11/">C++11特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/x&(x-1)/">x&(x-1)的使用</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2022 Angie Lee
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
