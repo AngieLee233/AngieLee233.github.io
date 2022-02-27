@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>计算机网络网课笔记-数据链路层</title>
+      <link href="/2022/02/28/computerInternet-3/"/>
+      <url>/2022/02/28/computerInternet-3/</url>
+      
+        <content type="html"><![CDATA[<p>小黎一天学一章，小黎真棒<br>上一章笔记的图片尺寸有些过于大了…<br>小黎懒得改，小黎真懒</p><span id="more"></span><h1 id="数据链路层概述"><a href="#数据链路层概述" class="headerlink" title="数据链路层概述"></a>数据链路层概述</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎与计网的爱恨情仇 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据链路层 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机网络网课笔记-物理层</title>
       <link href="/2022/02/27/computerInternet-2/"/>
       <url>/2022/02/27/computerInternet-2/</url>
@@ -20,7 +45,11 @@
       
         <tags>
             
-            <tag> 计算机网络 </tag>
+            <tag> 物理层 </tag>
+            
+            <tag> 香农公式 </tag>
+            
+            <tag> 奈氏准则 </tag>
             
         </tags>
       
@@ -44,8 +73,6 @@
       
       
         <tags>
-            
-            <tag> 计算机网络 </tag>
             
             <tag> 电路交换 </tag>
             
