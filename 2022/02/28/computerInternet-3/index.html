@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://s4.ax1x.com/2022/03/01/bMIxaV.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/03/01/bM73UP.png">
 <meta property="article:published_time" content="2022-02-27T16:28:53.764Z">
-<meta property="article:modified_time" content="2022-02-28T17:14:03.880Z">
+<meta property="article:modified_time" content="2022-02-28T17:32:53.256Z">
 <meta property="article:author" content="Angie Lee">
 <meta property="article:tag" content="数据链路层">
 <meta name="twitter:card" content="summary">
@@ -466,15 +466,15 @@
 <li>2号确认分组经过互联网的传输到达发送方，发送方接收该确认分组。由于之前3-4-5已标记发送，此时<strong>发送窗口可以向前滑动四个窗口</strong>，这样就有6-7-0-1这四个新的序号落入发送窗口。</li>
 <li>此时发送方可以继续将6-7-0-1这自个序号的数据分组发送出去。</li>
 </ol>
-<h4 id="发送窗口和接收窗口的尺寸问题"><a href="#发送窗口和接收窗口的尺寸问题" class="headerlink" title="发送窗口和接收窗口的尺寸问题"></a>发送窗口和接收窗口的尺寸问题</h4><p>发送方的发送窗口尺寸WT必须满足**1 &lt; WT &lt;&#x3D; 2^(n-1)**，其中n是构成分组序号的比特数量。</p>
+<h4 id="发送窗口和接收窗口的尺寸问题"><a href="#发送窗口和接收窗口的尺寸问题" class="headerlink" title="发送窗口和接收窗口的尺寸问题"></a>发送窗口和接收窗口的尺寸问题</h4><p>发送方的发送窗口尺寸WT必须满足<strong>1 &lt; WT &lt;&#x3D; 2^(n-1)</strong> ，其中n是构成分组序号的比特数量。</p>
 <ul>
 <li>若WT &#x3D; 2，则<strong>与停止-等待协议相同</strong>。</li>
 <li>若WT &gt; 2^(n-1)，则会导致接收方<strong>无法辨析新旧数据分组</strong>的问题。</li>
 </ul>
 <p>接收方的接收窗口尺寸WR必须满足<strong>1 &lt; WR &lt;&#x3D; WT</strong>。</p>
 <ul>
-<li>若WT &#x3D; 1，则<strong>回退N帧协议相同</strong>。</li>
-<li>若WT &gt; WT，则<strong>没有意义</strong>。</li>
+<li>若WR &#x3D; 1，则<strong>回退N帧协议相同</strong>。</li>
+<li>若WR &gt; WT，则<strong>没有意义</strong>。</li>
 </ul>
 <h5 id="发送窗口尺寸过大"><a href="#发送窗口尺寸过大" class="headerlink" title="发送窗口尺寸过大"></a>发送窗口尺寸过大</h5><ul>
 <li>本例采用3个比特给分组编号，即序号0-7</li>
@@ -501,7 +501,7 @@
         <p><span>Title:</span><a href="/2022/02/28/computerInternet-3/">计算机网络网课笔记-数据链路层</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
         <p><span>Created:</span>2022-02-28, 00:28:53</p>
-        <p><span>Updated:</span>2022-03-01, 01:14:03</p>
+        <p><span>Updated:</span>2022-03-01, 01:32:53</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/02/28/computerInternet-3/" title="计算机网络网课笔记-数据链路层">https://angielee233.github.io/2022/02/28/computerInternet-3/</a>
             <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/02/28/computerInternet-3/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -515,6 +515,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2022/03/01/md-20220301/">
+                    关于MarkDown语法中加粗失效的问题
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -587,7 +593,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+            <a href="/2022/03/01/md-20220301/" title="Pre: 关于MarkDown语法中加粗失效的问题">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -599,7 +607,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/02/28/computerInternet-3/">计算机网络网课笔记-数据链路层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/27/computerInternet-2/">计算机网络网课笔记-物理层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/26/computerInternet-1/">计算机网络网课笔记-概论</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/c++11/">C++11特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/x&(x-1)/">x&(x-1)的使用</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/03/01/md-20220301/">关于MarkDown语法中加粗失效的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/28/computerInternet-3/">计算机网络网课笔记-数据链路层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/27/computerInternet-2/">计算机网络网课笔记-物理层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/26/computerInternet-1/">计算机网络网课笔记-概论</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/c++11/">C++11特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/x&(x-1)/">x&(x-1)的使用</a></li></ul>
 
 
 
