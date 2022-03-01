@@ -37,8 +37,9 @@
 <meta property="og:image" content="https://s4.ax1x.com/2022/03/01/bllYC9.md.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/03/01/bl0kQS.md.png">
 <meta property="og:image" content="https://s4.ax1x.com/2022/03/01/bl0x6U,md.png">
+<meta property="og:image" content="https://s4.ax1x.com/2022/03/01/b1fSUK.png">
 <meta property="article:published_time" content="2022-02-27T16:28:53.764Z">
-<meta property="article:modified_time" content="2022-03-01T15:33:45.455Z">
+<meta property="article:modified_time" content="2022-03-01T15:39:25.195Z">
 <meta property="article:author" content="Angie Lee">
 <meta property="article:tag" content="数据链路层">
 <meta name="twitter:card" content="summary">
@@ -531,8 +532,11 @@
 <li>当检测到调制解调器的载波信号，并建立物理层连接后，PPP就进入链路的“<strong>建立</strong>”状态</li>
 <li>这时，链路控制协议LCP开始协商一些配置选项。若协商成功，则进入“<strong>鉴别</strong>”状态；若协商失败，则退回到“<strong>静止</strong>”状态。所协商的配置包括最大帧长、鉴别协议等。</li>
 <li>可以不使用鉴别，也可以使用口令鉴别协议PAP，或挑战握手鉴别协议CHAP。若通信双方无需鉴别或鉴别身份成功，则进入“<strong>网络</strong>”状态；若鉴别失败，则进入“<strong>终止</strong>”状态。</li>
-<li>进入“<strong>网络</strong>”状态后，进行NCP配置。配置完成后，进入“<strong>打开</strong>”状态</li>
+<li>进入“<strong>网络</strong>”状态后，进行NCP配置。配置完成后，进入“<strong>打开</strong>”状态。</li>
+<li>PPP链路的两端通过互相交换网络层特定的NCP分组来进行NCP配置。如果链路上运行的是IP协议，则使用IP控制协议IPCP来对PPP链路的每一端配置IP模块（如配置IP地址</li>
+<li>只要链路处于“<strong>打开</strong>”状态，就可以进行数据通信。当出现故障或链路的一端发出终止请求时，就进入“<strong>终止</strong>”状态。当载波停止后，则回到“<strong>静止状态</strong>”。</li>
 </ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/b1fSUK"><img src="https://s4.ax1x.com/2022/03/01/b1fSUK.png" alt="b1fSUK.png"></a></p>
 
       
     </div>
@@ -544,7 +548,7 @@
         <p><span>Title:</span><a href="/2022/02/28/computerInternet-3/">计算机网络网课笔记-数据链路层</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
         <p><span>Created:</span>2022-02-28, 00:28:53</p>
-        <p><span>Updated:</span>2022-03-01, 23:33:45</p>
+        <p><span>Updated:</span>2022-03-01, 23:39:25</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/02/28/computerInternet-3/" title="计算机网络网课笔记-数据链路层">https://angielee233.github.io/2022/02/28/computerInternet-3/</a>
             <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/02/28/computerInternet-3/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
