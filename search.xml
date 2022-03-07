@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>反转链表</title>
+      <link href="/2022/03/07/reverseList/"/>
+      <url>/2022/03/07/reverseList/</url>
+      
+        <content type="html"><![CDATA[<p>大链表吱呀吱悠悠地转♪</p><p>这里~的风景呀真奇怪♪</p><p>天在转♪ 地在转♪</p><p>还有一个刷题的小笨蛋♪</p><span id="more"></span><p>反转链表！经久不衰的<del>送分</del>题！</p><h1 id="反转整个链表"><a href="#反转整个链表" class="headerlink" title="反转整个链表"></a>反转整个链表</h1><p><a href="https://leetcode-cn.com/problems/reverse-linked-list/">206.反转链表</a></p><p>给你单链表的头节点<code>head</code>，请你反转链表，并返回反转后的链表。</p><p>迭代和<del>递龟</del>递归都可以哦！</p><h2 id="迭代解法"><a href="#迭代解法" class="headerlink" title="迭代解法"></a>迭代解法</h2><p>遍历整个链表，反转一下next指针的方向就好了，非常简单，不赘述啦！</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* prev = <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* curr = head;</span><br><span class="line">        <span class="keyword">while</span> (curr) &#123;</span><br><span class="line">            ListNode* next = curr-&gt;next;</span><br><span class="line">            curr-&gt;next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h2><p>递归的版本就比较复杂一些，关键在于反向工作。假设链表的其余部分已经被反转，那么考虑如何反转之前的部分。</p><p>假设链表长这样：<br>$$<br>n_1 \rightarrow \dots n_{k - 1} \rightarrow n_k \rightarrow n_{k + 1} \rightarrow \dots \rightarrow n_m \rightarrow nullptr<br>$$</p><p>如果我们已经将$n_{k + 1} \rightarrow \dots \rightarrow n_m$的部分反转，目前来到了$n_k$。那么我们希望$n_k$的下一个结点$n_{k + 1}$能指向$n_k$。即：<br>$$<br>n_k\rightarrow next\rightarrow next &#x3D; n_k<br>$$</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!head || !head-&gt;next) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* newHead = <span class="built_in">reverseList</span>(head-&gt;next);</span><br><span class="line">        head-&gt;next-&gt;next = head;</span><br><span class="line">        head-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎刷题记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数组中的第k个最大元素</title>
       <link href="/2022/03/07/kthBiggest/"/>
       <url>/2022/03/07/kthBiggest/</url>
