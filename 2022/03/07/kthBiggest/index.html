@@ -15,16 +15,18 @@
 
 
 
-<meta name="description" content="没事写点东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="总得分点类，显得我写了特别多东西">
-<meta property="og:url" content="https://angielee233.github.io/tags/index.html">
+<meta name="description" content="（小黎最近在忙刷题，网课先告一段落！绝对不鸽！咕咕咕 给定整数数组nums和整数k，请返回数组中第k个最大的元素。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组中的第k个最大元素">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/07/kthBiggest/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="没事写点东西">
+<meta property="og:description" content="（小黎最近在忙刷题，网课先告一段落！绝对不鸽！咕咕咕 给定整数数组nums和整数k，请返回数组中第k个最大的元素。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-02-25T13:44:35.000Z">
-<meta property="article:modified_time" content="2022-02-25T13:55:26.668Z">
+<meta property="article:published_time" content="2022-03-07T08:00:30.796Z">
+<meta property="article:modified_time" content="2022-03-07T08:24:37.033Z">
 <meta property="article:author" content="Angie Lee">
+<meta property="article:tag" content="快速选择">
+<meta property="article:tag" content="快速排序">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -59,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>总得分点类，显得我写了特别多东西 | 小黎的小窝</title>
+<title>数组中的第k个最大元素 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -69,7 +71,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -222,11 +224,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-kthBiggest" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2022-02-25T13:44:35.000Z" itemprop="datePublished">2022-02-25</time>
+      <a href="/2022/03/07/kthBiggest/" class="article-date">
+      <time datetime="2022-03-07T08:00:30.796Z" itemprop="datePublished">2022-03-07</time>
 </a>
 
 
@@ -241,7 +243,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      总得分点类，显得我写了特别多东西
+      数组中的第k个最大元素
     </h1>
   
 
@@ -249,8 +251,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E8%AE%B0/">小黎刷题记</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E9%80%89%E6%8B%A9/" rel="tag">快速选择</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -258,96 +268,80 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
+        <p>（小黎最近在忙刷题，网课先告一段落！绝对不鸽！<del>咕咕咕</del></p>
+<p>给定整数数组<code>nums</code>和整数<code>k</code>，请返回数组中第<code>k</code>个最大的元素。</p>
+<span id="more"></span>
 
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/submissions/">215.数组中的第K个最大元素</a></p>
+<p>这个主要就是用到了<strong>快排</strong>的思想啦！随机选择数组中的一个数作为<code>key</code>，之后将比<code>key</code>小的数放到它的右边，比它大的放左边。（因为要第<code>k</code>大嘛！如果要第<code>k</code>小的话就比它大的反过来就好啦！）</p>
+<p>排序完之后，如果<code>key</code>刚好在第<code>k</code>个的位置的话，直接返回就好啦。如果<code>key</code>的下标小于<code>k - 1</code>（这里是用于下标从0开始计算的语言哦！下标从1开始的语言要变一下哦，灵活变一下啦），那么所求元素在<code>key</code>的右边，继续对右边进行相同的操作；如果<code>key</code>的下标大于<code>k - 1</code>，那么所求元素在<code>key</code>的左边，继续对左边进行相同的操作。</p>
+<p>快速排序的性能和划分出的子数组的长度密切相关。直观地理解就是，如果每次规模为$n$的问题我们都划分成$1$和$n - 1$，每次递归的时候又向$n - 1$的集合中递归，这种情况是最坏的，时间代价是$O(n ^ 2)$。我们可以<strong>引入随机化来加速</strong>这个过程，它的时间代价的期望是$O(n)$，证明过程可以参考「《算法导论》9.2：期望为线性的选择算法」。</p>
+<p>放上小黎的代码！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findKthLargest</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getKth</span>(nums, k - <span class="number">1</span>, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getKth</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k, <span class="type">int</span> left, <span class="type">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(right != left)&#123;</span><br><span class="line">            <span class="type">int</span> random = <span class="built_in">rand</span>() % (right - left) + left;</span><br><span class="line">            <span class="built_in">swap</span>(nums[random], nums[right]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> idx = <span class="built_in">partition</span>(nums, left, right);</span><br><span class="line">        <span class="keyword">if</span>(idx == k)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums[idx];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(idx &gt; k)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">getKth</span>(nums, k, left, idx - <span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(idx &lt; k)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">getKth</span>(nums, k, idx + <span class="number">1</span>, right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">partition</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> left, <span class="type">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> begin = left - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> key = nums[right];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = left; i &lt; right; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; key)&#123;</span><br><span class="line">                <span class="built_in">swap</span>(nums[++begin], nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">swap</span>(nums[++begin], nums[right]);</span><br><span class="line">        <span class="keyword">return</span> begin;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-    <!-- Tag Cloud Page -->
-    <hr>
-<br>
-<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8EC-%E7%9A%84%E4%BA%92%E7%9B%B8%E6%8B%89%E6%89%AF/">小黎与C++的互相拉扯</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8EMarkDown%E4%B8%8D%E5%BE%97%E4%B8%8D%E8%AF%B4%E7%9A%84%E7%A7%98%E5%AF%86/">小黎与MarkDown不得不说的秘密</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E8%AE%A1%E7%BD%91%E7%9A%84%E7%88%B1%E6%81%A8%E6%83%85%E4%BB%87/">小黎与计网的爱恨情仇</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E8%AE%B0/">小黎刷题记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%92%8C%E4%BA%8C%E8%BF%9B%E5%88%B6/">小黎和二进制</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%BA%E8%BF%AB%E7%97%87%E5%B0%8F%E9%BB%8E%E7%9A%84%E6%82%B2%E6%83%A8%E6%99%9A%E5%B9%B4/">强迫症小黎的悲惨晚年</a><span class="category-list-count">1</span></li></ul>
+<blockquote>
+<p>执行用时：4ms，超过了97%的cpp提交记录<br>内存消耗：9.6MB，超过了90%的cpp提交记录</p>
+</blockquote>
 
-<p class="count"></p>
-
-<div class="tags">
-    <a href="/tags/TCP-IP/" style="font-size: 16px; color: #808080">TCP/IP</a> <a href="/tags/c/" style="font-size: 16px; color: #808080">c++</a> <a href="/tags/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 16px; color: #808080">lambda表达式</a> <a href="/tags/%E4%B8%8E%E8%BF%90%E7%AE%97/" style="font-size: 16px; color: #808080">与运算</a> <a href="/tags/%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2/" style="font-size: 16px; color: #808080">分组交换</a> <a href="/tags/%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8/" style="font-size: 16px; color: #808080">初始化列表</a> <a href="/tags/%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AF%AD%E6%B3%95/" style="font-size: 16px; color: #808080">初始化语法</a> <a href="/tags/%E5%8A%A0%E7%B2%97/" style="font-size: 16px; color: #808080">加粗</a> <a href="/tags/%E5%8D%8F%E8%AE%AE/" style="font-size: 16px; color: #808080">协议</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD/" style="font-size: 16px; color: #808080">博客图片居中</a> <a href="/tags/%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8/" style="font-size: 16px; color: #808080">右值引用</a> <a href="/tags/%E5%A5%88%E6%B0%8F%E5%87%86%E5%88%99/" style="font-size: 16px; color: #808080">奈氏准则</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" style="font-size: 16px; color: #808080">快速排序</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E9%80%89%E6%8B%A9/" style="font-size: 16px; color: #808080">快速选择</a> <a href="/tags/%E6%8A%A5%E6%96%87%E4%BA%A4%E6%8D%A2/" style="font-size: 16px; color: #808080">报文交换</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" style="font-size: 16px; color: #808080">数据链路层</a> <a href="/tags/%E6%9C%8D%E5%8A%A1/" style="font-size: 16px; color: #808080">服务</a> <a href="/tags/%E6%B3%9B%E5%8C%96%E5%B8%B8%E9%87%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 16px; color: #808080">泛化常量表达式</a> <a href="/tags/%E7%89%A9%E7%90%86%E5%B1%82/" style="font-size: 16px; color: #808080">物理层</a> <a href="/tags/%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2/" style="font-size: 16px; color: #808080">电路交换</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E6%8E%A8%E5%AF%BC/" style="font-size: 16px; color: #808080">类型推导</a> <a href="/tags/%E8%8C%83%E5%9B%B4for%E5%BE%AA%E7%8E%AF/" style="font-size: 16px; color: #808080">范围for循环</a> <a href="/tags/%E9%A6%99%E5%86%9C%E5%85%AC%E5%BC%8F/" style="font-size: 16px; color: #808080">香农公式</a>
-</div>
-<style>
-    .category-list li{
-        display: inline-block;
-        margin: 0 1em .5em 0;
-        padding: 4px;
-        border: 1px solid lightgray;
-        font-size: 1.2rem;
-    }
-    .category-list a { color: gray; }
-    .category-list-item:hover a {
-        color: gray;
-        text-decoration: none;
-    }
-    .category-list-count {
-        margin-left: 2px;
-        font-size: .9rem;
-    }
-    .article-entry ul li:before{ display: none; }
-    .article-inner { text-align: center; }
-    .tags {
-        max-width: 42em;
-        margin: 2em auto;
-        margin-top: 0em;
-    }
-    .tags a {
-        margin-right: 1em;
-        line-height: 65px;
-        border-bottom: 1px solid gray;
-        white-space: nowrap;
-        transition: border-bottom .5s;
-    }
-    .tags a:hover {
-        border-bottom: 3px dotted gray;
-        text-decoration: none;
-    }
-    #count > span {
-        margin: auto .2em;
-        font-weight: bold;
-    }
-</style>
-
-<!-- Count tags and categories -->
-<p id="count">
-         <span><script>document.write($(".category-list-item").length)</script></span>Categories,
-         <span><script>document.write($(".tags > a").length)</script></span>Tags
-</p>
-<script>
-    $('#count').appendTo('.count');
-</script>
-
-          
-        
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2022/03/07/kthBiggest/">数组中的第k个最大元素</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
+        <p><span>Created:</span>2022-03-07, 16:00:30</p>
+        <p><span>Updated:</span>2022-03-07, 16:24:37</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/07/kthBiggest/" title="数组中的第k个最大元素">https://angielee233.github.io/2022/03/07/kthBiggest/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/07/kthBiggest/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2022/03/01/center-img/">
+                    个人博客图片居中大法
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
 
 
 
@@ -365,7 +359,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"总得分点类，显得我写了特别多东西　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"数组中的第k个最大元素　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -380,6 +374,24 @@
 
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2022/03/01/center-img/" title="Next: 个人博客图片居中大法">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/kthBiggest/">数组中的第k个最大元素</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/01/center-img/">个人博客图片居中大法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/01/md-20220301/">关于MarkDown语法中加粗失效的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/28/computerInternet-3/">计算机网络网课笔记-数据链路层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/27/computerInternet-2/">计算机网络网课笔记-物理层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/26/computerInternet-1/">计算机网络网课笔记-概论</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/c++11/">C++11特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/x&(x-1)/">x&(x-1)的使用</a></li></ul>
 
 
 
