@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点p、q，最近公共祖先表示为一个节点x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”">
+<meta name="description" content="给你一个整数数组nums，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 子数组是数组中的一个连续部分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="二叉树的最近公共祖先">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/07/lowestCommonAncestorOfABinaryTree/index.html">
+<meta property="og:title" content="最大子序和">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/08/maximumSubarray/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点p、q，最近公共祖先表示为一个节点x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”">
+<meta property="og:description" content="给你一个整数数组nums，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。 子数组是数组中的一个连续部分">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-07T15:46:09.175Z">
-<meta property="article:modified_time" content="2022-03-08T02:16:06.533Z">
+<meta property="article:published_time" content="2022-03-08T02:48:27.503Z">
+<meta property="article:modified_time" content="2022-03-08T03:21:58.671Z">
 <meta property="article:author" content="Angie Lee">
-<meta property="article:tag" content="二叉树">
-<meta property="article:tag" content="最近公共祖先">
+<meta property="article:tag" content="子序和">
+<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -61,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>二叉树的最近公共祖先 | 小黎的小窝</title>
+<title>最大子序和 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -224,11 +224,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-lowestCommonAncestorOfABinaryTree" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-maximumSubarray" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/07/lowestCommonAncestorOfABinaryTree/" class="article-date">
-      <time datetime="2022-03-07T15:46:09.175Z" itemprop="datePublished">2022-03-07</time>
+      <a href="/2022/03/08/maximumSubarray/" class="article-date">
+      <time datetime="2022-03-08T02:48:27.503Z" itemprop="datePublished">2022-03-08</time>
 </a>
 
 
@@ -243,7 +243,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      二叉树的最近公共祖先
+      最大子序和
     </h1>
   
 
@@ -258,7 +258,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" rel="tag">最近公共祖先</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%90%E5%BA%8F%E5%92%8C/" rel="tag">子序和</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -268,22 +268,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。</p>
-<p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点p、q，最近公共祖先表示为一个节点x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
+        <p>给你一个整数数组<code>nums</code>，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p>子数组是数组中的一个连续部分</p>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/">236.二叉树的最近公共祖先</a></p>
-<p>递归！</p>
-<p>后序遍历，从下往上递归。</p>
-<p>递归出口：当前结点为空或为目标节点，则返回该结点。</p>
-<p>结点操作：</p>
-<ul>
-<li>如果左子树和右子树递归结果都是空指针，说明该节点下无目标结点，返回空指针。</li>
-<li>如果左子树和右子树递归结果都不为空指针，说明该根结点为所求LCA（因为是从下往上找的嘛。</li>
-<li>如果左子树和右子树中有一个是空结点，说明目标节点存在于某一个子树中，返回非空的子树。</li>
-</ul>
-<p>就是个递归啦！想到就很简单！上代码！</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span> || root == p || root == q)&#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* left = <span class="built_in">lowestCommonAncestor</span>(root-&gt;left, p, q);</span><br><span class="line">        TreeNode* right = <span class="built_in">lowestCommonAncestor</span>(root-&gt;right, p, q);</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="literal">nullptr</span> &amp;&amp; right == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(left != <span class="literal">nullptr</span> &amp;&amp; right != <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> left == <span class="literal">nullptr</span> ? right : left;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>小黎一开始想用前缀和来做的，就是当前前缀和减去目前最小前缀和，和当前ans取max。但是这样的话对于包含第0个元素的答案是不行的，后面感觉这不就是动态规划的思想嘛，于是转头写动态规划了。</p>
+<p>状态转移方程很直观，就是要么取之前数组和当前元素组合成一个数组，要么这个数组新开一个。设$f(i)$为数组前$i$个元素的最大前缀和，状态转移方程为：<br>$$<br>f(i) &#x3D; max(f(i - 1) + nums[i], nums[i])<br>$$<br>由于状态转移方程只和前一个结果有关，所以用一个变量存储之前的结果就行。取遍历过程中的最大值作为结果就好。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxSubArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> pre = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = pre;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            pre = <span class="built_in">max</span>(nums[i] + pre, nums[i]);</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, pre);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -291,13 +282,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/07/lowestCommonAncestorOfABinaryTree/">二叉树的最近公共祖先</a></p>
+        <p><span>Title:</span><a href="/2022/03/08/maximumSubarray/">最大子序和</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-07, 23:46:09</p>
-        <p><span>Updated:</span>2022-03-08, 10:16:06</p>
+        <p><span>Created:</span>2022-03-08, 10:48:27</p>
+        <p><span>Updated:</span>2022-03-08, 11:21:58</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/07/lowestCommonAncestorOfABinaryTree/" title="二叉树的最近公共祖先">https://angielee233.github.io/2022/03/07/lowestCommonAncestorOfABinaryTree/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/07/lowestCommonAncestorOfABinaryTree/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/08/maximumSubarray/" title="最大子序和">https://angielee233.github.io/2022/03/08/maximumSubarray/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/08/maximumSubarray/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -309,16 +300,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/08/maximumSubarray/">
-                    最大子序和
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/07/binaryTreeMaximumPathSum/">
-                    二叉树最大路径和
+                <a href="/2022/03/07/lowestCommonAncestorOfABinaryTree/">
+                    二叉树的最近公共祖先
                 </a>
             </div>
         
@@ -366,7 +351,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"二叉树的最近公共祖先　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"最大子序和　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -386,15 +371,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/08/maximumSubarray/" title="Pre: 最大子序和">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/07/binaryTreeMaximumPathSum/" title="Next: 二叉树最大路径和">
+            <a href="/2022/03/07/lowestCommonAncestorOfABinaryTree/" title="Next: 二叉树的最近公共祖先">
                 <i class="fa fa-angle-right"></i>
             </a>
         
