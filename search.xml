@@ -4,13 +4,52 @@
   
     
     <entry>
-      <title></title>
+      <title>搜索旋转排序数组</title>
+      <link href="/2022/03/08/searchInRotatedSortedArray/"/>
+      <url>/2022/03/08/searchInRotatedSortedArray/</url>
+      
+        <content type="html"><![CDATA[<p>整数数组<code>nums</code>按升序排列，数组中的值互不相同。</p><p>在传递给函数之前，<code>nums</code>在预先未知的某个下标<code>k</code>（<code>0 &lt;= k &lt; nums.length</code>）上进行了旋转，使数组变为 <code>[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]</code>（下标从0开始计数）。例如，[0,1,2,4,5,6,7]在下标3处经旋转后可能变为[4,5,6,7,0,1,2]。</p><p>给你旋转后的数组<code>nums</code>和一个整数<code>target</code>，如果<code>nums</code>中存在这个目标值<code>target</code>，则返回它的下标，否则返回-1。</p><p>提示：</p><ul><li>1 &lt;&#x3D; nums.length &lt;&#x3D; 5000</li><li>-10^4 &lt;&#x3D; nums[i] &lt;&#x3D; 10^4</li><li><code>nums</code>中的每个值都 独一无二</li><li>题目数据保证<code>nums</code>在预先未知的某个下标上进行了旋转</li><li>-10^4 &lt;&#x3D; target &lt;&#x3D; 10^4</li></ul><span id="more"></span><p><del>啊哈哈哈！二分来咯！</del></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎刷题记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二分法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>和为k的子数组</title>
       <link href="/2022/03/08/subarraySumEqualsK/"/>
       <url>/2022/03/08/subarraySumEqualsK/</url>
       
-        <content type="html"><![CDATA[<hr><p>title: 和为k的子数组</p>]]></content>
+        <content type="html"><![CDATA[<p>给你一个整数数组<code>nums</code>和一个整数<code>k</code>，请你统计并返回该数组中和为<code>k</code>的连续子数组的个数。</p><p>提示：</p><ul><li>1 &lt;&#x3D; nums.length &lt;&#x3D; $2 * 10^4$</li><li>-1000 &lt;&#x3D; nums[i] &lt;&#x3D; 1000</li><li>$-10^7$ &lt;&#x3D; k &lt;&#x3D; $10^7$</li></ul><span id="more"></span><p><del>又是爷最爱的前缀和</del></p><p>暴力解法就不说了，懒得写一遍了<del>反正有手就行</del></p><p>这种题目比较容易想到的是用前缀和求解，遍历数组，每次记录到当前元素的前缀和<code>currSum</code>。如果想要得到和为<code>k</code>的子数组，应该搜索之前数组中前缀和为<code>currSum - k</code>的数组个数，加上即可。为了得到之前遍历过程中找到的前缀和为<code>currSum - k</code>的数组个数，可以用哈希表来记录。</p><p>不过需要考虑当前前缀和就等于<code>k</code>的情况，所以需要事先给哈希表加入<code>(0,1)</code>的键值对，说明已经有一个前缀和为0的数组，即空数组。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">subarraySum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; times;</span><br><span class="line">        <span class="type">int</span> currSum = <span class="number">0</span>, n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        times[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            currSum += nums[i];</span><br><span class="line">            <span class="type">int</span> target = currSum - k;</span><br><span class="line">            <span class="keyword">if</span>(times.<span class="built_in">find</span>(target) != times.<span class="built_in">end</span>())&#123;</span><br><span class="line">                ans += times[target];</span><br><span class="line">            &#125;</span><br><span class="line">            times[currSum]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       
       
+      <categories>
+          
+          <category> 小黎刷题记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前缀和 </tag>
+            
+            <tag> 哈希表 </tag>
+            
+        </tags>
       
     </entry>
     
