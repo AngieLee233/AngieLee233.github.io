@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>旋转图像</title>
+      <link href="/2022/03/08/rotateImage/"/>
+      <url>/2022/03/08/rotateImage/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个$n\times n$的二维矩阵<code>matrix</code>表示一个图像。请你将图像顺时针旋转90度。</p><p>你必须在<strong>原地</strong>旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。</p><span id="more"></span><p><a href="https://leetcode-cn.com/problems/rotate-image/">48.旋转图像</a></p><p><del>感觉有我幼儿园那会脑筋急转弯那味了</del></p><p><img src="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg"></p><p>观察图片<del>易得</del>，可以把旋转进行分解，分解成转置和镜面，<strong>转置别写错了</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; ++j)&#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[j][i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n / <span class="number">2</span>; ++j)&#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[i][n - j - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎刷题记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 旋转图像 </tag>
+            
+            <tag> 脑筋急转弯 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>删除二叉搜索树中的节点</title>
       <link href="/2022/03/08/deleteNodeInBST/"/>
       <url>/2022/03/08/deleteNodeInBST/</url>
