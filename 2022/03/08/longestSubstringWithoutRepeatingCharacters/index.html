@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。 一般来说，删除节点可分为两个步骤：  首先找到需要删除的节点； 如果找到了，删除它。">
+<meta name="description" content="给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="删除二叉搜索树中的节点">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/08/deleteNodeInBST/index.html">
+<meta property="og:title" content="无重复字符的最大子串">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/08/longestSubstringWithoutRepeatingCharacters/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。 一般来说，删除节点可分为两个步骤：  首先找到需要删除的节点； 如果找到了，删除它。">
+<meta property="og:description" content="给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-08T03:23:08.157Z">
-<meta property="article:modified_time" content="2022-03-08T03:54:15.963Z">
+<meta property="article:published_time" content="2022-03-08T05:33:59.256Z">
+<meta property="article:modified_time" content="2022-03-08T07:09:08.859Z">
 <meta property="article:author" content="Angie Lee">
-<meta property="article:tag" content="二叉搜索树">
+<meta property="article:tag" content="滑动窗口">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -60,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>删除二叉搜索树中的节点 | 小黎的小窝</title>
+<title>无重复字符的最大子串 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -223,11 +223,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-deleteNodeInBST" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-longestSubstringWithoutRepeatingCharacters" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/08/deleteNodeInBST/" class="article-date">
-      <time datetime="2022-03-08T03:23:08.157Z" itemprop="datePublished">2022-03-08</time>
+      <a href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/" class="article-date">
+      <time datetime="2022-03-08T05:33:59.256Z" itemprop="datePublished">2022-03-08</time>
 </a>
 
 
@@ -242,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      删除二叉搜索树中的节点
+      无重复字符的最大子串
     </h1>
   
 
@@ -257,7 +257,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="tag">二叉搜索树</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -267,24 +267,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。</p>
-<p>一般来说，删除节点可分为两个步骤：</p>
-<ol>
-<li>首先找到需要删除的节点；</li>
-<li>如果找到了，删除它。</li>
-</ol>
+        <p>给定一个字符串<code>s</code>，请你找出其中不含有重复字符的最长子串的长度。</p>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/delete-node-in-a-bst/">450.删除二叉搜索树中的节点</a></p>
-<p><del>这题目还假惺惺地告诉了你步骤</del></p>
-<p>这题很明显地递归，如果你想看迭代的解法可以看<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/delete-node-in-a-bst/comments/155645">这里</a>，反正我是不会这么写的…</p>
-<p>递归的思路很清晰，利用BST的性质即可：</p>
-<ul>
-<li>如果当前节点的值小于目标值，说明目标节点在右子树，往右子树递归</li>
-<li>如果当前节点的值大于目标值，说明目标节点在左子树，往左子树递归</li>
-<li>如果当前节点的值等于目标值，说明该节点为目标节点。如果该节点只有左子树或右子树，直接用非空子树替换即可。如果该节点左右子树都非空，将该节点的值替换为该节点的右子树中最小节点的值（一直往左子树找即可），往右子树递归，删除最小节点。</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">deleteNode</span><span class="params">(TreeNode* root, <span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val &lt; key)&#123;</span><br><span class="line">            root-&gt;right = <span class="built_in">deleteNode</span>(root-&gt;right, key);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;val &gt; key)&#123;</span><br><span class="line">            root-&gt;left = <span class="built_in">deleteNode</span>(root-&gt;left, key);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(root-&gt;left == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> root-&gt;right;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;right == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> root-&gt;left;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                TreeNode* temp = root-&gt;right;</span><br><span class="line">                <span class="keyword">while</span>(temp-&gt;left)&#123;</span><br><span class="line">                    temp = temp-&gt;left;</span><br><span class="line">                &#125;</span><br><span class="line">                root-&gt;val = temp-&gt;val;</span><br><span class="line">                root-&gt;right = <span class="built_in">deleteNode</span>(root-&gt;right, temp-&gt;val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>很明显是个滑动窗口，再加上用哈希表记录窗口内的字符就行</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 哈希集合，记录每个字符是否出现过</span></span><br><span class="line">        unordered_set&lt;<span class="type">char</span>&gt; occ;</span><br><span class="line">        <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">// 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动</span></span><br><span class="line">        <span class="type">int</span> rk = <span class="number">-1</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 枚举左指针的位置，初始值隐性地表示为 -1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 左指针向右移动一格，移除一个字符</span></span><br><span class="line">                occ.<span class="built_in">erase</span>(s[i - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (rk + <span class="number">1</span> &lt; n &amp;&amp; !occ.<span class="built_in">count</span>(s[rk + <span class="number">1</span>])) &#123;</span><br><span class="line">                <span class="comment">// 不断地移动右指针</span></span><br><span class="line">                occ.<span class="built_in">insert</span>(s[rk + <span class="number">1</span>]);</span><br><span class="line">                ++rk;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 第 i 到 rk 个字符是一个极长的无重复字符子串</span></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, rk - i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>评论区有人提到：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetc-2/564157">答案有个缺点，左指针并不需要依次递增，即多了很多无谓的循环。 发现有重复字符时，可以直接把左指针移动到第一个重复字符的下一个位置即可。</a></p>
+<p>改进代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> right = <span class="number">0</span>, left = <span class="number">0</span>, ans = <span class="number">0</span>, l = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(; right &lt; l; ++right)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = left; i &lt; right; ++i)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i] == s[right])&#123;</span><br><span class="line">                    left = i + <span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, right - left + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以用反证法证明该算法的正确性</p>
+<p>小黎感觉还挺巧妙的，可以回去多琢磨琢磨<del>就是暂时没搞懂为啥能过的意思</del></p>
+
       
     </div>
     
@@ -292,13 +286,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/08/deleteNodeInBST/">删除二叉搜索树中的节点</a></p>
+        <p><span>Title:</span><a href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/">无重复字符的最大子串</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-08, 11:23:08</p>
-        <p><span>Updated:</span>2022-03-08, 11:54:15</p>
+        <p><span>Created:</span>2022-03-08, 13:33:59</p>
+        <p><span>Updated:</span>2022-03-08, 15:09:08</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/08/deleteNodeInBST/" title="删除二叉搜索树中的节点">https://angielee233.github.io/2022/03/08/deleteNodeInBST/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/08/deleteNodeInBST/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/" title="无重复字符的最大子串">https://angielee233.github.io/2022/03/08/longestSubstringWithoutRepeatingCharacters/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/08/longestSubstringWithoutRepeatingCharacters/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -310,16 +304,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/08/rotateImage/">
-                    旋转图像
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/08/maximumSubarray/">
-                    最大子序和
+                <a href="/2022/03/08/rotateImage/">
+                    旋转图像
                 </a>
             </div>
         
@@ -367,7 +355,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"删除二叉搜索树中的节点　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"无重复字符的最大子串　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -387,15 +375,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/08/rotateImage/" title="Pre: 旋转图像">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/08/maximumSubarray/" title="Next: 最大子序和">
+            <a href="/2022/03/08/rotateImage/" title="Next: 旋转图像">
                 <i class="fa fa-angle-right"></i>
             </a>
         
