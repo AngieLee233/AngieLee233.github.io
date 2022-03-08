@@ -15,21 +15,18 @@
 
 
 
-<meta name="description" content="给定一个$n\times n$的二维矩阵matrix表示一个图像。请你将图像顺时针旋转90度。 你必须在原地旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。">
+<meta name="description" content="给你一个字符串s，逐个翻转字符串中的所有单词。 单词是由非空格字符组成的字符串。s中使用至少一个空格将字符串中的单词分隔开。 请你返回一个翻转s中单词顺序并用单个空格相连的字符串。 说明：  输入字符串s可以在前面、后面或者单词间包含多余的空格。 翻转后单词间应当仅用一个空格分隔。 翻转后的字符串中不应包含额外的空格。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="旋转图像">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/08/rotateImage/index.html">
+<meta property="og:title" content="翻转字符串里的单词">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/08/reverseWordsInString/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给定一个$n\times n$的二维矩阵matrix表示一个图像。请你将图像顺时针旋转90度。 你必须在原地旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。">
+<meta property="og:description" content="给你一个字符串s，逐个翻转字符串中的所有单词。 单词是由非空格字符组成的字符串。s中使用至少一个空格将字符串中的单词分隔开。 请你返回一个翻转s中单词顺序并用单个空格相连的字符串。 说明：  输入字符串s可以在前面、后面或者单词间包含多余的空格。 翻转后单词间应当仅用一个空格分隔。 翻转后的字符串中不应包含额外的空格。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg">
-<meta property="article:published_time" content="2022-03-08T03:59:47.889Z">
-<meta property="article:modified_time" content="2022-03-08T04:06:49.660Z">
+<meta property="article:published_time" content="2022-03-08T07:12:20.812Z">
+<meta property="article:modified_time" content="2022-03-08T07:42:05.725Z">
 <meta property="article:author" content="Angie Lee">
-<meta property="article:tag" content="旋转图像">
-<meta property="article:tag" content="脑筋急转弯">
+<meta property="article:tag" content="字符串">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -63,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>旋转图像 | 小黎的小窝</title>
+<title>翻转字符串里的单词 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -226,11 +223,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-rotateImage" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-reverseWordsInString" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/08/rotateImage/" class="article-date">
-      <time datetime="2022-03-08T03:59:47.889Z" itemprop="datePublished">2022-03-08</time>
+      <a href="/2022/03/08/reverseWordsInString/" class="article-date">
+      <time datetime="2022-03-08T07:12:20.812Z" itemprop="datePublished">2022-03-08</time>
 </a>
 
 
@@ -245,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      旋转图像
+      翻转字符串里的单词
     </h1>
   
 
@@ -260,7 +257,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/" rel="tag">旋转图像</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%84%91%E7%AD%8B%E6%80%A5%E8%BD%AC%E5%BC%AF/" rel="tag">脑筋急转弯</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -270,15 +267,25 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给定一个$n\times n$的二维矩阵<code>matrix</code>表示一个图像。请你将图像顺时针旋转90度。</p>
-<p>你必须在<strong>原地</strong>旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。</p>
+        <p>给你一个字符串<code>s</code>，逐个翻转字符串中的所有单词。</p>
+<p>单词是由非空格字符组成的字符串。<code>s</code>中使用至少一个空格将字符串中的单词分隔开。</p>
+<p>请你返回一个翻转s中单词顺序并用单个空格相连的字符串。</p>
+<p>说明：</p>
+<ul>
+<li>输入字符串s可以在前面、后面或者单词间包含多余的空格。</li>
+<li>翻转后单词间应当仅用一个空格分隔。</li>
+<li>翻转后的字符串中不应包含额外的空格。</li>
+</ul>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/rotate-image/">48.旋转图像</a></p>
-<p><del>感觉有我幼儿园那会脑筋急转弯那味了</del></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg"></p>
-<p>观察图片<del>易得</del>，可以把旋转进行分解，分解成转置和镜面，<strong>转置别写错了</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; ++j)&#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[j][i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n / <span class="number">2</span>; ++j)&#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[i][n - j - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-words-in-a-string/">151.翻转字符串里的单词</a></p>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>反转这种事情，很容易想到栈。从前往后遍历字符，把单词压进去，再一个个弹出来，就刚好反转啦。</p>
+<p>不过需要注意首尾以及单词间的空格，稍微处理一下就好啦，不难的！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">reverseWords</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        stack&lt;string&gt; sta;</span><br><span class="line">        <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(s[left] == <span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">            left++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(s[right] == <span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        string word;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[left] != <span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">                word.<span class="built_in">push_back</span>(s[left]);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(!word.<span class="built_in">empty</span>())&#123;</span><br><span class="line">                    sta.<span class="built_in">push</span>(word);</span><br><span class="line">                &#125;</span><br><span class="line">                word = <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">        &#125;</span><br><span class="line">        word.<span class="built_in">push_back</span>(s[left]);</span><br><span class="line">        sta.<span class="built_in">push</span>(word);</span><br><span class="line">        string ans;</span><br><span class="line">        <span class="keyword">while</span>(!sta.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            ans.<span class="built_in">append</span>(sta.<span class="built_in">top</span>());</span><br><span class="line">            sta.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span>(!sta.<span class="built_in">empty</span>())&#123;</span><br><span class="line">                ans.<span class="built_in">push_back</span>(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="原地算法"><a href="#原地算法" class="headerlink" title="原地算法"></a>原地算法</h1><p>原题里有个进阶，要求用O(1)的空间来完成。不过要注意一下，python和Java都做不到这点（因为它们的字符串不可变），小黎用的是C++（字符串可变），所以是可以的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">reverseWords</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 反转整个字符串</span></span><br><span class="line">        <span class="built_in">reverse</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> start = <span class="number">0</span>; start &lt; n; ++start) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[start] != <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">                <span class="comment">// 填一个空白字符然后将idx移动到下一个单词的开头位置</span></span><br><span class="line">                <span class="keyword">if</span> (idx != <span class="number">0</span>) s[idx++] = <span class="string">&#x27; &#x27;</span>;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 循环遍历至单词的末尾</span></span><br><span class="line">                <span class="type">int</span> end = start;</span><br><span class="line">                <span class="keyword">while</span> (end &lt; n &amp;&amp; s[end] != <span class="string">&#x27; &#x27;</span>) s[idx++] = s[end++];</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 反转整个单词</span></span><br><span class="line">                <span class="built_in">reverse</span>(s.<span class="built_in">begin</span>() + idx - (end - start), s.<span class="built_in">begin</span>() + idx);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 更新start，去找下一个单词</span></span><br><span class="line">                start = end;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        s.<span class="built_in">erase</span>(s.<span class="built_in">begin</span>() + idx, s.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -286,13 +293,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/08/rotateImage/">旋转图像</a></p>
+        <p><span>Title:</span><a href="/2022/03/08/reverseWordsInString/">翻转字符串里的单词</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-08, 11:59:47</p>
-        <p><span>Updated:</span>2022-03-08, 12:06:49</p>
+        <p><span>Created:</span>2022-03-08, 15:12:20</p>
+        <p><span>Updated:</span>2022-03-08, 15:42:05</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/08/rotateImage/" title="旋转图像">https://angielee233.github.io/2022/03/08/rotateImage/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/08/rotateImage/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/08/reverseWordsInString/" title="翻转字符串里的单词">https://angielee233.github.io/2022/03/08/reverseWordsInString/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/08/reverseWordsInString/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -304,16 +311,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/">
-                    无重复字符的最大子串
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/08/deleteNodeInBST/">
-                    删除二叉搜索树中的节点
+                <a href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/">
+                    无重复字符的最大子串
                 </a>
             </div>
         
@@ -325,7 +326,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">原地算法</span></a></li></ol>
         
     </div>
     <style>
@@ -361,7 +362,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"旋转图像　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"翻转字符串里的单词　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -381,15 +382,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/" title="Pre: 无重复字符的最大子串">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/08/deleteNodeInBST/" title="Next: 删除二叉搜索树中的节点">
+            <a href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/" title="Next: 无重复字符的最大子串">
                 <i class="fa fa-angle-right"></i>
             </a>
         
