@@ -11,21 +11,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Angie Lee" />
+<meta name="author" content="AngieLee" />
 
 
     
     
 
 
-<meta name="description" content="没事写点东西">
 <meta property="og:type" content="website">
 <meta property="og:title" content="小黎的小窝">
 <meta property="og:url" content="https://angielee233.github.io/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="没事写点东西">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="Angie Lee">
+<meta property="article:author" content="AngieLee">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -227,6 +225,52 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-subarraySumEqualsK" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/08/subarraySumEqualsK/" class="article-date">
+      <time datetime="2022-03-08T08:09:50.538Z" itemprop="datePublished">2022-03-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <hr>
+<p>title: 和为k的子数组</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-reverseWordsInString" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -261,9 +305,15 @@
 <p>请你返回一个翻转s中单词顺序并用单个空格相连的字符串。</p>
 <p>说明：</p>
 <ul>
-<li>输入字符串s可以在前面、后面或者单词间包含多余的空格。</li>
+<li>输入字符串<code>s</code>可以在前面、后面或者单词间包含多余的空格。</li>
 <li>翻转后单词间应当仅用一个空格分隔。</li>
 <li>翻转后的字符串中不应包含额外的空格。</li>
+</ul>
+<p>提示：</p>
+<ul>
+<li>1 &lt;&#x3D; s.length &lt;&#x3D; $10^4$</li>
+<li><code>s</code>包含英文大小写字母、数字和空格<code>&#39; &#39;</code></li>
+<li><code>s</code>中至少存在一个单词</li>
 </ul>
           
       
@@ -333,6 +383,11 @@
       
           
               <p>给定一个字符串<code>s</code>，请你找出其中不含有重复字符的最长子串的长度。</p>
+<p>提示：</p>
+<ul>
+<li>0 &lt;&#x3D; s.length &lt;&#x3D; $5 * 10^4$</li>
+<li><code>s</code>由英文字母、数字、符号和空格组成</li>
+</ul>
           
       
     </div>
@@ -402,6 +457,12 @@
           
               <p>给定一个$n\times n$的二维矩阵<code>matrix</code>表示一个图像。请你将图像顺时针旋转90度。</p>
 <p>你必须在<strong>原地</strong>旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。</p>
+<p>提示：</p>
+<ul>
+<li>n &#x3D;&#x3D; matrix.length &#x3D;&#x3D; matrix[i].length</li>
+<li>1 &lt;&#x3D; n &lt;&#x3D; 20</li>
+<li>-1000 &lt;&#x3D; matrix[i][j] &lt;&#x3D; 1000</li>
+</ul>
           
       
     </div>
@@ -475,6 +536,14 @@
 <li>首先找到需要删除的节点；</li>
 <li>如果找到了，删除它。</li>
 </ol>
+<p>提示:</p>
+<ul>
+<li>节点数的范围$[0, 10^4]$.</li>
+<li>$-10^5$ &lt;&#x3D; Node.val &lt;&#x3D; $10^5$</li>
+<li>节点值唯一</li>
+<li>root是合法的二叉搜索树</li>
+<li>$-10^5$ &lt;&#x3D; key &lt;&#x3D; $10^5$</li>
+</ul>
           
       
     </div>
@@ -532,7 +601,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/08/maximumSubarray/">最大子序和</a>
+      <a class="article-title" href="/2022/03/08/maximumSubarray/">最大子数组和</a>
     </h1>
   
 
@@ -544,6 +613,11 @@
           
               <p>给你一个整数数组<code>nums</code>，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
 <p>子数组是数组中的一个连续部分</p>
+<p>提示：</p>
+<ul>
+<li>1 &lt;&#x3D; nums.length &lt;&#x3D; $10^5$</li>
+<li>$-10^4$ &lt;&#x3D; nums[i] &lt;&#x3D; $10^4$</li>
+</ul>
           
       
     </div>
@@ -558,7 +632,7 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%90%E5%BA%8F%E5%92%8C/" rel="tag">子序和</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
     </div>
 
       
@@ -613,6 +687,14 @@
           
               <p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。</p>
 <p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个节点p、q，最近公共祖先表示为一个节点x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
+<p>提示：</p>
+<ul>
+<li>树中节点数目在范围$[2, 10^5]$内。</li>
+<li>$-10^9$ &lt;&#x3D; Node.val &lt;&#x3D; $10^9$</li>
+<li>所有Node.val互不相同。</li>
+<li>p !&#x3D; q</li>
+<li>p和q均存在于给定的二叉树中。</li>
+</ul>
           
       
     </div>
@@ -683,6 +765,11 @@
               <p><strong>路径</strong>被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。同一个节点在一条路径序列中<strong>至多出现一次</strong>。该路径<strong>至少包含一个</strong>节点，且不一定经过根节点。</p>
 <p><strong>路径和</strong>是路径中各节点值的总和。</p>
 <p>给你一个二叉树的根节点<code>root</code>，返回其最大路径和。</p>
+<p>提示：</p>
+<ul>
+<li>树中节点数目范围是$[1, 3 * 10^4]$</li>
+<li>-1000 &lt;&#x3D; Node.val &lt;&#x3D; 1000</li>
+</ul>
           
       
     </div>
@@ -823,6 +910,11 @@
           
               <p>（小黎最近在忙刷题，网课先告一段落！绝对不鸽！<del>咕咕咕</del></p>
 <p>给定整数数组<code>nums</code>和整数<code>k</code>，请返回数组中第<code>k</code>个最大的元素。</p>
+<p>提示：</p>
+<ul>
+<li>1 &lt;&#x3D; k &lt;&#x3D; nums.length &lt;&#x3D; $10^4$</li>
+<li>$-10^4$ &lt;&#x3D; nums[i] &lt;&#x3D; $10^4$</li>
+</ul>
           
       
     </div>
@@ -861,74 +953,6 @@
 
 
   
-    <article id="post-center-img" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/01/center-img/" class="article-date">
-      <time datetime="2022-03-01T09:30:42.337Z" itemprop="datePublished">2022-03-01</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/01/center-img/">个人博客图片居中大法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>忍了几天，但是博客图片靠左真的<strong>太丑了</strong><br>丑到我的懒癌都压不住<br>上网找了些方法，记录一下吧</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%BC%BA%E8%BF%AB%E7%97%87%E5%B0%8F%E9%BB%8E%E7%9A%84%E6%82%B2%E6%83%A8%E6%99%9A%E5%B9%B4/">强迫症小黎的悲惨晚年</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%E5%B1%85%E4%B8%AD/" rel="tag">博客图片居中</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2022/03/01/center-img/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -940,7 +964,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2022 Angie Lee
+                2022 AngieLee
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>

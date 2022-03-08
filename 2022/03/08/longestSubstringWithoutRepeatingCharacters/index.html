@@ -11,20 +11,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Angie Lee" />
+<meta name="author" content="AngieLee" />
 
 
 
-<meta name="description" content="给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度。">
+<meta name="description" content="给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度。 提示：  0 &lt;&#x3D; s.length &lt;&#x3D; $5 * 10^4$ s由英文字母、数字、符号和空格组成">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无重复字符的最大子串">
 <meta property="og:url" content="https://angielee233.github.io/2022/03/08/longestSubstringWithoutRepeatingCharacters/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度。">
+<meta property="og:description" content="给定一个字符串s，请你找出其中不含有重复字符的最长子串的长度。 提示：  0 &lt;&#x3D; s.length &lt;&#x3D; $5 * 10^4$ s由英文字母、数字、符号和空格组成">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-08T05:33:59.256Z">
-<meta property="article:modified_time" content="2022-03-08T07:09:08.859Z">
-<meta property="article:author" content="Angie Lee">
+<meta property="article:modified_time" content="2022-03-08T07:55:29.400Z">
+<meta property="article:author" content="AngieLee">
 <meta property="article:tag" content="滑动窗口">
 <meta name="twitter:card" content="summary">
 
@@ -268,8 +268,14 @@
       
           
         <p>给定一个字符串<code>s</code>，请你找出其中不含有重复字符的最长子串的长度。</p>
+<p>提示：</p>
+<ul>
+<li>0 &lt;&#x3D; s.length &lt;&#x3D; $5 * 10^4$</li>
+<li><code>s</code>由英文字母、数字、符号和空格组成</li>
+</ul>
 <span id="more"></span>
 
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/">3.无重复字符的最长子串</a></p>
 <p>很明显是个滑动窗口，再加上用哈希表记录窗口内的字符就行</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 哈希集合，记录每个字符是否出现过</span></span><br><span class="line">        unordered_set&lt;<span class="type">char</span>&gt; occ;</span><br><span class="line">        <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="comment">// 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动</span></span><br><span class="line">        <span class="type">int</span> rk = <span class="number">-1</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 枚举左指针的位置，初始值隐性地表示为 -1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 左指针向右移动一格，移除一个字符</span></span><br><span class="line">                occ.<span class="built_in">erase</span>(s[i - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (rk + <span class="number">1</span> &lt; n &amp;&amp; !occ.<span class="built_in">count</span>(s[rk + <span class="number">1</span>])) &#123;</span><br><span class="line">                <span class="comment">// 不断地移动右指针</span></span><br><span class="line">                occ.<span class="built_in">insert</span>(s[rk + <span class="number">1</span>]);</span><br><span class="line">                ++rk;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 第 i 到 rk 个字符是一个极长的无重复字符子串</span></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, rk - i + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>评论区有人提到：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-by-leetc-2/564157">答案有个缺点，左指针并不需要依次递增，即多了很多无谓的循环。 发现有重复字符时，可以直接把左指针移动到第一个重复字符的下一个位置即可。</a></p>
@@ -289,7 +295,7 @@
         <p><span>Title:</span><a href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/">无重复字符的最大子串</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
         <p><span>Created:</span>2022-03-08, 13:33:59</p>
-        <p><span>Updated:</span>2022-03-08, 15:09:08</p>
+        <p><span>Updated:</span>2022-03-08, 15:55:29</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/" title="无重复字符的最大子串">https://angielee233.github.io/2022/03/08/longestSubstringWithoutRepeatingCharacters/</a>
             <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/08/longestSubstringWithoutRepeatingCharacters/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -395,7 +401,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/reverseWordsInString/">翻转字符串里的单词</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/">无重复字符的最大子串</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/rotateImage/">旋转图像</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/deleteNodeInBST/">删除二叉搜索树中的节点</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/maximumSubarray/">最大子序和</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/lowestCommonAncestorOfABinaryTree/">二叉树的最近公共祖先</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/binaryTreeMaximumPathSum/">二叉树最大路径和</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/reverseList/">反转链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/kthBiggest/">数组中的第k个最大元素</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/01/center-img/">个人博客图片居中大法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/01/md-20220301/">关于MarkDown语法中加粗失效的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/28/computerInternet-3/">计算机网络网课笔记-数据链路层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/27/computerInternet-2/">计算机网络网课笔记-物理层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/26/computerInternet-1/">计算机网络网课笔记-概论</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/c++11/">C++11特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/x&(x-1)/">x&(x-1)的使用</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/subarraySumEqualsK/">subarraySumEqualsK</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/reverseWordsInString/">翻转字符串里的单词</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/">无重复字符的最大子串</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/rotateImage/">旋转图像</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/deleteNodeInBST/">删除二叉搜索树中的节点</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/maximumSubarray/">最大子数组和</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/lowestCommonAncestorOfABinaryTree/">二叉树的最近公共祖先</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/binaryTreeMaximumPathSum/">二叉树最大路径和</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/reverseList/">反转链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/kthBiggest/">数组中的第k个最大元素</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/01/center-img/">个人博客图片居中大法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/01/md-20220301/">关于MarkDown语法中加粗失效的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/28/computerInternet-3/">计算机网络网课笔记-数据链路层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/27/computerInternet-2/">计算机网络网课笔记-物理层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/26/computerInternet-1/">计算机网络网课笔记-概论</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/c++11/">C++11特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/x&(x-1)/">x&(x-1)的使用</a></li></ul>
 
 
 
@@ -409,7 +415,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2022 Angie Lee
+                2022 AngieLee
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
