@@ -15,18 +15,17 @@
 
 
 
-<meta name="description" content="（小黎最近在忙刷题，网课先告一段落！绝对不鸽！咕咕咕 给定整数数组nums和整数k，请返回数组中第k个最大的元素。">
+<meta name="description" content="给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。 一般来说，删除节点可分为两个步骤：  首先找到需要删除的节点； 如果找到了，删除它。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数组中的第k个最大元素">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/07/kthBiggest/index.html">
+<meta property="og:title" content="删除二叉搜索树中的节点">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/08/deleteNodeInBST/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="（小黎最近在忙刷题，网课先告一段落！绝对不鸽！咕咕咕 给定整数数组nums和整数k，请返回数组中第k个最大的元素。">
+<meta property="og:description" content="给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。 一般来说，删除节点可分为两个步骤：  首先找到需要删除的节点； 如果找到了，删除它。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-07T08:00:30.796Z">
-<meta property="article:modified_time" content="2022-03-07T08:24:37.033Z">
+<meta property="article:published_time" content="2022-03-08T03:23:08.157Z">
+<meta property="article:modified_time" content="2022-03-08T03:54:15.963Z">
 <meta property="article:author" content="Angie Lee">
-<meta property="article:tag" content="快速选择">
-<meta property="article:tag" content="快速排序">
+<meta property="article:tag" content="二叉搜索树">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -61,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>数组中的第k个最大元素 | 小黎的小窝</title>
+<title>删除二叉搜索树中的节点 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -224,11 +223,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-kthBiggest" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-deleteNodeInBST" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/07/kthBiggest/" class="article-date">
-      <time datetime="2022-03-07T08:00:30.796Z" itemprop="datePublished">2022-03-07</time>
+      <a href="/2022/03/08/deleteNodeInBST/" class="article-date">
+      <time datetime="2022-03-08T03:23:08.157Z" itemprop="datePublished">2022-03-08</time>
 </a>
 
 
@@ -243,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数组中的第k个最大元素
+      删除二叉搜索树中的节点
     </h1>
   
 
@@ -258,7 +257,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E9%80%89%E6%8B%A9/" rel="tag">快速选择</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="tag">二叉搜索树</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -268,21 +267,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>（小黎最近在忙刷题，网课先告一段落！绝对不鸽！<del>咕咕咕</del></p>
-<p>给定整数数组<code>nums</code>和整数<code>k</code>，请返回数组中第<code>k</code>个最大的元素。</p>
+        <p>给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。</p>
+<p>一般来说，删除节点可分为两个步骤：</p>
+<ol>
+<li>首先找到需要删除的节点；</li>
+<li>如果找到了，删除它。</li>
+</ol>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/submissions/">215.数组中的第K个最大元素</a></p>
-<p>这个主要就是用到了<strong>快排</strong>的思想啦！随机选择数组中的一个数作为<code>key</code>，之后将比<code>key</code>小的数放到它的右边，比它大的放左边。（因为要第<code>k</code>大嘛！如果要第<code>k</code>小的话就比它大的反过来就好啦！）</p>
-<p>排序完之后，如果<code>key</code>刚好在第<code>k</code>个的位置的话，直接返回就好啦。如果<code>key</code>的下标小于<code>k - 1</code>（这里是用于下标从0开始计算的语言哦！下标从1开始的语言要变一下哦，灵活变一下啦），那么所求元素在<code>key</code>的右边，继续对右边进行相同的操作；如果<code>key</code>的下标大于<code>k - 1</code>，那么所求元素在<code>key</code>的左边，继续对左边进行相同的操作。</p>
-<p>快速排序的性能和划分出的子数组的长度密切相关。直观地理解就是，如果每次规模为$n$的问题我们都划分成$1$和$n - 1$，每次递归的时候又向$n - 1$的集合中递归，这种情况是最坏的，时间代价是$O(n ^ 2)$。我们可以<strong>引入随机化来加速</strong>这个过程，它的时间代价的期望是$O(n)$，证明过程可以参考「《算法导论》9.2：期望为线性的选择算法」。</p>
-<p>放上小黎的代码！</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findKthLargest</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getKth</span>(nums, k - <span class="number">1</span>, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getKth</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k, <span class="type">int</span> left, <span class="type">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(right != left)&#123;</span><br><span class="line">            <span class="type">int</span> random = <span class="built_in">rand</span>() % (right - left) + left;</span><br><span class="line">            <span class="built_in">swap</span>(nums[random], nums[right]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> idx = <span class="built_in">partition</span>(nums, left, right);</span><br><span class="line">        <span class="keyword">if</span>(idx == k)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums[idx];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(idx &gt; k)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">getKth</span>(nums, k, left, idx - <span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(idx &lt; k)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">getKth</span>(nums, k, idx + <span class="number">1</span>, right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">partition</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> left, <span class="type">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> begin = left - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> key = nums[right];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = left; i &lt; right; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; key)&#123;</span><br><span class="line">                <span class="built_in">swap</span>(nums[++begin], nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">swap</span>(nums[++begin], nums[right]);</span><br><span class="line">        <span class="keyword">return</span> begin;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>执行用时：4ms，超过了97%的cpp提交记录<br>内存消耗：9.6MB，超过了90%的cpp提交记录</p>
-</blockquote>
-
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/delete-node-in-a-bst/">450.删除二叉搜索树中的节点</a></p>
+<p><del>这题目还假惺惺地告诉了你步骤</del></p>
+<p>这题很明显地递归，如果你想看迭代的解法可以看<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/delete-node-in-a-bst/comments/155645">这里</a>，反正我是不会这么写的…</p>
+<p>递归的思路很清晰，利用BST的性质即可：</p>
+<ul>
+<li>如果当前节点的值小于目标值，说明目标节点在右子树，往右子树递归</li>
+<li>如果当前节点的值大于目标值，说明目标节点在左子树，往左子树递归</li>
+<li>如果当前节点的值等于目标值，说明该节点为目标节点。如果该节点只有左子树或右子树，直接用非空子树替换即可。如果该节点左右子树都非空，将该节点的值替换为该节点的右子树中最小节点的值（一直往左子树找即可），往右子树递归，删除最小节点。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">deleteNode</span><span class="params">(TreeNode* root, <span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val &lt; key)&#123;</span><br><span class="line">            root-&gt;right = <span class="built_in">deleteNode</span>(root-&gt;right, key);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;val &gt; key)&#123;</span><br><span class="line">            root-&gt;left = <span class="built_in">deleteNode</span>(root-&gt;left, key);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(root-&gt;left == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> root-&gt;right;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;right == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> root-&gt;left;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                TreeNode* temp = root-&gt;right;</span><br><span class="line">                <span class="keyword">while</span>(temp-&gt;left)&#123;</span><br><span class="line">                    temp = temp-&gt;left;</span><br><span class="line">                &#125;</span><br><span class="line">                root-&gt;val = temp-&gt;val;</span><br><span class="line">                root-&gt;right = <span class="built_in">deleteNode</span>(root-&gt;right, temp-&gt;val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -290,13 +292,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/07/kthBiggest/">数组中的第k个最大元素</a></p>
+        <p><span>Title:</span><a href="/2022/03/08/deleteNodeInBST/">删除二叉搜索树中的节点</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-07, 16:00:30</p>
-        <p><span>Updated:</span>2022-03-07, 16:24:37</p>
+        <p><span>Created:</span>2022-03-08, 11:23:08</p>
+        <p><span>Updated:</span>2022-03-08, 11:54:15</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/07/kthBiggest/" title="数组中的第k个最大元素">https://angielee233.github.io/2022/03/07/kthBiggest/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/07/kthBiggest/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/08/deleteNodeInBST/" title="删除二叉搜索树中的节点">https://angielee233.github.io/2022/03/08/deleteNodeInBST/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/08/deleteNodeInBST/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -308,16 +310,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/07/reverseList/">
-                    反转链表
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/01/center-img/">
-                    个人博客图片居中大法
+                <a href="/2022/03/08/maximumSubarray/">
+                    最大子序和
                 </a>
             </div>
         
@@ -365,7 +361,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"数组中的第k个最大元素　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"删除二叉搜索树中的节点　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -385,15 +381,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/07/reverseList/" title="Pre: 反转链表">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/01/center-img/" title="Next: 个人博客图片居中大法">
+            <a href="/2022/03/08/maximumSubarray/" title="Next: 最大子序和">
                 <i class="fa fa-angle-right"></i>
             </a>
         
