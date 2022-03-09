@@ -15,18 +15,17 @@
 
 
 
-<meta name="description" content="给你一个整数数组nums和一个整数k，请你统计并返回该数组中和为k的连续子数组的个数。 提示：  1 &lt;&#x3D; nums.length &lt;&#x3D; 2 * 10^4 -1000 &lt;&#x3D; nums[i] &lt;&#x3D; 1000 -10^7 &lt;&#x3D; k &lt;&#x3D; 10^7">
+<meta name="description" content="小黎当时第一眼看到就想起来了之前刷过的二叉树最大路径和 用了类似的思路，写了以下代码： 12345678910111213141516171819202122232425262728293031323334353637&#x2F;** * Definition for a binary tree node. * struct TreeNode &amp;#123; *     int val; *     Tr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="和为k的子数组">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/08/subarraySumEqualsK/index.html">
+<meta property="og:title" content="二叉树的直径">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/09/diameterOfBinaryTree/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给你一个整数数组nums和一个整数k，请你统计并返回该数组中和为k的连续子数组的个数。 提示：  1 &lt;&#x3D; nums.length &lt;&#x3D; 2 * 10^4 -1000 &lt;&#x3D; nums[i] &lt;&#x3D; 1000 -10^7 &lt;&#x3D; k &lt;&#x3D; 10^7">
+<meta property="og:description" content="小黎当时第一眼看到就想起来了之前刷过的二叉树最大路径和 用了类似的思路，写了以下代码： 12345678910111213141516171819202122232425262728293031323334353637&#x2F;** * Definition for a binary tree node. * struct TreeNode &amp;#123; *     int val; *     Tr">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-08T08:09:50.538Z">
-<meta property="article:modified_time" content="2022-03-09T06:55:19.669Z">
+<meta property="article:published_time" content="2022-03-09T08:49:33.128Z">
+<meta property="article:modified_time" content="2022-03-09T09:11:07.595Z">
 <meta property="article:author" content="AngieLee">
-<meta property="article:tag" content="前缀和">
-<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="二叉树">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -61,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>和为k的子数组 | 小黎的小窝</title>
+<title>二叉树的直径 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -224,11 +223,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-subarraySumEqualsK" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-diameterOfBinaryTree" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/08/subarraySumEqualsK/" class="article-date">
-      <time datetime="2022-03-08T08:09:50.538Z" itemprop="datePublished">2022-03-08</time>
+      <a href="/2022/03/09/diameterOfBinaryTree/" class="article-date">
+      <time datetime="2022-03-09T08:49:33.128Z" itemprop="datePublished">2022-03-09</time>
 </a>
 
 
@@ -243,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      和为k的子数组
+      二叉树的直径
     </h1>
   
 
@@ -258,7 +257,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -268,20 +267,22 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给你一个整数数组<code>nums</code>和一个整数<code>k</code>，请你统计并返回该数组中和为<code>k</code>的连续子数组的个数。</p>
-<p>提示：</p>
-<ul>
-<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 2 * 10^4</li>
-<li>-1000 &lt;&#x3D; nums[i] &lt;&#x3D; 1000</li>
-<li>-10^7 &lt;&#x3D; k &lt;&#x3D; 10^7</li>
-</ul>
-<span id="more"></span>
+        <span id="more"></span>
 
-<p><del>又是爷最爱的前缀和</del></p>
-<p>暴力解法就不说了，懒得写一遍了<del>反正有手就行</del></p>
-<p>这种题目比较容易想到的是用前缀和求解，遍历数组，每次记录到当前元素的前缀和<code>currSum</code>。如果想要得到和为<code>k</code>的子数组，应该搜索之前数组中前缀和为<code>currSum - k</code>的数组个数，加上即可。为了得到之前遍历过程中找到的前缀和为<code>currSum - k</code>的数组个数，可以用哈希表来记录。</p>
-<p>不过需要考虑当前前缀和就等于<code>k</code>的情况，所以需要事先给哈希表加入<code>(0,1)</code>的键值对，说明已经有一个前缀和为0的数组，即空数组。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">subarraySum</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; times;</span><br><span class="line">        <span class="type">int</span> currSum = <span class="number">0</span>, n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        times[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            currSum += nums[i];</span><br><span class="line">            <span class="type">int</span> target = currSum - k;</span><br><span class="line">            <span class="keyword">if</span>(times.<span class="built_in">find</span>(target) != times.<span class="built_in">end</span>())&#123;</span><br><span class="line">                ans += times[target];</span><br><span class="line">            &#125;</span><br><span class="line">            times[currSum]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>小黎当时第一眼看到就想起来了之前刷过的<a href="https://angielee233.github.io/2022/03/07/binaryTreeMaximumPathSum/">二叉树最大路径和</a></p>
+<p>用了类似的思路，写了以下代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> ans = -INT_MAX;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="built_in">recur</span>(root);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(res, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">recur</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span> || (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> left = <span class="built_in">recur</span>(root-&gt;left);</span><br><span class="line">        <span class="type">int</span> right = <span class="built_in">recur</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left &amp;&amp; root-&gt;right)&#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(&#123;ans, <span class="number">1</span> + left, <span class="number">1</span> + right, left + <span class="number">2</span> + right&#125;);</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">max</span>(&#123;<span class="number">1</span> + left, <span class="number">1</span> + right, <span class="number">0</span>&#125;);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;left)&#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, <span class="number">1</span> + left);</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">max</span>(<span class="number">0</span>, <span class="number">1</span> + left);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, <span class="number">1</span> + right);</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">max</span>(<span class="number">0</span>, <span class="number">1</span> + right);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>过是过了，性能也不差，但是这个代码也太冗余了，还要判断左右子树是否为空。主要是因为如果子树为空，那就不能连接过去，就不能盲目地+1</p>
+<p>后面感觉既然空树返回的是0，而且如果要和上端相连最多只能取一个子树。以及ans只用于从左子树通过根连接到右子树的情况，就改了一下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> ans = -INT_MAX;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="built_in">recur</span>(root);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(res, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">recur</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span> || (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> left = <span class="built_in">recur</span>(root-&gt;left);</span><br><span class="line">        <span class="type">int</span> right = <span class="built_in">recur</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left &amp;&amp; root-&gt;right)&#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, left + <span class="number">2</span> + right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(<span class="number">0</span>, <span class="number">1</span> + <span class="built_in">max</span>(left, right));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><del>时间已经击败100%了，凑合过吧</del></p>
+<p>后面看到<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/diameter-of-binary-tree/solution/er-cha-shu-de-zhi-jing-by-leetcode-solution/">官方题解</a>是用经过的最大节点数-1做的。感觉和我的也差不了太多，<del>勉强</del>贴上来吧：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> ans;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">depth</span><span class="params">(TreeNode* rt)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (rt == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 访问到空节点了，返回0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> L = <span class="built_in">depth</span>(rt-&gt;left); <span class="comment">// 左儿子为根的子树的深度</span></span><br><span class="line">        <span class="type">int</span> R = <span class="built_in">depth</span>(rt-&gt;right); <span class="comment">// 右儿子为根的子树的深度</span></span><br><span class="line">        ans = <span class="built_in">max</span>(ans, L + R + <span class="number">1</span>); <span class="comment">// 计算d_node即L+R+1 并更新ans</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(L, R) + <span class="number">1</span>; <span class="comment">// 返回该节点为根的子树的深度</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        ans = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">depth</span>(root);</span><br><span class="line">        <span class="keyword">return</span> ans - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这样就省略了子树是否为空的计算，还是比我的做法要优雅亿些的~</p>
+
       
     </div>
     
@@ -289,13 +290,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/08/subarraySumEqualsK/">和为k的子数组</a></p>
+        <p><span>Title:</span><a href="/2022/03/09/diameterOfBinaryTree/">二叉树的直径</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-08, 16:09:50</p>
-        <p><span>Updated:</span>2022-03-09, 14:55:19</p>
+        <p><span>Created:</span>2022-03-09, 16:49:33</p>
+        <p><span>Updated:</span>2022-03-09, 17:11:07</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/08/subarraySumEqualsK/" title="和为k的子数组">https://angielee233.github.io/2022/03/08/subarraySumEqualsK/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/08/subarraySumEqualsK/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/09/diameterOfBinaryTree/" title="二叉树的直径">https://angielee233.github.io/2022/03/09/diameterOfBinaryTree/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/09/diameterOfBinaryTree/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -307,16 +308,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/08/searchInRotatedSortedArray/">
-                    搜索旋转排序数组
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/08/reverseWordsInString/">
-                    翻转字符串里的单词
+                <a href="/2022/03/09/3Sum/">
+                    三数之和
                 </a>
             </div>
         
@@ -364,7 +359,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"和为k的子数组　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"二叉树的直径　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -384,15 +379,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/08/searchInRotatedSortedArray/" title="Pre: 搜索旋转排序数组">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/08/reverseWordsInString/" title="Next: 翻转字符串里的单词">
+            <a href="/2022/03/09/3Sum/" title="Next: 三数之和">
                 <i class="fa fa-angle-right"></i>
             </a>
         
