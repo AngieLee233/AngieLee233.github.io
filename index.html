@@ -225,6 +225,79 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-binaryTreeZigzagLevelOrderTraversal" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/09/binaryTreeZigzagLevelOrderTraversal/" class="article-date">
+      <time datetime="2022-03-09T09:25:18.214Z" itemprop="datePublished">2022-03-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/09/binaryTreeZigzagLevelOrderTraversal/">二叉树的锯齿形层序遍历</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>给你二叉树的根节点<code>root</code>，返回其节点值的锯齿形层序遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。</p>
+<p>提示：</p>
+<ul>
+<li>树中节点数目在范围 [0, 2000] 内</li>
+<li>-100 &lt;&#x3D; Node.val &lt;&#x3D; 100</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2022/03/09/binaryTreeZigzagLevelOrderTraversal/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-diameterOfBinaryTree" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -254,22 +327,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <span id="more"></span>
-
-<p>小黎当时第一眼看到就想起来了之前刷过的<a href="https://angielee233.github.io/2022/03/07/binaryTreeMaximumPathSum/">二叉树最大路径和</a></p>
-<p>用了类似的思路，写了以下代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> ans = -INT_MAX;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="built_in">recur</span>(root);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(res, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">recur</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span> || (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> left = <span class="built_in">recur</span>(root-&gt;left);</span><br><span class="line">        <span class="type">int</span> right = <span class="built_in">recur</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left &amp;&amp; root-&gt;right)&#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(&#123;ans, <span class="number">1</span> + left, <span class="number">1</span> + right, left + <span class="number">2</span> + right&#125;);</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">max</span>(&#123;<span class="number">1</span> + left, <span class="number">1</span> + right, <span class="number">0</span>&#125;);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;left)&#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, <span class="number">1</span> + left);</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">max</span>(<span class="number">0</span>, <span class="number">1</span> + left);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, <span class="number">1</span> + right);</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">max</span>(<span class="number">0</span>, <span class="number">1</span> + right);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>过是过了，性能也不差，但是这个代码也太冗余了，还要判断左右子树是否为空。主要是因为如果子树为空，那就不能连接过去，就不能盲目地+1</p>
-<p>后面感觉既然空树返回的是0，而且如果要和上端相连最多只能取一个子树。以及ans只用于从左子树通过根连接到右子树的情况，就改了一下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> ans = -INT_MAX;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="built_in">recur</span>(root);</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(res, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">recur</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span> || (root-&gt;left == <span class="literal">nullptr</span> &amp;&amp; root-&gt;right == <span class="literal">nullptr</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> left = <span class="built_in">recur</span>(root-&gt;left);</span><br><span class="line">        <span class="type">int</span> right = <span class="built_in">recur</span>(root-&gt;right);</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left &amp;&amp; root-&gt;right)&#123;</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, left + <span class="number">2</span> + right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(<span class="number">0</span>, <span class="number">1</span> + <span class="built_in">max</span>(left, right));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p><del>时间已经击败100%了，凑合过吧</del></p>
-<p>后面看到<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/diameter-of-binary-tree/solution/er-cha-shu-de-zhi-jing-by-leetcode-solution/">官方题解</a>是用经过的最大节点数-1做的。感觉和我的也差不了太多，<del>勉强</del>贴上来吧：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="type">int</span> ans;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">depth</span><span class="params">(TreeNode* rt)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (rt == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// 访问到空节点了，返回0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> L = <span class="built_in">depth</span>(rt-&gt;left); <span class="comment">// 左儿子为根的子树的深度</span></span><br><span class="line">        <span class="type">int</span> R = <span class="built_in">depth</span>(rt-&gt;right); <span class="comment">// 右儿子为根的子树的深度</span></span><br><span class="line">        ans = <span class="built_in">max</span>(ans, L + R + <span class="number">1</span>); <span class="comment">// 计算d_node即L+R+1 并更新ans</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(L, R) + <span class="number">1</span>; <span class="comment">// 返回该节点为根的子树的深度</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">diameterOfBinaryTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        ans = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">depth</span>(root);</span><br><span class="line">        <span class="keyword">return</span> ans - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>这样就省略了子树是否为空的计算，还是比我的做法要优雅亿些的~</p>
-
+              <p>给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
+<p>注意：两结点之间的路径长度是以它们之间边的数目表示。</p>
+          
       
     </div>
     
@@ -277,7 +337,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
     </div>
 
 
@@ -286,6 +346,10 @@
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2022/03/09/diameterOfBinaryTree/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -347,7 +411,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
     </div>
 
 
@@ -420,7 +484,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
     </div>
 
 
@@ -499,7 +563,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
     </div>
 
 
@@ -577,7 +641,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
     </div>
 
 
@@ -651,7 +715,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
     </div>
 
 
@@ -733,7 +797,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
     </div>
 
 
@@ -806,7 +870,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
     </div>
 
 
@@ -881,7 +945,7 @@
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
     </div>
 
 
@@ -893,87 +957,6 @@
       
         <p class="article-more-link">
           <a href="/2022/03/08/rotateImage/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-deleteNodeInBST" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/08/deleteNodeInBST/" class="article-date">
-      <time datetime="2022-03-08T03:23:08.157Z" itemprop="datePublished">2022-03-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/08/deleteNodeInBST/">删除二叉搜索树中的节点</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。</p>
-<p>一般来说，删除节点可分为两个步骤：</p>
-<ol>
-<li>首先找到需要删除的节点；</li>
-<li>如果找到了，删除它。</li>
-</ol>
-<p>提示:</p>
-<ul>
-<li>节点数的范围$[0, 10^4]$.</li>
-<li>$-10^5$ &lt;&#x3D; Node.val &lt;&#x3D; $10^5$</li>
-<li>节点值唯一</li>
-<li>root是合法的二叉搜索树</li>
-<li>$-10^5$ &lt;&#x3D; key &lt;&#x3D; $10^5$</li>
-</ul>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%88%B7%E9%A2%98%E5%AF%84/">小黎刷题寄</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="tag">二叉搜索树</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2022/03/08/deleteNodeInBST/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
