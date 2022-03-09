@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="给你一个包含n个整数的数组nums，判断nums中是否存在三个元素a，b，c，使得a + b + c &#x3D; 0？请你找出所有和为0且不重复的三元组。 注意：答案中不可以包含重复的三元组。 提示：  0 &lt;&#x3D; nums.length &lt;&#x3D; 3000 -10^5 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5">
+<meta name="description" content="给定一个二叉树的根节点 &#96;&#96;root&#96;&#96;&#96;，请找出该二叉树的最底层 最左边节点的值。 假设二叉树中至少有一个节点。 提示:  二叉树的节点个数的范围是[1,10^4] -2^31 &lt;&#x3D; Node.val &lt;&#x3D; 2^31 - 1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="三数之和">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/09/3Sum/index.html">
+<meta property="og:title" content="找树左下角的值">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/09/findButtomLeftTreeValue/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给你一个包含n个整数的数组nums，判断nums中是否存在三个元素a，b，c，使得a + b + c &#x3D; 0？请你找出所有和为0且不重复的三元组。 注意：答案中不可以包含重复的三元组。 提示：  0 &lt;&#x3D; nums.length &lt;&#x3D; 3000 -10^5 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5">
+<meta property="og:description" content="给定一个二叉树的根节点 &#96;&#96;root&#96;&#96;&#96;，请找出该二叉树的最底层 最左边节点的值。 假设二叉树中至少有一个节点。 提示:  二叉树的节点个数的范围是[1,10^4] -2^31 &lt;&#x3D; Node.val &lt;&#x3D; 2^31 - 1">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-09T07:40:38.638Z">
-<meta property="article:modified_time" content="2022-03-09T09:26:48.202Z">
+<meta property="article:published_time" content="2022-03-09T14:07:38.744Z">
+<meta property="article:modified_time" content="2022-03-09T14:10:55.123Z">
 <meta property="article:author" content="AngieLee">
-<meta property="article:tag" content="排序">
-<meta property="article:tag" content="双指针">
+<meta property="article:tag" content="二叉树">
+<meta property="article:tag" content="层序遍历">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -61,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>三数之和 | 小黎的小窝</title>
+<title>找树左下角的值 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -224,11 +224,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-3Sum" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-findButtomLeftTreeValue" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/09/3Sum/" class="article-date">
-      <time datetime="2022-03-09T07:40:38.638Z" itemprop="datePublished">2022-03-09</time>
+      <a href="/2022/03/09/findButtomLeftTreeValue/" class="article-date">
+      <time datetime="2022-03-09T14:07:38.744Z" itemprop="datePublished">2022-03-09</time>
 </a>
 
 
@@ -243,7 +243,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      三数之和
+      找树左下角的值
     </h1>
   
 
@@ -258,7 +258,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" rel="tag">双指针</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -268,23 +268,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给你一个包含<code>n</code>个整数的数组<code>nums</code>，判断<code>nums</code>中是否存在三个元素a，b，c，使得a + b + c &#x3D; 0？请你找出所有和为0且不重复的三元组。</p>
-<p>注意：答案中不可以包含重复的三元组。</p>
-<p>提示：</p>
+        <p>给定一个二叉树的<strong>根节点</strong> &#96;&#96;root&#96;&#96;&#96;，请找出该二叉树的<strong>最底层 最左边</strong>节点的值。</p>
+<p>假设二叉树中至少有一个节点。</p>
+<p>提示:</p>
 <ul>
-<li>0 &lt;&#x3D; nums.length &lt;&#x3D; 3000</li>
-<li>-10^5 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5</li>
+<li>二叉树的节点个数的范围是<code>[1,10^4]</code></li>
+<li><code>-2^31 &lt;= Node.val &lt;= 2^31 - 1</code></li>
 </ul>
 <span id="more"></span>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/3sum/">15.三数之和</a></p>
-<p><del>又到了爷最爱的去重环节</del></p>
-<p>感觉提到去重就离不开排序，让这些<del>蛇鼠一窝</del>相同的元素放在一起，会比较好处理。</p>
-<p>首先遍历第一个元素，如果第一个元素就大于0，那么后续肯定无法组合出和为0的数组，直接返回答案就行。</p>
-<p>为了去重，如果已经开始列举第一个元素了，且和之前列举的相同，则continue。</p>
-<p>然后开始求第二、三个元素，弄两个指针left和right（小黎这里直接用的j和k），初始化left为第一个元素的后一个指针，right为数组的最后一个。</p>
-<p>由于这里对第二、三个元素的查找是并列的，所以从两端向中间找。如果当前加和大了，就左移right；如果小了，就右移left。所以在进入第二重循环前定义right，并且在第二重循环中right的值只减不增。当left和right重合的时候，~就说明我们回不去了~~就说明对于当前的第一个元素，已经没有更多的解了，直接break即可。</p>
-<p>要注意，这里对于第二个元素也是有去重的，和第一个元素的去重思路相同，不再赘述啦。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">threeSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ans;</span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">empty</span>() || nums.<span class="built_in">size</span>() &lt; <span class="number">3</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> ans;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> k = n - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = i + <span class="number">1</span>; j &lt; n; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j &gt; i + <span class="number">1</span> &amp;&amp; nums[j] == nums[j - <span class="number">1</span>])&#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">while</span>(j &lt; k &amp;&amp; nums[i] + nums[j] + nums[k] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    k--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(j == k)&#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[i] + nums[j] + nums[k] == <span class="number">0</span>)&#123;</span><br><span class="line">                    ans.<span class="built_in">push_back</span>(&#123;nums[i], nums[j], nums[k]&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-bottom-left-tree-value/">513.找树左下角的值</a></p>
+<p>这题有个很巧妙的方法，就是层序遍历，但是是从右向左，这样就能找到目标节点啦。</p>
+<p>代码很简单，小黎只是恰好路过，感觉还蛮好玩的，记录一下。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findBottomLeftValue</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        TreeNode* node;</span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            node = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span>(node-&gt;right)&#123;</span><br><span class="line">                q.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(node-&gt;left)&#123;</span><br><span class="line">                q.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> node-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -292,13 +288,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/09/3Sum/">三数之和</a></p>
+        <p><span>Title:</span><a href="/2022/03/09/findButtomLeftTreeValue/">找树左下角的值</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-09, 15:40:38</p>
-        <p><span>Updated:</span>2022-03-09, 17:26:48</p>
+        <p><span>Created:</span>2022-03-09, 22:07:38</p>
+        <p><span>Updated:</span>2022-03-09, 22:10:55</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/09/3Sum/" title="三数之和">https://angielee233.github.io/2022/03/09/3Sum/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/09/3Sum/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/09/findButtomLeftTreeValue/" title="找树左下角的值">https://angielee233.github.io/2022/03/09/findButtomLeftTreeValue/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/09/findButtomLeftTreeValue/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -310,16 +306,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/09/diameterOfBinaryTree/">
-                    二叉树的直径
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/09/PermutationsII/">
-                    全排列II
+                <a href="/2022/03/09/excelSheetColumnTitle/">
+                    Excel表列名称
                 </a>
             </div>
         
@@ -367,7 +357,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"三数之和　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"找树左下角的值　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -387,15 +377,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/09/diameterOfBinaryTree/" title="Pre: 二叉树的直径">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/09/PermutationsII/" title="Next: 全排列II">
+            <a href="/2022/03/09/excelSheetColumnTitle/" title="Next: Excel表列名称">
                 <i class="fa fa-angle-right"></i>
             </a>
         

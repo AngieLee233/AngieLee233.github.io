@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>找树左下角的值</title>
+      <link href="/2022/03/09/findButtomLeftTreeValue/"/>
+      <url>/2022/03/09/findButtomLeftTreeValue/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个二叉树的<strong>根节点</strong> &#96;&#96;root&#96;&#96;&#96;，请找出该二叉树的<strong>最底层 最左边</strong>节点的值。</p><p>假设二叉树中至少有一个节点。</p><p>提示:</p><ul><li>二叉树的节点个数的范围是<code>[1,10^4]</code></li><li><code>-2^31 &lt;= Node.val &lt;= 2^31 - 1</code></li></ul><span id="more"></span><p><a href="https://leetcode-cn.com/problems/find-bottom-left-tree-value/">513.找树左下角的值</a></p><p>这题有个很巧妙的方法，就是层序遍历，但是是从右向左，这样就能找到目标节点啦。</p><p>代码很简单，小黎只是恰好路过，感觉还蛮好玩的，记录一下。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findBottomLeftValue</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line">        TreeNode* node;</span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            node = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span>(node-&gt;right)&#123;</span><br><span class="line">                q.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(node-&gt;left)&#123;</span><br><span class="line">                q.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> node-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎与算法题互相折磨的前世今生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 二叉树 </tag>
+            
+            <tag> 层序遍历 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Excel表列名称</title>
       <link href="/2022/03/09/excelSheetColumnTitle/"/>
       <url>/2022/03/09/excelSheetColumnTitle/</url>

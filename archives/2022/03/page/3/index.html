@@ -15,17 +15,12 @@
 
 
 
-<meta name="description" content="计算数的二进制1的个数 判断是否为2的次方数">
-<meta property="og:type" content="article">
-<meta property="og:title" content="x&amp;(x-1)的使用">
-<meta property="og:url" content="https://angielee233.github.io/2022/02/25/x&(x-1)/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="小黎的小窝">
+<meta property="og:url" content="https://angielee233.github.io/archives/2022/03/page/3/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="计算数的二进制1的个数 判断是否为2的次方数">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-02-25T14:19:41.332Z">
-<meta property="article:modified_time" content="2022-02-26T06:18:04.599Z">
 <meta property="article:author" content="AngieLee">
-<meta property="article:tag" content="与运算">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -60,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>x&amp;(x-1)的使用 | 小黎的小窝</title>
+<title>Archives: 2022/3 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -70,8 +65,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
-        isArchive: false,
+        isPost: false,
+        isArchive: true,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -223,176 +218,64 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-x&amp;(x-1)" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2022/02/25/x&(x-1)/" class="article-date">
-      <time datetime="2022-02-25T14:19:41.332Z" itemprop="datePublished">2022-02-25</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2022/03/01/md-20220301/" class="archive-article-date">
+      <time datetime="2022-02-28T17:36:30.733Z" itemprop="datePublished">03-01</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      x&amp;(x-1)的使用
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/03/01/md-20220301/">关于MarkDown语法中加粗失效的问题</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E5%92%8C%E4%BA%8C%E8%BF%9B%E5%88%B6/">小黎和二进制</a>
-    </div>
-
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%8E%E8%BF%90%E7%AE%97/" rel="tag">与运算</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div class="article-info info-on-archive">
           
-        <ul>
-<li>计算数的二进制1的个数</li>
-<li>判断是否为2的次方数</li>
-</ul>
-<span id="more"></span>
-<h1 id="将x转为二进制，计算1的数目"><a href="#将x转为二进制，计算1的数目" class="headerlink" title="将x转为二进制，计算1的数目"></a>将x转为二进制，计算1的数目</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">func</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x)&#123;</span><br><span class="line">        count++;</span><br><span class="line">        x = x &amp; (x - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>每执行一次<code>x = x &amp; (x-1)</code>，会将<code>x</code>用二进制表示时最右边的一个1变为0，因为<code>x-1</code>会将该二进制最右边的一个1变为0。</p>
-<h1 id="判断数x是否为2的次方数"><a href="#判断数x是否为2的次方数" class="headerlink" title="判断数x是否为2的次方数"></a>判断数x是否为2的次方数</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">func</span><span class="params">(<span class="type">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span>  x &amp;&amp; (x &amp; (x - <span class="number">1</span>)) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>原理同上，此外要注意<code>==</code>的优先级高于<code>&amp;</code>，且<code>x</code>不能为0。</p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-    <div class="copyright">
-        <p><span>Title:</span><a href="/2022/02/25/x&(x-1)/">x&amp;(x-1)的使用</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-02-25, 22:19:41</p>
-        <p><span>Updated:</span>2022-02-26, 14:18:04</p>
-        <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/02/25/x&(x-1)/" title="x&amp;(x-1)的使用">https://angielee233.github.io/2022/02/25/x&amp;(x-1)/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/02/25/x&amp;(x-1)/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
-        </p>
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8EMarkDown%E4%B8%8D%E5%BE%97%E4%B8%8D%E8%AF%B4%E7%9A%84%E7%A7%98%E5%AF%86/">小黎与MarkDown不得不说的秘密</a>
     </div>
 
 
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/02/25/c++11/">
-                    C++11特性
-                </a>
-            </div>
-        
-        
-    </nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%86x%E8%BD%AC%E4%B8%BA%E4%BA%8C%E8%BF%9B%E5%88%B6%EF%BC%8C%E8%AE%A1%E7%AE%971%E7%9A%84%E6%95%B0%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">将x转为二进制，计算1的数目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%95%B0x%E6%98%AF%E5%90%A6%E4%B8%BA2%E7%9A%84%E6%AC%A1%E6%96%B9%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">判断数x是否为2的次方数</span></a></li></ol>
-        
+          
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A0%E7%B2%97/" rel="tag">加粗</a></li></ul>
     </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
-
-    <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
         </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"x&(x-1)的使用　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
 
     
-</div>
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/archives/2022/03/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2022/03/">1</a><a class="page-number" href="/archives/2022/03/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
 
-
-
-
-
-
-
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2022/02/25/c++11/" title="Pre: C++11特性">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/03/09/findButtomLeftTreeValue/">找树左下角的值</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/09/excelSheetColumnTitle/">Excel表列名称</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/09/LRUCache/">LRU缓存</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/09/binaryTreeZigzagLevelOrderTraversal/">二叉树的锯齿形层序遍历</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/09/diameterOfBinaryTree/">二叉树的直径</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/09/3Sum/">三数之和</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/09/PermutationsII/">全排列II</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/09/courseSchedule/">课程表</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/searchInRotatedSortedArray/">搜索旋转排序数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/subarraySumEqualsK/">和为k的子数组</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/reverseWordsInString/">翻转字符串里的单词</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/longestSubstringWithoutRepeatingCharacters/">无重复字符的最大子串</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/rotateImage/">旋转图像</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/deleteNodeInBST/">删除二叉搜索树中的节点</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/08/maximumSubarray/">最大子数组和</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/lowestCommonAncestorOfABinaryTree/">二叉树的最近公共祖先</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/binaryTreeMaximumPathSum/">二叉树最大路径和</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/reverseList/">反转链表</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/07/kthBiggest/">数组中的第k个最大元素</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/01/center-img/">个人博客图片居中大法</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/03/01/md-20220301/">关于MarkDown语法中加粗失效的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/28/computerInternet-3/">计算机网络网课笔记-数据链路层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/27/computerInternet-2/">计算机网络网课笔记-物理层</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/26/computerInternet-1/">计算机网络网课笔记-概论</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/c++11/">C++11特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/02/25/x&(x-1)/">x&(x-1)的使用</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
     <div class="outer">
