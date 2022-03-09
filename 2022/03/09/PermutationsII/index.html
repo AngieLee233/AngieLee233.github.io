@@ -15,18 +15,17 @@
 
 
 
-<meta name="description" content="（小黎最近在忙刷题，网课先告一段落！绝对不鸽！咕咕咕 给定整数数组nums和整数k，请返回数组中第k个最大的元素。 提示：  1 &lt;&#x3D; k &lt;&#x3D; nums.length &lt;&#x3D; 10^4 -10^4 &lt;&#x3D; nums[i] &lt;&#x3D; 10^4">
+<meta name="description" content="给定一个可包含重复数字的序列nums，按任意顺序返回所有不重复的全排列。 提示：  1 &lt;&#x3D; nums.length &lt;&#x3D; 8 -10 &lt;&#x3D; nums[i] &lt;&#x3D; 10">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数组中的第k个最大元素">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/07/kthBiggest/index.html">
+<meta property="og:title" content="全排列II">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/09/PermutationsII/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="（小黎最近在忙刷题，网课先告一段落！绝对不鸽！咕咕咕 给定整数数组nums和整数k，请返回数组中第k个最大的元素。 提示：  1 &lt;&#x3D; k &lt;&#x3D; nums.length &lt;&#x3D; 10^4 -10^4 &lt;&#x3D; nums[i] &lt;&#x3D; 10^4">
+<meta property="og:description" content="给定一个可包含重复数字的序列nums，按任意顺序返回所有不重复的全排列。 提示：  1 &lt;&#x3D; nums.length &lt;&#x3D; 8 -10 &lt;&#x3D; nums[i] &lt;&#x3D; 10">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-07T08:00:30.796Z">
-<meta property="article:modified_time" content="2022-03-09T06:55:19.659Z">
+<meta property="article:published_time" content="2022-03-09T06:50:42.558Z">
+<meta property="article:modified_time" content="2022-03-09T07:02:24.308Z">
 <meta property="article:author" content="AngieLee">
-<meta property="article:tag" content="快速选择">
-<meta property="article:tag" content="快速排序">
+<meta property="article:tag" content="回溯">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -61,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>数组中的第k个最大元素 | 小黎的小窝</title>
+<title>全排列II | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -224,11 +223,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-kthBiggest" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-PermutationsII" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/07/kthBiggest/" class="article-date">
-      <time datetime="2022-03-07T08:00:30.796Z" itemprop="datePublished">2022-03-07</time>
+      <a href="/2022/03/09/PermutationsII/" class="article-date">
+      <time datetime="2022-03-09T06:50:42.558Z" itemprop="datePublished">2022-03-09</time>
 </a>
 
 
@@ -243,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      数组中的第k个最大元素
+      全排列II
     </h1>
   
 
@@ -258,7 +257,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" rel="tag">快速排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E9%80%89%E6%8B%A9/" rel="tag">快速选择</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -268,26 +267,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>（小黎最近在忙刷题，网课先告一段落！绝对不鸽！<del>咕咕咕</del></p>
-<p>给定整数数组<code>nums</code>和整数<code>k</code>，请返回数组中第<code>k</code>个最大的元素。</p>
+        <p>给定一个可包含重复数字的序列<code>nums</code>，按任意顺序返回所有不重复的全排列。</p>
 <p>提示：</p>
 <ul>
-<li>1 &lt;&#x3D; k &lt;&#x3D; nums.length &lt;&#x3D; 10^4</li>
-<li>-10^4 &lt;&#x3D; nums[i] &lt;&#x3D; 10^4</li>
+<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 8</li>
+<li>-10 &lt;&#x3D; nums[i] &lt;&#x3D; 10</li>
 </ul>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/">215.数组中的第K个最大元素</a></p>
-<p>这个主要就是用到了<strong>快排</strong>的思想啦！随机选择数组中的一个数作为<code>key</code>，之后将比<code>key</code>小的数放到它的右边，比它大的放左边。（因为要第<code>k</code>大嘛！如果要第<code>k</code>小的话就比它大的反过来就好啦！）</p>
-<p>排序完之后，如果<code>key</code>刚好在第<code>k</code>个的位置的话，直接返回就好啦。如果<code>key</code>的下标小于<code>k - 1</code>（这里是用于下标从0开始计算的语言哦！下标从1开始的语言要变一下哦，灵活变一下啦），那么所求元素在<code>key</code>的右边，继续对右边进行相同的操作；如果<code>key</code>的下标大于<code>k - 1</code>，那么所求元素在<code>key</code>的左边，继续对左边进行相同的操作。</p>
-<p>快速排序的性能和划分出的子数组的长度密切相关。直观地理解就是，如果每次规模为$n$的问题我们都划分成$1$和$n - 1$，每次递归的时候又向$n - 1$的集合中递归，这种情况是最坏的，时间代价是$O(n ^ 2)$。我们可以<strong>引入随机化来加速</strong>这个过程，它的时间代价的期望是$O(n)$，证明过程可以参考「《算法导论》9.2：期望为线性的选择算法」。</p>
-<p>放上小黎的代码！</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findKthLargest</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">srand</span>((<span class="type">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">getKth</span>(nums, k - <span class="number">1</span>, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getKth</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k, <span class="type">int</span> left, <span class="type">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(right != left)&#123;</span><br><span class="line">            <span class="type">int</span> random = <span class="built_in">rand</span>() % (right - left) + left;</span><br><span class="line">            <span class="built_in">swap</span>(nums[random], nums[right]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> idx = <span class="built_in">partition</span>(nums, left, right);</span><br><span class="line">        <span class="keyword">if</span>(idx == k)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums[idx];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(idx &gt; k)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">getKth</span>(nums, k, left, idx - <span class="number">1</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(idx &lt; k)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">getKth</span>(nums, k, idx + <span class="number">1</span>, right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">partition</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> left, <span class="type">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> begin = left - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> key = nums[right];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = left; i &lt; right; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; key)&#123;</span><br><span class="line">                <span class="built_in">swap</span>(nums[++begin], nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">swap</span>(nums[++begin], nums[right]);</span><br><span class="line">        <span class="keyword">return</span> begin;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/permutations-ii/">47.全排列II</a></p>
+<p>这种排列的很容易想到回溯，但是题目中给定的数组中可能包含重复数字，如果单纯地回溯可能造成枚举的重复。</p>
+<p>为解决重复数字的问题，可以将数组排序，令相同数字相连在一起。对于相同的数字，令其在数组中出现的顺序相同，可以达到去重的效果。</p>
+<p>本例中令相同的数字按顺序从左至右访问，如果该数访问过了或者前一个相同的数字未访问，则跳过。</p>
+<p>当然也可以从右至左，评论区中有一则<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/permutations-ii/solution/quan-pai-lie-ii-by-leetcode-solution/1200093">评论</a>是这样的：</p>
 <blockquote>
-<p>执行用时：4ms，超过了97%的cpp提交记录<br>内存消耗：9.6MB，超过了90%的cpp提交记录</p>
+<p>其实简单的来说，以[1,1,1,2]为例子<br>vis[i-1]&#x3D;&#x3D;0时continue，那三个1的选取顺序只能是①②③<br>vis[i-1]&#x3D;&#x3D;1时continue，那三个1的选取顺序只能是③②①<br>往后不管多少个相同的数字，都只有“顺序“或“逆序”的方式选取，而不会出现 ③①②、②①③ 等等<br>所以这里的排列是通过确定相同数字的选取顺序，二选一，来排除因其他选取顺序而产生的重复结果</p>
 </blockquote>
-
+<p><del>反正大概就这个意思，我也懒得再解释了</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permuteUnique</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vst</span><span class="params">(n, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ans;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; curr;</span><br><span class="line">        <span class="built_in">backTrack</span>(nums, vst, <span class="number">0</span>, curr, ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">backTrack</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, vector&lt;<span class="type">int</span>&gt;&amp; vst, <span class="type">int</span> idx, vector&lt;<span class="type">int</span>&gt;&amp; curr, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; ans)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(idx == n)&#123;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(curr);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(vst[i] || (i &gt; <span class="number">0</span> &amp;&amp; !vst[i - <span class="number">1</span>] &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]))&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            vst[i] = <span class="number">1</span>;</span><br><span class="line">            curr.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">            <span class="built_in">backTrack</span>(nums, vst, idx + <span class="number">1</span>, curr, ans);</span><br><span class="line">            curr.<span class="built_in">pop_back</span>();</span><br><span class="line">            vst[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -295,13 +292,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/07/kthBiggest/">数组中的第k个最大元素</a></p>
+        <p><span>Title:</span><a href="/2022/03/09/PermutationsII/">全排列II</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-07, 16:00:30</p>
-        <p><span>Updated:</span>2022-03-09, 14:55:19</p>
+        <p><span>Created:</span>2022-03-09, 14:50:42</p>
+        <p><span>Updated:</span>2022-03-09, 15:02:24</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/07/kthBiggest/" title="数组中的第k个最大元素">https://angielee233.github.io/2022/03/07/kthBiggest/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/07/kthBiggest/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/09/PermutationsII/" title="全排列II">https://angielee233.github.io/2022/03/09/PermutationsII/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/09/PermutationsII/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -313,16 +310,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/07/reverseList/">
-                    反转链表
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/01/center-img/">
-                    个人博客图片居中大法
+                <a href="/2022/03/09/courseSchedule/">
+                    课程表
                 </a>
             </div>
         
@@ -370,7 +361,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"数组中的第k个最大元素　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"全排列II　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -390,15 +381,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/07/reverseList/" title="Pre: 反转链表">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/01/center-img/" title="Next: 个人博客图片居中大法">
+            <a href="/2022/03/09/courseSchedule/" title="Next: 课程表">
                 <i class="fa fa-angle-right"></i>
             </a>
         

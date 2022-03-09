@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>全排列II</title>
+      <link href="/2022/03/09/PermutationsII/"/>
+      <url>/2022/03/09/PermutationsII/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个可包含重复数字的序列<code>nums</code>，按任意顺序返回所有不重复的全排列。</p><p>提示：</p><ul><li>1 &lt;&#x3D; nums.length &lt;&#x3D; 8</li><li>-10 &lt;&#x3D; nums[i] &lt;&#x3D; 10</li></ul><span id="more"></span><p><a href="https://leetcode-cn.com/problems/permutations-ii/">47.全排列II</a></p><p>这种排列的很容易想到回溯，但是题目中给定的数组中可能包含重复数字，如果单纯地回溯可能造成枚举的重复。</p><p>为解决重复数字的问题，可以将数组排序，令相同数字相连在一起。对于相同的数字，令其在数组中出现的顺序相同，可以达到去重的效果。</p><p>本例中令相同的数字按顺序从左至右访问，如果该数访问过了或者前一个相同的数字未访问，则跳过。</p><p>当然也可以从右至左，评论区中有一则<a href="https://leetcode-cn.com/problems/permutations-ii/solution/quan-pai-lie-ii-by-leetcode-solution/1200093">评论</a>是这样的：</p><blockquote><p>其实简单的来说，以[1,1,1,2]为例子<br>vis[i-1]&#x3D;&#x3D;0时continue，那三个1的选取顺序只能是①②③<br>vis[i-1]&#x3D;&#x3D;1时continue，那三个1的选取顺序只能是③②①<br>往后不管多少个相同的数字，都只有“顺序“或“逆序”的方式选取，而不会出现 ③①②、②①③ 等等<br>所以这里的排列是通过确定相同数字的选取顺序，二选一，来排除因其他选取顺序而产生的重复结果</p></blockquote><p><del>反正大概就这个意思，我也懒得再解释了</del></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permuteUnique</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vst</span><span class="params">(n, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ans;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; curr;</span><br><span class="line">        <span class="built_in">backTrack</span>(nums, vst, <span class="number">0</span>, curr, ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">backTrack</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, vector&lt;<span class="type">int</span>&gt;&amp; vst, <span class="type">int</span> idx, vector&lt;<span class="type">int</span>&gt;&amp; curr, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; ans)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(idx == n)&#123;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(curr);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(vst[i] || (i &gt; <span class="number">0</span> &amp;&amp; !vst[i - <span class="number">1</span>] &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]))&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            vst[i] = <span class="number">1</span>;</span><br><span class="line">            curr.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">            <span class="built_in">backTrack</span>(nums, vst, idx + <span class="number">1</span>, curr, ans);</span><br><span class="line">            curr.<span class="built_in">pop_back</span>();</span><br><span class="line">            vst[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎刷题寄 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 回溯 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>课程表</title>
       <link href="/2022/03/09/courseSchedule/"/>
       <url>/2022/03/09/courseSchedule/</url>
@@ -13,7 +38,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -38,7 +63,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -63,7 +88,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -90,7 +115,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -115,7 +140,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -140,7 +165,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -167,7 +192,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -192,7 +217,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -217,7 +242,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -244,7 +269,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -271,7 +296,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
@@ -296,7 +321,7 @@
       
       <categories>
           
-          <category> 小黎刷题记 </category>
+          <category> 小黎刷题寄 </category>
           
       </categories>
       
