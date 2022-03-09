@@ -225,6 +225,83 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-linkedListCycleII" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/09/linkedListCycleII/" class="article-date">
+      <time datetime="2022-03-09T15:55:51.127Z" itemprop="datePublished">2022-03-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/09/linkedListCycleII/">环形链表</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>给定一个链表的头节点<code>head</code>，返回链表开始入环的第一个节点。*如果链表无环，则返回<code>null</code>*。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪<code>next</code>指针再次到达，则链表中存在环。为了表示给定链表中的环，评测系统内部使用整数<code>pos</code>来表示链表尾连接到链表中的位置<strong>（索引从<code>0</code>开始）</strong>。如果<code>pos</code>是<code>-1</code>，则在该链表中没有环。<strong>注意：<code>pos</code>不作为参数进行传递</strong>，仅仅是为了标识链表的实际情况。</p>
+<p><strong>不允许修改</strong>链表。</p>
+<p>提示：</p>
+<ul>
+<li>链表中节点的数目范围在范围<code>[0, 10^4]</code>内</li>
+<li><code>10^5 &lt;= Node.val &lt;= 10^5</code></li>
+<li><code>pos</code>的值为<code>-1</code>或者链表中的一个有效索引</li>
+</ul>
+<p>进阶：你是否可以使用<code>O(1)</code>空间解决此题？</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" rel="tag">快慢指针</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2022/03/09/linkedListCycleII/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-mergeIntervals" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -486,7 +563,8 @@
 <ul>
 <li><code>1 &lt;= capacity &lt;= 3000</code></li>
 <li><code>0 &lt;= key &lt;= 10000</code></li>
-<li><code>0 &lt;= value &lt;= 10^5</code><br>最多调用<code>2 * 10^5</code>次<code>get</code>和<code>put</code></li>
+<li><code>0 &lt;= value &lt;= 10^5</code></li>
+<li>最多调用<code>2 * 10^5</code>次<code>get</code>和<code>put</code></li>
 </ul>
           
       
@@ -876,84 +954,6 @@
       
         <p class="article-more-link">
           <a href="/2022/03/09/courseSchedule/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-searchInRotatedSortedArray" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/08/searchInRotatedSortedArray/" class="article-date">
-      <time datetime="2022-03-08T15:50:12.192Z" itemprop="datePublished">2022-03-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/08/searchInRotatedSortedArray/">搜索旋转排序数组</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>整数数组<code>nums</code>按升序排列，数组中的值互不相同。</p>
-<p>在传递给函数之前，<code>nums</code>在预先未知的某个下标<code>k</code>（<code>0 &lt;= k &lt; nums.length</code>）上进行了旋转，使数组变为 <code>[nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]]</code>（下标从0开始计数）。例如，[0,1,2,4,5,6,7]在下标3处经旋转后可能变为[4,5,6,7,0,1,2]。</p>
-<p>给你旋转后的数组<code>nums</code>和一个整数<code>target</code>，如果<code>nums</code>中存在这个目标值<code>target</code>，则返回它的下标，否则返回-1。</p>
-<p>提示：</p>
-<ul>
-<li><code>1 &lt;= nums.length &lt;= 5000</code></li>
-<li><code>-10^4 &lt;= nums[i] &lt;= 10^4</code></li>
-<li><code>nums</code>中的每个值都 独一无二</li>
-<li>题目数据保证<code>nums</code>在预先未知的某个下标上进行了旋转</li>
-<li><code>-10^4 &lt;= target &lt;= 10^4</code></li>
-</ul>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E6%B3%95/" rel="tag">二分法</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2022/03/08/searchInRotatedSortedArray/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

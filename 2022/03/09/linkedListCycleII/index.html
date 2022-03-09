@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="给你一个整数columnNumber，返回它在Excel表中相对应的列名称。 提示：  1 &lt;&#x3D; columnNumber &lt;&#x3D; 2^31 - 1">
+<meta name="description" content="给定一个链表的头节点head，返回链表开始入环的第一个节点。*如果链表无环，则返回null*。 如果链表中有某个节点，可以通过连续跟踪next指针再次到达，则链表中存在环。为了表示给定链表中的环，评测系统内部使用整数pos来表示链表尾连接到链表中的位置（索引从0开始）。如果pos是-1，则在该链表中没有环。注意：pos不作为参数进行传递，仅仅是为了标识链表的实际情况。 不允许修改链表。 提示：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Excel表列名称">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/09/excelSheetColumnTitle/index.html">
+<meta property="og:title" content="环形链表">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/09/linkedListCycleII/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给你一个整数columnNumber，返回它在Excel表中相对应的列名称。 提示：  1 &lt;&#x3D; columnNumber &lt;&#x3D; 2^31 - 1">
+<meta property="og:description" content="给定一个链表的头节点head，返回链表开始入环的第一个节点。*如果链表无环，则返回null*。 如果链表中有某个节点，可以通过连续跟踪next指针再次到达，则链表中存在环。为了表示给定链表中的环，评测系统内部使用整数pos来表示链表尾连接到链表中的位置（索引从0开始）。如果pos是-1，则在该链表中没有环。注意：pos不作为参数进行传递，仅仅是为了标识链表的实际情况。 不允许修改链表。 提示：">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-09T13:41:34.002Z">
-<meta property="article:modified_time" content="2022-03-09T13:48:56.709Z">
+<meta property="article:published_time" content="2022-03-09T15:55:51.127Z">
+<meta property="article:modified_time" content="2022-03-09T16:05:36.357Z">
 <meta property="article:author" content="AngieLee">
-<meta property="article:tag" content="进制转换">
+<meta property="article:tag" content="快慢指针">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -60,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Excel表列名称 | 小黎的小窝</title>
+<title>环形链表 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -223,11 +223,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-excelSheetColumnTitle" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-linkedListCycleII" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/09/excelSheetColumnTitle/" class="article-date">
-      <time datetime="2022-03-09T13:41:34.002Z" itemprop="datePublished">2022-03-09</time>
+      <a href="/2022/03/09/linkedListCycleII/" class="article-date">
+      <time datetime="2022-03-09T15:55:51.127Z" itemprop="datePublished">2022-03-09</time>
 </a>
 
 
@@ -242,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Excel表列名称
+      环形链表
     </h1>
   
 
@@ -257,7 +257,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2/" rel="tag">进制转换</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" rel="tag">快慢指针</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -267,21 +267,30 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给你一个整数<code>columnNumber</code>，返回它在Excel表中相对应的列名称。</p>
+        <p>给定一个链表的头节点<code>head</code>，返回链表开始入环的第一个节点。*如果链表无环，则返回<code>null</code>*。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪<code>next</code>指针再次到达，则链表中存在环。为了表示给定链表中的环，评测系统内部使用整数<code>pos</code>来表示链表尾连接到链表中的位置<strong>（索引从<code>0</code>开始）</strong>。如果<code>pos</code>是<code>-1</code>，则在该链表中没有环。<strong>注意：<code>pos</code>不作为参数进行传递</strong>，仅仅是为了标识链表的实际情况。</p>
+<p><strong>不允许修改</strong>链表。</p>
 <p>提示：</p>
 <ul>
-<li><code>1 &lt;= columnNumber &lt;= 2^31 - 1</code></li>
+<li>链表中节点的数目范围在范围<code>[0, 10^4]</code>内</li>
+<li><code>10^5 &lt;= Node.val &lt;= 10^5</code></li>
+<li><code>pos</code>的值为<code>-1</code>或者链表中的一个有效索引</li>
 </ul>
+<p>进阶：你是否可以使用<code>O(1)</code>空间解决此题？</p>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/excel-sheet-column-title/">168.Excel表列名称</a></p>
-<p>乍一看我以为只是个简简单单的进制转换</p>
-<p>啪一下很快啊！就WA了，哈哈（干笑</p>
-<p>仔细想一想，这里是从1-26的26进制，人家<strong>没有0</strong>啊！正经的进制转换的路子不能走啊！</p>
-<p>本来我寻思吧，1-25就是A-Y，0就是Z，还是WA了，对于701的测试样例过不了，多了一位A。</p>
-<p>后面评论区里面说，既然习惯是0-25，那每次转换的时候<strong>把数字-1</strong>就好了，这样就是从0开始的了。</p>
-<p>然后小黎就写出来了：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">convertToTitle</span><span class="params">(<span class="type">int</span> columnNumber)</span> </span>&#123;</span><br><span class="line">        string ans;</span><br><span class="line">        <span class="keyword">while</span>(columnNumber)&#123;</span><br><span class="line">            columnNumber--;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(columnNumber % <span class="number">26</span> + <span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">            columnNumber /= <span class="number">26</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(ans.<span class="built_in">begin</span>(), ans.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/linked-list-cycle-ii/">142.环形链表</a></p>
+<p><del>直接进阶吧，搞哈希表太没水准了</del></p>
+<p>这里主要是一个数学问题，我们弄两个快慢指针遍历链表：快指针每次前进两个节点，慢指针每次前进一个节点。</p>
+<p>如果链表无环，那么快指针到达空指针处，返回结果。</p>
+<p>如果链表有环，那么快慢指针会在环内相遇。设环外节点数为a，环内节点数为b，快慢指针相遇时快指针前进了f个节点，慢指针前进了s个节点。</p>
+<p>首先快指针速度是慢指针的两倍：f &#x3D; 2s</p>
+<p>其次快指针比慢指针多走的节点数为环内节点的整数倍：f &#x3D; s + nb</p>
+<p>联立上面两个有：s &#x3D; nb</p>
+<p>也就是此时慢指针走过的节点数为环内节点数的整数倍。也就是再走a个节点能够到达环的起点数。</p>
+<p>为了获得a，让快指针<del>打道回府</del>回到起点处，快慢指针同时前进，每次都移动一个节点。当二者相遇时，即是在环的开始处。</p>
+<p>说完啦！上代码！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">detectCycle</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        ListNode* fast = head;</span><br><span class="line">        ListNode* slow = head;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(fast == <span class="literal">nullptr</span> || fast-&gt;next == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(fast == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        fast = head;</span><br><span class="line">        <span class="keyword">while</span>(fast != slow)&#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -289,13 +298,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/09/excelSheetColumnTitle/">Excel表列名称</a></p>
+        <p><span>Title:</span><a href="/2022/03/09/linkedListCycleII/">环形链表</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-09, 21:41:34</p>
-        <p><span>Updated:</span>2022-03-09, 21:48:56</p>
+        <p><span>Created:</span>2022-03-09, 23:55:51</p>
+        <p><span>Updated:</span>2022-03-10, 00:05:36</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/09/excelSheetColumnTitle/" title="Excel表列名称">https://angielee233.github.io/2022/03/09/excelSheetColumnTitle/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/09/excelSheetColumnTitle/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/09/linkedListCycleII/" title="环形链表">https://angielee233.github.io/2022/03/09/linkedListCycleII/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/09/linkedListCycleII/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -307,16 +316,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/09/findButtomLeftTreeValue/">
-                    找树左下角的值
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/09/LRUCache/">
-                    LRU缓存
+                <a href="/2022/03/09/mergeIntervals/">
+                    合并区间
                 </a>
             </div>
         
@@ -364,7 +367,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Excel表列名称　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"环形链表　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -384,15 +387,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/09/findButtomLeftTreeValue/" title="Pre: 找树左下角的值">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/09/LRUCache/" title="Next: LRU缓存">
+            <a href="/2022/03/09/mergeIntervals/" title="Next: 合并区间">
                 <i class="fa fa-angle-right"></i>
             </a>
         
