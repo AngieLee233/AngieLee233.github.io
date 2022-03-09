@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。 一般来说，删除节点可分为两个步骤：  首先找到需要删除的节点； 如果找到了，删除它。  提示:  节点数的范围$[0, 10^4]$. $-10^5$ &lt;&#x3D; Node.val &lt;&#x3D; $10^5$ 节点值唯一">
+<meta name="description" content="你这个学期必须选修numCourses门课程，记为0到numCourses - 1。 在选修某些课程之前需要一些先修课程。先修课程按数组prerequisites给出，其中 prerequisites[i] &#x3D; [ai, bi]，表示如果要学习课程ai则 必须先学习课程bi。 例如，先修课程对[0, 1]表示：想要学习课程0，你需要先完成课程1。 请你判断是否可能完成所有课程的学习？如果可以，返回">
 <meta property="og:type" content="article">
-<meta property="og:title" content="删除二叉搜索树中的节点">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/08/deleteNodeInBST/index.html">
+<meta property="og:title" content="课程表">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/09/courseSchedule/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。 一般来说，删除节点可分为两个步骤：  首先找到需要删除的节点； 如果找到了，删除它。  提示:  节点数的范围$[0, 10^4]$. $-10^5$ &lt;&#x3D; Node.val &lt;&#x3D; $10^5$ 节点值唯一">
+<meta property="og:description" content="你这个学期必须选修numCourses门课程，记为0到numCourses - 1。 在选修某些课程之前需要一些先修课程。先修课程按数组prerequisites给出，其中 prerequisites[i] &#x3D; [ai, bi]，表示如果要学习课程ai则 必须先学习课程bi。 例如，先修课程对[0, 1]表示：想要学习课程0，你需要先完成课程1。 请你判断是否可能完成所有课程的学习？如果可以，返回">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-08T03:23:08.157Z">
-<meta property="article:modified_time" content="2022-03-08T07:52:54.937Z">
+<meta property="article:published_time" content="2022-03-09T03:56:00.358Z">
+<meta property="article:modified_time" content="2022-03-09T04:05:06.079Z">
 <meta property="article:author" content="AngieLee">
-<meta property="article:tag" content="二叉搜索树">
+<meta property="article:tag" content="拓扑排序">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -60,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>删除二叉搜索树中的节点 | 小黎的小窝</title>
+<title>课程表 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -223,11 +223,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-deleteNodeInBST" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-courseSchedule" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/08/deleteNodeInBST/" class="article-date">
-      <time datetime="2022-03-08T03:23:08.157Z" itemprop="datePublished">2022-03-08</time>
+      <a href="/2022/03/09/courseSchedule/" class="article-date">
+      <time datetime="2022-03-09T03:56:00.358Z" itemprop="datePublished">2022-03-09</time>
 </a>
 
 
@@ -242,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      删除二叉搜索树中的节点
+      课程表
     </h1>
   
 
@@ -257,7 +257,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="tag">二叉搜索树</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" rel="tag">拓扑排序</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -267,32 +267,31 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给定一个二叉搜索树的根节点root和一个值key，删除二叉搜索树中的key对应的节点，并保证二叉搜索树的性质不变。返回二叉搜索树（有可能被更新）的根节点的引用。</p>
-<p>一般来说，删除节点可分为两个步骤：</p>
-<ol>
-<li>首先找到需要删除的节点；</li>
-<li>如果找到了，删除它。</li>
-</ol>
-<p>提示:</p>
+        <p>你这个学期必须选修<code>numCourses</code>门课程，记为<code>0</code>到<code>numCourses - 1</code>。</p>
+<p>在选修某些课程之前需要一些先修课程。先修课程按数组<code>prerequisites</code>给出，其中 <code>prerequisites[i] = [ai, bi]</code>，表示如果要学习课程<code>ai</code>则 必须先学习课程<code>bi</code>。</p>
+<p>例如，先修课程对<code>[0, 1]</code>表示：想要学习课程<code>0</code>，你需要先完成课程<code>1</code>。</p>
+<p>请你判断是否可能完成所有课程的学习？如果可以，返回<code>true</code>；否则，返回<code>false</code>。</p>
+<p>提示：</p>
 <ul>
-<li>节点数的范围$[0, 10^4]$.</li>
-<li>$-10^5$ &lt;&#x3D; Node.val &lt;&#x3D; $10^5$</li>
-<li>节点值唯一</li>
-<li>root是合法的二叉搜索树</li>
-<li>$-10^5$ &lt;&#x3D; key &lt;&#x3D; $10^5$</li>
+<li>1 &lt;&#x3D; numCourses &lt;&#x3D; 10^5</li>
+<li>0 &lt;&#x3D; prerequisites.length &lt;&#x3D; 5000</li>
+<li>prerequisites[i].length &#x3D;&#x3D; 2</li>
+<li>0 &lt;&#x3D; ai, bi &lt; numCourses</li>
+<li>prerequisites[i]中的所有课程对互不相同</li>
 </ul>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/delete-node-in-a-bst/">450.删除二叉搜索树中的节点</a></p>
-<p><del>这题目还假惺惺地告诉了你步骤</del></p>
-<p>这题很明显地递归，如果你想看迭代的解法可以看<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/delete-node-in-a-bst/comments/155645">这里</a>，反正我是不会这么写的…</p>
-<p>递归的思路很清晰，利用BST的性质即可：</p>
-<ul>
-<li>如果当前节点的值小于目标值，说明目标节点在右子树，往右子树递归</li>
-<li>如果当前节点的值大于目标值，说明目标节点在左子树，往左子树递归</li>
-<li>如果当前节点的值等于目标值，说明该节点为目标节点。如果该节点只有左子树或右子树，直接用非空子树替换即可。如果该节点左右子树都非空，将该节点的值替换为该节点的右子树中最小节点的值（一直往左子树找即可），往右子树递归，删除最小节点。</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">deleteNode</span><span class="params">(TreeNode* root, <span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val &lt; key)&#123;</span><br><span class="line">            root-&gt;right = <span class="built_in">deleteNode</span>(root-&gt;right, key);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;val &gt; key)&#123;</span><br><span class="line">            root-&gt;left = <span class="built_in">deleteNode</span>(root-&gt;left, key);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(root-&gt;left == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> root-&gt;right;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(root-&gt;right == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> root-&gt;left;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                TreeNode* temp = root-&gt;right;</span><br><span class="line">                <span class="keyword">while</span>(temp-&gt;left)&#123;</span><br><span class="line">                    temp = temp-&gt;left;</span><br><span class="line">                &#125;</span><br><span class="line">                root-&gt;val = temp-&gt;val;</span><br><span class="line">                root-&gt;right = <span class="built_in">deleteNode</span>(root-&gt;right, temp-&gt;val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/course-schedule/">207.课程表</a></p>
+<p>这种场景很明显用拓扑排序，拓扑排序就是拿来干这活的。</p>
+<p>首先记录一个邻接表，同时记录每个节点的入度。对于入度为0的节点，放入队列中。</p>
+<p>对于队列中的节点，删除该节点，并将所有与该节点相连的节点入度-1，如果有节点入度减为0，则将该节点加入队列。循环上述过程，直到队列为空。</p>
+<p>如果课程表是可行的，那么所有课程都被删除，否则仍存在未被删除的节点。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">canFinish</span><span class="params">(<span class="type">int</span> numCourses, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; prerequisites)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">edge</span>(numCourses, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">indegree</span><span class="params">(numCourses, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; pre : prerequisites)&#123;</span><br><span class="line">            edge[pre[<span class="number">1</span>]].<span class="built_in">push_back</span>(pre[<span class="number">0</span>]);</span><br><span class="line">            indegree[pre[<span class="number">0</span>]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">        <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; numCourses; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(indegree[i] == <span class="number">0</span>)&#123;</span><br><span class="line">                q.<span class="built_in">push</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="type">int</span> course = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            count++;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> after : edge[course])&#123;</span><br><span class="line">                indegree[after]--;</span><br><span class="line">                <span class="keyword">if</span>(indegree[after] == <span class="number">0</span>)&#123;</span><br><span class="line">                    q.<span class="built_in">push</span>(after);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count == numCourses;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>类似地，力扣上还有要求输出可行的上课顺序：</p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/course-schedule-ii/">210.课程表II</a></p>
+<p>思路是类似的，只是相比起之前删除节点增加计数变成了给答案数组增加元素，不再赘述</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">findOrder</span><span class="params">(<span class="type">int</span> numCourses, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; prerequisites)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">edge</span>(numCourses, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">indegree</span><span class="params">(numCourses, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; info : prerequisites)&#123;</span><br><span class="line">            edge[info[<span class="number">1</span>]].<span class="built_in">push_back</span>(info[<span class="number">0</span>]);</span><br><span class="line">            indegree[info[<span class="number">0</span>]]++;</span><br><span class="line">        &#125;</span><br><span class="line">        queue&lt;<span class="type">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; numCourses; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(indegree[i] == <span class="number">0</span>)&#123;</span><br><span class="line">                q.<span class="built_in">push</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="type">int</span> course = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            ans.<span class="built_in">push_back</span>(course);</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> after : edge[course])&#123;</span><br><span class="line">                indegree[after]--;</span><br><span class="line">                <span class="keyword">if</span>(indegree[after] == <span class="number">0</span>)&#123;</span><br><span class="line">                    q.<span class="built_in">push</span>(after);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans.<span class="built_in">size</span>() == numCourses ? ans : <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -300,13 +299,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/08/deleteNodeInBST/">删除二叉搜索树中的节点</a></p>
+        <p><span>Title:</span><a href="/2022/03/09/courseSchedule/">课程表</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-08, 11:23:08</p>
-        <p><span>Updated:</span>2022-03-08, 15:52:54</p>
+        <p><span>Created:</span>2022-03-09, 11:56:00</p>
+        <p><span>Updated:</span>2022-03-09, 12:05:06</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/08/deleteNodeInBST/" title="删除二叉搜索树中的节点">https://angielee233.github.io/2022/03/08/deleteNodeInBST/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/08/deleteNodeInBST/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/09/courseSchedule/" title="课程表">https://angielee233.github.io/2022/03/09/courseSchedule/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/09/courseSchedule/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -318,16 +317,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/08/rotateImage/">
-                    旋转图像
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/08/maximumSubarray/">
-                    最大子数组和
+                <a href="/2022/03/08/searchInRotatedSortedArray/">
+                    搜索旋转排序数组
                 </a>
             </div>
         
@@ -375,7 +368,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"删除二叉搜索树中的节点　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"课程表　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -395,15 +388,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/08/rotateImage/" title="Pre: 旋转图像">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/08/maximumSubarray/" title="Next: 最大子数组和">
+            <a href="/2022/03/08/searchInRotatedSortedArray/" title="Next: 搜索旋转排序数组">
                 <i class="fa fa-angle-right"></i>
             </a>
         
