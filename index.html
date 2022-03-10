@@ -225,6 +225,161 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-copyListWithRandomPointer" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/10/copyListWithRandomPointer/" class="article-date">
+      <time datetime="2022-03-10T08:24:37.774Z" itemprop="datePublished">2022-03-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/10/copyListWithRandomPointer/">复制带随机指针的链表</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>给你一个长度为<code>n</code>的链表，每个节点包含一个额外增加的随机指针<code>random</code>，该指针可以指向链表中的任何节点或空节点。</p>
+<p>构造这个链表的<strong>深拷贝</strong>。 深拷贝应该正好由<code>n</code>个<strong>全新</strong>节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的<code>next</code>指针和<code>random</code>指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。复制链表中的指针都不应指向原链表中的节点 。</p>
+<p>例如，如果原链表中有<code>X</code>和<code>Y</code>两个节点，其中<code>X.random --&gt; Y</code>。那么在复制链表中对应的两个节点<code>x</code>和<code>y</code>，同样有<code>x.random --&gt; y</code>。</p>
+<p>返回复制链表的头节点。</p>
+<p>用一个由<code>n</code>个节点组成的链表来表示输入&#x2F;输出中的链表。每个节点用一个<code>[val, random_index]</code>表示：</p>
+<ul>
+<li><code>val</code>：一个表示<code>Node.val</code>的整数。</li>
+<li><code>random_index</code>：随机指针指向的节点索引（范围从<code>0</code>到<code>n-1</code>）；如果不指向任何节点，则为<code>null</code>。<br>你的代码<strong>只</strong>接受原链表的头节点<code>head</code>作为传入参数。</li>
+</ul>
+<p>提示：</p>
+<ul>
+<li><code>0 &lt;= n &lt;= 1000</code></li>
+<li><code>-10^4 &lt;= Node.val &lt;= 10^4</code></li>
+<li><code>Node.random</code>为<code>null</code>或指向链表中的节点。</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/" rel="tag">深拷贝</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2022/03/10/copyListWithRandomPointer/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-longestPalindromicSubstring" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2022/03/10/longestPalindromicSubstring/" class="article-date">
+      <time datetime="2022-03-10T07:22:42.457Z" itemprop="datePublished">2022-03-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/10/longestPalindromicSubstring/">最长回文子串</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>给你一个字符串<code>s</code>，找到<code>s</code>中最长的回文子串。</p>
+<p>提示：</p>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 1000</code></li>
+<li><code>s</code>仅由数字和英文字母组成</li>
+</ul>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B8%AD%E5%BF%83%E6%89%A9%E5%B1%95%E7%AE%97%E6%B3%95/" rel="tag">中心扩展算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%9E%E6%96%87%E4%B8%B2/" rel="tag">回文串</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2022/03/10/longestPalindromicSubstring/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-minimumPathSum" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -807,148 +962,6 @@
       
         <p class="article-more-link">
           <a href="/2022/03/09/LRUCache/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-binaryTreeZigzagLevelOrderTraversal" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/09/binaryTreeZigzagLevelOrderTraversal/" class="article-date">
-      <time datetime="2022-03-09T09:25:18.214Z" itemprop="datePublished">2022-03-09</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/09/binaryTreeZigzagLevelOrderTraversal/">二叉树的锯齿形层序遍历</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>给你二叉树的根节点<code>root</code>，返回其节点值的锯齿形层序遍历。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。</p>
-<p>提示：</p>
-<ul>
-<li>树中节点数目在范围 [0, 2000] 内</li>
-<li>-100 &lt;&#x3D; Node.val &lt;&#x3D; 100</li>
-</ul>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/" rel="tag">层序遍历</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2022/03/09/binaryTreeZigzagLevelOrderTraversal/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-diameterOfBinaryTree" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/03/09/diameterOfBinaryTree/" class="article-date">
-      <time datetime="2022-03-09T08:49:33.128Z" itemprop="datePublished">2022-03-09</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/09/diameterOfBinaryTree/">二叉树的直径</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。</p>
-<p>注意：两结点之间的路径长度是以它们之间边的数目表示。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2022/03/09/diameterOfBinaryTree/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

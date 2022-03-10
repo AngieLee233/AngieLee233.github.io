@@ -15,17 +15,18 @@
 
 
 
-<meta name="description" content="给你一个只包含&#39;(&#39;和&#39;)&#39;的字符串，找出最长有效（格式正确且连续）括号子串的长度。 提示：  0 &lt;&#x3D; s.length &lt;&#x3D; 3 * 10^4 s[i]为&#39;(&#39;或&#39;)&#39;">
+<meta name="description" content="给你一个长度为n的链表，每个节点包含一个额外增加的随机指针random，该指针可以指向链表中的任何节点或空节点。 构造这个链表的深拷贝。 深拷贝应该正好由n个全新节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的next指针和random指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。复制链表中的指针都不应指向原链表中的节点 。 例如，如果原链">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最长有效括号">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/10/longestValidParentheses/index.html">
+<meta property="og:title" content="复制带随机指针的链表">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/10/copyListWithRandomPointer/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给你一个只包含&#39;(&#39;和&#39;)&#39;的字符串，找出最长有效（格式正确且连续）括号子串的长度。 提示：  0 &lt;&#x3D; s.length &lt;&#x3D; 3 * 10^4 s[i]为&#39;(&#39;或&#39;)&#39;">
+<meta property="og:description" content="给你一个长度为n的链表，每个节点包含一个额外增加的随机指针random，该指针可以指向链表中的任何节点或空节点。 构造这个链表的深拷贝。 深拷贝应该正好由n个全新节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的next指针和random指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。复制链表中的指针都不应指向原链表中的节点 。 例如，如果原链">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-10T06:02:36.548Z">
-<meta property="article:modified_time" content="2022-03-10T06:20:35.534Z">
+<meta property="article:published_time" content="2022-03-10T08:24:37.774Z">
+<meta property="article:modified_time" content="2022-03-10T08:53:16.992Z">
 <meta property="article:author" content="AngieLee">
-<meta property="article:tag" content="栈">
+<meta property="article:tag" content="哈希表">
+<meta property="article:tag" content="深拷贝">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -60,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>最长有效括号 | 小黎的小窝</title>
+<title>复制带随机指针的链表 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -223,11 +224,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-longestValidParentheses" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-copyListWithRandomPointer" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/10/longestValidParentheses/" class="article-date">
-      <time datetime="2022-03-10T06:02:36.548Z" itemprop="datePublished">2022-03-10</time>
+      <a href="/2022/03/10/copyListWithRandomPointer/" class="article-date">
+      <time datetime="2022-03-10T08:24:37.774Z" itemprop="datePublished">2022-03-10</time>
 </a>
 
 
@@ -242,7 +243,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      最长有效括号
+      复制带随机指针的链表
     </h1>
   
 
@@ -257,7 +258,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" rel="tag">哈希表</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/" rel="tag">深拷贝</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -267,34 +268,31 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给你一个只包含<code>&#39;(&#39;</code>和<code>&#39;)&#39;</code>的字符串，找出最长有效（格式正确且连续）括号子串的长度。</p>
+        <p>给你一个长度为<code>n</code>的链表，每个节点包含一个额外增加的随机指针<code>random</code>，该指针可以指向链表中的任何节点或空节点。</p>
+<p>构造这个链表的<strong>深拷贝</strong>。 深拷贝应该正好由<code>n</code>个<strong>全新</strong>节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的<code>next</code>指针和<code>random</code>指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。复制链表中的指针都不应指向原链表中的节点 。</p>
+<p>例如，如果原链表中有<code>X</code>和<code>Y</code>两个节点，其中<code>X.random --&gt; Y</code>。那么在复制链表中对应的两个节点<code>x</code>和<code>y</code>，同样有<code>x.random --&gt; y</code>。</p>
+<p>返回复制链表的头节点。</p>
+<p>用一个由<code>n</code>个节点组成的链表来表示输入&#x2F;输出中的链表。每个节点用一个<code>[val, random_index]</code>表示：</p>
+<ul>
+<li><code>val</code>：一个表示<code>Node.val</code>的整数。</li>
+<li><code>random_index</code>：随机指针指向的节点索引（范围从<code>0</code>到<code>n-1</code>）；如果不指向任何节点，则为<code>null</code>。<br>你的代码<strong>只</strong>接受原链表的头节点<code>head</code>作为传入参数。</li>
+</ul>
 <p>提示：</p>
 <ul>
-<li><code>0 &lt;= s.length &lt;= 3 * 10^4</code></li>
-<li><code>s[i]</code>为<code>&#39;(&#39;</code>或<code>&#39;)&#39;</code></li>
+<li><code>0 &lt;= n &lt;= 1000</code></li>
+<li><code>-10^4 &lt;= Node.val &lt;= 10^4</code></li>
+<li><code>Node.random</code>为<code>null</code>或指向链表中的节点。</li>
 </ul>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-valid-parentheses/">32.最长有效括号</a></p>
-<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><p>想起那天早上，数据结构的老师和我们说，<del>我和你们没有共同语言</del>判断括号用栈。于是小黎看到这题就哼哧哼哧地用了栈，美美错了。</p>
-<p>之后寻思啊，这个栈里面放的都是左括号，感觉信息量很低啊，不如存放下标，这样就能计算长度了。</p>
-<p><del>中间走的弯路忘记了，反正就是个考虑不全的憨憨的思考过程</del></p>
-<p>最后整理出了如下思路：</p>
-<ul>
-<li>用一个变量start存放合法字符串的开始下标</li>
-<li>遍历的过程中，如果遇到左括号，就将其下标入栈</li>
-<li>如果遇到右括号，且此时栈为空，说明没有可与之匹配的左括号，字符串不合法，将start设在该下标的后一个</li>
-<li>如果遇到右括号，且此时栈不为空，则弹出栈顶数据。如果弹出栈顶之后说明从start到目前下标已经匹配完成，可以记录从start到目前的长度，来更新答案。如果弹出之后栈不为空，说明仍有左括号未匹配，则此时的长度为栈顶未匹配的左括号下标之后到目前下标的距离，以此更新答案。</li>
-</ul>
-<p>说完啦！上代码！</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">longestValidParentheses</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        stack&lt;<span class="type">int</span>&gt; sta;</span><br><span class="line">        <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] == <span class="string">&#x27;(&#x27;</span>)&#123;</span><br><span class="line">                sta.<span class="built_in">push</span>(i);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(sta.<span class="built_in">empty</span>())&#123;</span><br><span class="line">                start = i + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sta.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span>(sta.<span class="built_in">empty</span>())&#123;</span><br><span class="line">                    ans = <span class="built_in">max</span>(ans, i - start + <span class="number">1</span>);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    ans = <span class="built_in">max</span>(ans, i - sta.<span class="built_in">top</span>());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/copy-list-with-random-pointer/">138.复制带随机指针的链表</a></p>
+<p><del>什么鬼题目把一个深拷贝说得又臭又长</del></p>
+<h1 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h1><p>可以用哈希表，旧节点映射到新节点。先用哈希表把所有节点抄下来，然后再遍历一次加上next和random指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// Definition for a Node.</span></span><br><span class="line"><span class="comment">class Node &#123;</span></span><br><span class="line"><span class="comment">public:</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    Node* next;</span></span><br><span class="line"><span class="comment">    Node* random;</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    Node(int _val) &#123;</span></span><br><span class="line"><span class="comment">        val = _val;</span></span><br><span class="line"><span class="comment">        next = NULL;</span></span><br><span class="line"><span class="comment">        random = NULL;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">        unordered_map&lt;Node*, Node*&gt; nodeMap;</span><br><span class="line">        Node* curr = head;</span><br><span class="line">        <span class="keyword">while</span>(curr)&#123;</span><br><span class="line">            nodeMap[curr] = <span class="keyword">new</span> <span class="built_in">Node</span>(curr-&gt;val);</span><br><span class="line">            curr = curr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        curr = head;</span><br><span class="line">        <span class="keyword">while</span>(curr)&#123;</span><br><span class="line">            nodeMap[curr]-&gt;next = nodeMap[curr-&gt;next];</span><br><span class="line">            nodeMap[curr]-&gt;random = nodeMap[curr-&gt;random];</span><br><span class="line">            curr = curr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nodeMap[head];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h1 id="两次遍历"><a href="#两次遍历" class="headerlink" title="两次遍历"></a>两次遍历</h1><p>就是弄两个变量，从左至右遍历，分别记录左括号和右括号的个数。当左括号等于右括号时，记录当前字符长度，当右括号多余左括号时<del>重开</del>重新置零开始计数。</p>
-<p>这样对于左括号多余右括号的字符串是无法计数的，所以考虑再从右往左遍历。和之前思路相似，当左右括号数目相等时，记录当前长度，当左括号数目大于右括号数目时重新置零开始计数。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">longestValidParentheses</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, maxlength = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">length</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">                maxlength = <span class="built_in">max</span>(maxlength, <span class="number">2</span> * right);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (right &gt; left) &#123;</span><br><span class="line">                left = right = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        left = right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = (<span class="type">int</span>)s.<span class="built_in">length</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">                maxlength = <span class="built_in">max</span>(maxlength, <span class="number">2</span> * left);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (left &gt; right) &#123;</span><br><span class="line">                left = right = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxlength;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>相比起栈的做法，相当于是用时间换空间了吧</p>
-
+<h1 id="原地拷贝"><a href="#原地拷贝" class="headerlink" title="原地拷贝"></a>原地拷贝</h1><p>当然也可以不用哈希表，直接在原来的指针后面new上一个一模一样的<del>跟屁虫</del>指针，也能实现类似哈希表的功能。也就是原指针的next就是映射的新指针，只是遍历的时候记得两个两个地遍历。</p>
+<p>还有原来的链表也要恢复原样哦！还有对于头指针为空的特判哦！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">// Definition for a Node.</span></span><br><span class="line"><span class="comment">class Node &#123;</span></span><br><span class="line"><span class="comment">public:</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    Node* next;</span></span><br><span class="line"><span class="comment">    Node* random;</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    Node(int _val) &#123;</span></span><br><span class="line"><span class="comment">        val = _val;</span></span><br><span class="line"><span class="comment">        next = NULL;</span></span><br><span class="line"><span class="comment">        random = NULL;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Node* curr = head;</span><br><span class="line">        <span class="keyword">while</span>(curr)&#123;</span><br><span class="line">            Node* newNode = <span class="keyword">new</span> <span class="built_in">Node</span>(curr-&gt;val);</span><br><span class="line">            newNode-&gt;next = curr-&gt;next;</span><br><span class="line">            curr-&gt;next = newNode;</span><br><span class="line">            curr = curr-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        curr = head;</span><br><span class="line">        <span class="keyword">while</span>(curr)&#123;</span><br><span class="line">            curr-&gt;next-&gt;random = curr-&gt;random? curr-&gt;random-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">            curr = curr-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        Node* newHead = head-&gt;next;</span><br><span class="line">        curr = head;</span><br><span class="line">        Node* newCurr = newHead;</span><br><span class="line">        <span class="keyword">while</span>(curr &amp;&amp; newCurr)&#123;</span><br><span class="line">            curr-&gt;next = newCurr ? newCurr-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">            newCurr-&gt;next = newCurr-&gt;next ? newCurr-&gt;next-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">            curr = curr-&gt;next;</span><br><span class="line">            newCurr = newCurr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -302,13 +300,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/10/longestValidParentheses/">最长有效括号</a></p>
+        <p><span>Title:</span><a href="/2022/03/10/copyListWithRandomPointer/">复制带随机指针的链表</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-10, 14:02:36</p>
-        <p><span>Updated:</span>2022-03-10, 14:20:35</p>
+        <p><span>Created:</span>2022-03-10, 16:24:37</p>
+        <p><span>Updated:</span>2022-03-10, 16:53:16</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/10/longestValidParentheses/" title="最长有效括号">https://angielee233.github.io/2022/03/10/longestValidParentheses/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/10/longestValidParentheses/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/10/copyListWithRandomPointer/" title="复制带随机指针的链表">https://angielee233.github.io/2022/03/10/copyListWithRandomPointer/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/10/copyListWithRandomPointer/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -320,16 +318,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/10/minimumPathSum/">
-                    最小路径和
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/10/generateParentheses/">
-                    括号生成
+                <a href="/2022/03/10/longestPalindromicSubstring/">
+                    最长回文子串
                 </a>
             </div>
         
@@ -341,7 +333,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">1.</span> <span class="toc-text">栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%A4%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-number">2.</span> <span class="toc-text">两次遍历</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">哈希表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E5%9C%B0%E6%8B%B7%E8%B4%9D"><span class="toc-number">2.</span> <span class="toc-text">原地拷贝</span></a></li></ol>
         
     </div>
     <style>
@@ -377,7 +369,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"最长有效括号　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"复制带随机指针的链表　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -397,15 +389,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/10/minimumPathSum/" title="Pre: 最小路径和">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/10/generateParentheses/" title="Next: 括号生成">
+            <a href="/2022/03/10/longestPalindromicSubstring/" title="Next: 最长回文子串">
                 <i class="fa fa-angle-right"></i>
             </a>
         
