@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>两两交换链表中的节点</title>
+      <link href="/2022/03/10/swapNodesInPairs/"/>
+      <url>/2022/03/10/swapNodesInPairs/</url>
+      
+        <content type="html"><![CDATA[<p>给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。</p><p>提示：</p><ul><li>链表中节点的数目在范围<code>[0, 100]</code>内</li><li><code>0 &lt;= Node.val &lt;= 100</code></li></ul><span id="more"></span><p><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/">24.两两交换链表中的节点</a></p><p>递归就好了，头节点和头节点的next进行交换，再往后的节点通过函数返回就好啦。写的时候默认后面都交换过了就好啦。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">nullptr</span> || head-&gt;next == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode* node1 = head;</span><br><span class="line">        ListNode* node2 = head-&gt;next;</span><br><span class="line">        ListNode* node3 = <span class="built_in">swapPairs</span>(head-&gt;next-&gt;next);</span><br><span class="line">        node1-&gt;next = node3;</span><br><span class="line">        node2-&gt;next = node1;</span><br><span class="line">        <span class="keyword">return</span> node2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎与算法题互相折磨的前世今生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 翻转链表 </tag>
+            
+            <tag> 迭代 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>解码方法</title>
       <link href="/2022/03/10/decodeWays/"/>
       <url>/2022/03/10/decodeWays/</url>
