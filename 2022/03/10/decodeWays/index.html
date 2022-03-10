@@ -15,15 +15,15 @@
 
 
 
-<meta name="description" content="给定一个包含非负整数的m x n网格grid，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。 说明：每次只能向下或者向右移动一步。 提示：  m &#x3D;&#x3D; grid.length n &#x3D;&#x3D; grid[i].length 1 &lt;&#x3D; m, n &lt;&#x3D; 200 0 &lt;&#x3D; grid[i][j] &lt;&#x3D; 100">
+<meta name="description" content="一条包含字母A-Z的消息通过以下映射进行了 编码 ： 1234&amp;#x27;A&amp;#x27; -&gt; &quot;1&quot;&amp;#x27;B&amp;#x27; -&gt; &quot;2&quot;...&amp;#x27;Z&amp;#x27; -&gt; &quot;26&quot;  要 解码 已编码的消息，所有数字必须基于上述映射的方法，反向映射回字母（可能有多种方法）。例如，”11106” 可以映射为：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最小路径和">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/10/minimumPathSum/index.html">
+<meta property="og:title" content="解码方法">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/10/decodeWays/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给定一个包含非负整数的m x n网格grid，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。 说明：每次只能向下或者向右移动一步。 提示：  m &#x3D;&#x3D; grid.length n &#x3D;&#x3D; grid[i].length 1 &lt;&#x3D; m, n &lt;&#x3D; 200 0 &lt;&#x3D; grid[i][j] &lt;&#x3D; 100">
+<meta property="og:description" content="一条包含字母A-Z的消息通过以下映射进行了 编码 ： 1234&amp;#x27;A&amp;#x27; -&gt; &quot;1&quot;&amp;#x27;B&amp;#x27; -&gt; &quot;2&quot;...&amp;#x27;Z&amp;#x27; -&gt; &quot;26&quot;  要 解码 已编码的消息，所有数字必须基于上述映射的方法，反向映射回字母（可能有多种方法）。例如，”11106” 可以映射为：">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-10T06:56:01.203Z">
-<meta property="article:modified_time" content="2022-03-10T06:59:55.186Z">
+<meta property="article:published_time" content="2022-03-10T11:55:10.944Z">
+<meta property="article:modified_time" content="2022-03-10T12:25:37.827Z">
 <meta property="article:author" content="AngieLee">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary">
@@ -60,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>最小路径和 | 小黎的小窝</title>
+<title>解码方法 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -223,11 +223,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-minimumPathSum" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-decodeWays" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/10/minimumPathSum/" class="article-date">
-      <time datetime="2022-03-10T06:56:01.203Z" itemprop="datePublished">2022-03-10</time>
+      <a href="/2022/03/10/decodeWays/" class="article-date">
+      <time datetime="2022-03-10T11:55:10.944Z" itemprop="datePublished">2022-03-10</time>
 </a>
 
 
@@ -242,7 +242,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      最小路径和
+      解码方法
     </h1>
   
 
@@ -267,21 +267,34 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给定一个包含非负整数的<code>m x n</code>网格<code>grid</code>，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。</p>
-<p>说明：每次只能向下或者向右移动一步。</p>
+        <p>一条包含字母<code>A-Z</code>的消息通过以下映射进行了 编码 ：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x27;A&#x27; -&gt; &quot;1&quot;</span><br><span class="line">&#x27;B&#x27; -&gt; &quot;2&quot;</span><br><span class="line">...</span><br><span class="line">&#x27;Z&#x27; -&gt; &quot;26&quot;</span><br></pre></td></tr></table></figure>
+
+<p>要 解码 已编码的消息，所有数字必须基于上述映射的方法，反向映射回字母（可能有多种方法）。例如，”11106” 可以映射为：</p>
+<ul>
+<li><code>&quot;AAJF&quot;</code>，将消息分组为<code>(1 1 10 6)</code></li>
+<li><code>&quot;KJF&quot;</code>，将消息分组为<code>(11 10 6)</code></li>
+</ul>
+<p>注意，消息不能分组为<code>(1 11 06)</code>，因为<code>&quot;06&quot;</code>不能映射为<code>&quot;F&quot;</code>，这是由于<code>&quot;6&quot;</code>和<code>&quot;06&quot;</code>在映射中并不等价。</p>
+<p>给你一个只含数字的<strong>非空</strong>字符串<code>s</code>，请计算并返回<strong>解码</strong>方法的<strong>总数</strong>。</p>
+<p>题目数据保证答案肯定是一个<strong>32 位</strong>的整数。</p>
 <p>提示：</p>
 <ul>
-<li><code>m == grid.length</code></li>
-<li><code>n == grid[i].length</code></li>
-<li><code>1 &lt;= m, n &lt;= 200</code></li>
-<li><code>0 &lt;= grid[i][j] &lt;= 100</code></li>
+<li><code>1 &lt;= s.length &lt;= 100</code></li>
+<li><code>s</code>只包含数字，并且可能包含前导零。</li>
 </ul>
 <span id="more"></span>
 
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-path-sum/">64.最小路径和</a></p>
-<p>很明显是个动态规划啦，初始化一下上边界和左边界的数值，然后对于别的格子取上边和左边最小值加上当前格子数值就好。</p>
-<p><del>感觉没什么好说的，打那么多字是我对它最大的尊重了</del></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minPathSum</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> m = grid.<span class="built_in">size</span>(), n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">dp</span>(m, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n, <span class="number">0</span>));</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; m; ++i)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = dp[i - <span class="number">1</span>][<span class="number">0</span>] + grid[i][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            dp[<span class="number">0</span>][i] = dp[<span class="number">0</span>][i - <span class="number">1</span>] + grid[<span class="number">0</span>][i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; m; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; n; ++j)&#123;</span><br><span class="line">                dp[i][j] = <span class="built_in">min</span>(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]) + grid[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/decode-ways/">91.编码方法</a></p>
+<p><del>有人相爱，有人夜里看海，有人一道动态规划死活写不出来</del></p>
+<p>对于一个字符串，编码出的最后一个字母可以是根据字符串最后一个字符，也可以是根据字符串最后两个字符。如果是根据最后一个字符进行编码的，那么该字符不能为’0’，如果是根据最后两个字符编码的，那么不能有前导0且不大于26。</p>
+<p>根据以上推算，容易得到动态方程。<del>既然那么容易，我就不写了</del></p>
+<p>要注意的是，长度为1和2时对字符串的判断。如果长度为1，那么直接判断是不是’0’就好了，如果长度为2，判断最后两个字符可以编码时，是要给当前dp值加一，而不是加上之前第二个的dp值，否则会越界。</p>
+<p><del>感觉没说清楚，反正就是会越界，看代码就知道了</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numDecodings</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(n, <span class="number">0</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = (s[<span class="number">0</span>] != <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] != <span class="string">&#x27;0&#x27;</span>)&#123;</span><br><span class="line">                dp[i] += dp[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; s[i - <span class="number">1</span>] != <span class="string">&#x27;0&#x27;</span> &amp;&amp; <span class="number">10</span> * (s[i - <span class="number">1</span>] - <span class="string">&#x27;0&#x27;</span>) + (s[i] - <span class="string">&#x27;0&#x27;</span>) &lt;= <span class="number">26</span>)&#123;</span><br><span class="line">                dp[i] += (i &gt; <span class="number">1</span> ? dp[i - <span class="number">2</span>] : <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>官方题解中，给dp加了个头，就不用考虑前面说的越界问题，但是dp的意义会变，要变下标。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numDecodings</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(n + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] != <span class="string">&#x27;0&#x27;</span>)&#123;</span><br><span class="line">                dp[i + <span class="number">1</span>] += dp[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; <span class="number">0</span> &amp;&amp; s[i - <span class="number">1</span>] != <span class="string">&#x27;0&#x27;</span> &amp;&amp; <span class="number">10</span> * (s[i - <span class="number">1</span>] - <span class="string">&#x27;0&#x27;</span>) + (s[i] - <span class="string">&#x27;0&#x27;</span>) &lt;= <span class="number">26</span>)&#123;</span><br><span class="line">                dp[i + <span class="number">1</span>] += dp[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -289,13 +302,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/10/minimumPathSum/">最小路径和</a></p>
+        <p><span>Title:</span><a href="/2022/03/10/decodeWays/">解码方法</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
-        <p><span>Created:</span>2022-03-10, 14:56:01</p>
-        <p><span>Updated:</span>2022-03-10, 14:59:55</p>
+        <p><span>Created:</span>2022-03-10, 19:55:10</p>
+        <p><span>Updated:</span>2022-03-10, 20:25:37</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/10/minimumPathSum/" title="最小路径和">https://angielee233.github.io/2022/03/10/minimumPathSum/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/10/minimumPathSum/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/10/decodeWays/" title="解码方法">https://angielee233.github.io/2022/03/10/decodeWays/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/10/decodeWays/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -307,16 +320,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/10/longestPalindromicSubstring/">
-                    最长回文子串
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/10/longestValidParentheses/">
-                    最长有效括号
+                <a href="/2022/03/10/searchA2DMatrixII/">
+                    搜索二维矩阵II
                 </a>
             </div>
         
@@ -364,7 +371,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"最小路径和　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"解码方法　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -384,15 +391,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/10/longestPalindromicSubstring/" title="Pre: 最长回文子串">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/10/longestValidParentheses/" title="Next: 最长有效括号">
+            <a href="/2022/03/10/searchA2DMatrixII/" title="Next: 搜索二维矩阵II">
                 <i class="fa fa-angle-right"></i>
             </a>
         
