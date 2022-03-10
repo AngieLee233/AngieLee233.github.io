@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>最长有效括号</title>
+      <link href="/2022/03/10/longestValidParentheses/"/>
+      <url>/2022/03/10/longestValidParentheses/</url>
+      
+        <content type="html"><![CDATA[<p>给你一个只包含<code>&#39;(&#39;</code>和<code>&#39;)&#39;</code>的字符串，找出最长有效（格式正确且连续）括号子串的长度。</p><p>提示：</p><ul><li><code>0 &lt;= s.length &lt;= 3 * 10^4</code></li><li><code>s[i]</code>为<code>&#39;(&#39;</code>或<code>&#39;)&#39;</code></li></ul><span id="more"></span>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎与算法题互相折磨的前世今生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 栈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>括号生成</title>
+      <link href="/2022/03/10/generateParentheses/"/>
+      <url>/2022/03/10/generateParentheses/</url>
+      
+        <content type="html"><![CDATA[<p>数字<code>n</code>代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且<strong>有效的</strong>括号组合。</p><p>提示：</p><ul><li><code>1 &lt;= n &lt;= 8</code></li></ul><span id="more"></span><p><a href="https://leetcode-cn.com/problems/generate-parentheses/">22.括号生成</a></p><p><del>看到输入范围是[1,8]有没有让你产生一个大胆的想法</del></p><p>很明显的一个递归（其实回溯也行<del>只是我懒得写</del>），递归出口就是左括号和右括号数目均符合条件，记上这个可行解就行。对于左括号或者右括号的数目大于目标值，以及右括号的数目多于左括号的情况，明显是不可行解，直接退出就行。</p><p>然后就是很简单的递归了<del>我只能说懂的都懂</del></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;string&gt; <span class="title">generateParenthesis</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        vector&lt;string&gt; ans;</span><br><span class="line">        <span class="built_in">generate</span>(<span class="number">0</span>, <span class="number">0</span>, n, <span class="string">&quot;&quot;</span>, ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">generate</span><span class="params">(<span class="type">int</span> leftCount, <span class="type">int</span> rightCount, <span class="type">int</span> target, string curr, vector&lt;string&gt;&amp; ans)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(leftCount == target &amp;&amp; rightCount == target)&#123;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(curr);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(rightCount &gt; target || leftCount &gt; target || rightCount &gt; leftCount)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">generate</span>(leftCount + <span class="number">1</span>, rightCount, target, curr + <span class="string">&#x27;(&#x27;</span>, ans);</span><br><span class="line">        <span class="built_in">generate</span>(leftCount, rightCount + <span class="number">1</span>, target, curr + <span class="string">&#x27;)&#x27;</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎与算法题互相折磨的前世今生 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 递归 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>环形链表</title>
       <link href="/2022/03/09/linkedListCycleII/"/>
       <url>/2022/03/09/linkedListCycleII/</url>
