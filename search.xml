@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>计算机网络网课笔记-网络层</title>
+      <link href="/2022/03/18/computerInternet-4/"/>
+      <url>/2022/03/18/computerInternet-4/</url>
+      
+        <content type="html"><![CDATA[<p>上一章的数据链路层内容真的好多，光md文件就有62KB</p><p>再加上中间跑去刷算法了，就鸽了很久</p><p>但是细心的可以发现，算法的最后一篇和这篇的发布时间是隔了一段时间的</p><p><s>就是小黎刷算法太累了给自己放了个小长假</s></p><p>总之终于开始新的一章啦！</p><span id="more"></span><h1>网络层概述</h1><ul><li>网络层的主要任务是<strong>实现网络互连</strong>，进而实现<strong>数据包在各网络之间的传输</strong>。</li><li>要实现网络层任务，需要解决以下主要问题：<ul><li>网络层向运输层提供怎样的服务（“可靠传输”还是“不可靠传输”）</li><li>网络层寻址问题</li><li>路由选择问题</li></ul></li><li><strong>因特网</strong>（Internet）是目前全世界用户数量最多的互联网，它使用<strong>TCP/IP协议栈</strong>。</li><li>由于TCP/IP协议栈的网络层使用<strong>网际协议IP</strong>，它是整个协议栈的核心协议，因此在TCP/IP协议栈中网络层常称为<strong>网际层</strong>。</li><li>本章通过学习TCP/IP协议栈的网际层来学习网络层的理论知识和实践技术。</li></ul><p><a href="https://imgtu.com/i/qFBGmn"><img src="https://s1.ax1x.com/2022/03/18/qFBGmn.png" alt="qFBGmn.png"></a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎与计网的爱恨情仇 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络层 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>二叉树的序列化与反序列化</title>
       <link href="/2022/03/10/serializeAndDeserializeBinaryTree/"/>
       <url>/2022/03/10/serializeAndDeserializeBinaryTree/</url>
