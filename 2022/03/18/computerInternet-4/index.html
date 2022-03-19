@@ -40,8 +40,34 @@
 <meta property="og:image" content="https://s1.ax1x.com/2022/03/18/qkJxr6.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/03/18/qka69e.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/03/18/qkaQ00.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qAxKCn.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qAzkGR.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qESzEF.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qE9es0.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qE9WTS.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEEqgg.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEAFiT.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEA2mn.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEA76J.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEesNq.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEmlxU.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEmOJ0.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEu9c8.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEuIEj.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEKVqe.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEM9eg.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEQLxP.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEJzZV.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEJTIS.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEUpIf.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qELPt1.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEODIA.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qEjB9I.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qVp1O0.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qVpBOx.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/19/qVpnYQ.md.png">
 <meta property="article:published_time" content="2022-03-18T08:29:48.739Z">
-<meta property="article:modified_time" content="2022-03-18T14:54:11.559Z">
+<meta property="article:modified_time" content="2022-03-19T13:45:54.551Z">
 <meta property="article:author" content="AngieLee">
 <meta property="article:tag" content="网络层">
 <meta name="twitter:card" content="summary">
@@ -555,6 +581,157 @@
 </ul>
 <p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qkaQ00"><img src="https://s1.ax1x.com/2022/03/18/qkaQ00.png" alt="qkaQ00.png"></a></p>
 <h1>IP数据报的发送和转发过程</h1>
+<p>IP数据报的发送和转发过程包含以下两部分：</p>
+<ul>
+<li>主机发送IP数据报</li>
+<li>路由器转发IP数据报</li>
+</ul>
+<h2 id="主机发送IP数据报">主机发送IP数据报</h2>
+<ul>
+<li>若在同一个网络，则属于直接交付；</li>
+<li>若不在同一个网络，则属于间接交付，传输给主机所在网络的默认网关（路由器），由默认网关帮忙转发；</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qAxKCn"><img src="https://s1.ax1x.com/2022/03/19/qAxKCn.md.png" alt="qAxKCn.md.png"></a></p>
+<h3 id="源主机判断目的主机是否与自己在同一网络">源主机判断目的主机是否与自己在同一网络</h3>
+<p>将目的IP地址与自身掩码相与，与自身IP地址与自身掩码相与的结果作对比，若不相等则不在同一网络中，为间接交付。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qAzkGR"><img src="https://s1.ax1x.com/2022/03/19/qAzkGR.md.png" alt="qAzkGR.md.png"></a></p>
+<h3 id="源主机判断间接交付所用路由器">源主机判断间接交付所用路由器</h3>
+<p>当本网络中主机要与其他网络中主机进行通信时，会将IP数据报传输给默认网关，由默认网关将IP数据报转发出去。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qESzEF"><img src="https://s1.ax1x.com/2022/03/19/qESzEF.md.png" alt="qESzEF.md.png"></a></p>
+<h2 id="路由器转发IP数据报">路由器转发IP数据报</h2>
+<ol>
+<li>检查IP数据报首部是否出错：
+<ul>
+<li>若出错，则直接丢弃该IP数据报并通告源主机；</li>
+<li>若没有出错，则进行转发；</li>
+</ul>
+</li>
+<li>根据IP数据报的目的地址在路由表中查找匹配的条目
+<ul>
+<li>若找到匹配的条目，则转发给条目中指示的下一跳；</li>
+<li>若找不到，则丢弃该IP数据报并通告源主机；</li>
+</ul>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qE9es0"><img src="https://s1.ax1x.com/2022/03/19/qE9es0.md.png" alt="qE9es0.md.png"></a></p>
+<p>路由器不对广播数据报进行转发，是隔离广播域的</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qE9WTS"><img src="https://s1.ax1x.com/2022/03/19/qE9WTS.md.png" alt="qE9WTS.md.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEEqgg"><img src="https://s1.ax1x.com/2022/03/19/qEEqgg.md.png" alt="qEEqgg.md.png"></a></p>
+<h1>静态路由配置及其可能产生的路由环路问题</h1>
+<ul>
+<li>静态路由配置是指用户或网络管理员使用路由器的相关命令给路由器<strong>人工配置路由表</strong>。
+<ul>
+<li>这种人工配置方式简单、开销小。但<strong>不能及时适应网络状态（流量、拓扑等）的变化</strong>。</li>
+<li>一般只在小规模网络中采用。</li>
+</ul>
+</li>
+<li>使用静态路由配置可能出现以下导致产生路由环路的错误
+<ul>
+<li>配置错误</li>
+<li>聚合了不存在的网络</li>
+<li>网络故障</li>
+</ul>
+</li>
+</ul>
+<h2 id="静态路由配置">静态路由配置</h2>
+<p>对于如下网络，由于路由器接口与网络直连，可以直接将网络及其接口加入路由表，类型属于直连。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEAFiT"><img src="https://s1.ax1x.com/2022/03/19/qEAFiT.md.png" alt="qEAFiT.md.png"></a></p>
+<p>假设R1要发送数据报到192.168.2.0/24网络中的某个主机，应该将数据报转发给R2的接口0，但R1的路由表中并没有关于该目的网络的路由条目，即R1并不知道目的网络的存在。因此，可以使用路由器相关的配置命令，给R1添加一条到达该目的网络的路由条目。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEA2mn"><img src="https://s1.ax1x.com/2022/03/19/qEA2mn.md.png" alt="qEA2mn.md.png"></a></p>
+<p>同理如下：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEA76J"><img src="https://s1.ax1x.com/2022/03/19/qEA76J.md.png" alt="qEA76J.md.png"></a></p>
+<h2 id="默认路由">默认路由</h2>
+<p>假设R1要转发一个IP数据报给因特网中某个网络中的某个主机，从图中可以看出，R1应该将该IP数据报转发给路由器R2的接口0.由于因特网中包含了众多的网络，如果我们给R1添加针对这些网络的每一条路由条目，则会给人工配置带来巨大的工作量，并且使R1的路由表变得非常大，降低了查表转发的速度。</p>
+<p>实际上，对于具有相同下一跳的不同目的网络的路由条目，我们可以用一条默认路由条目来替代。默认路由条目中的目的网络地址为0.0.0.0，地址掩码也为0.0.0.0，CIDR形式为0.0.0.0/0。对于本例，默认路由条目中的下一跳是路由器R2的接口0的地址。由于默认路由也是由人工配置的，因此其类型也为静态。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEesNq"><img src="https://s1.ax1x.com/2022/03/19/qEesNq.md.png" alt="qEesNq.md.png"></a></p>
+<h2 id="特定主机路由">特定主机路由</h2>
+<p>有时候，我们可以给路由器添加针对某个主机的特定主机路由条目。一般用于网络管理人员对网络的管理和测试。另外，在需要考虑某种安全问题时，也可以采用特定主机路由。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEmlxU"><img src="https://s1.ax1x.com/2022/03/19/qEmlxU.md.png" alt="qEmlxU.md.png"></a></p>
+<h2 id="静态路由配置错误导致路由环路">静态路由配置错误导致路由环路</h2>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEmOJ0"><img src="https://s1.ax1x.com/2022/03/19/qEmOJ0.md.png" alt="qEmOJ0.md.png"></a></p>
+<p>为了<strong>防止IP数据报在路由环路中永久兜圈</strong>，在IP数据报首部设有<strong>生存时间TTL</strong>字段。IP数据报进入路由器后，TTL字段的值减1。若TTL的值不等于0，则被路由器转发，否则被丢弃。</p>
+<h2 id="聚合不存在网络而导致路由环路">聚合不存在网络而导致路由环路</h2>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEu9c8"><img src="https://s1.ax1x.com/2022/03/19/qEu9c8.md.png" alt="qEu9c8.md.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEuIEj"><img src="https://s1.ax1x.com/2022/03/19/qEuIEj.md.png" alt="qEuIEj.md.png"></a></p>
+<p>针对这种情况，可以添加针对所聚合的、不存在的网络的黑洞路由。黑洞路由的下一跳为null0，这是路由器内部的虚拟接口，数据报进入该虚拟接口后路由器会将其丢弃（就像个黑洞，有去无回的那种</p>
+<p>对于下例，根据最长前缀匹配原则，IP数据报就会直接进入黑洞</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEKVqe"><img src="https://s1.ax1x.com/2022/03/19/qEKVqe.md.png" alt="qEKVqe.md.png"></a></p>
+<h2 id="网络故障而导致路由环路">网络故障而导致路由环路</h2>
+<p>假设路由器R1检测到其接口0所直连的网络出现了故障而不可达，就会自动在其路由表中删除其直连网络的路由条目。之后R2要转发IP数据报到该网络，从而导致路由环路。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEM9eg"><img src="https://s1.ax1x.com/2022/03/19/qEM9eg.md.png" alt="qEM9eg.md.png"></a></p>
+<p>针对这种情况，可以在R1的路由表中添加针对该直连网络的黑洞路由。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEQLxP"><img src="https://s1.ax1x.com/2022/03/19/qEQLxP.md.png" alt="qEQLxP.md.png"></a></p>
+<p>假设过一段时间后故障消失，黑洞路由就会自动失效，路由器自动添加针对该直连网络的路由条目。如果再次出现故障，则路由器自动删除针对该直连网络的路由条目，黑洞路由也会自动生效。<s>于是只有路由器受伤的世界完成了</s></p>
+<h1>路由选择协议</h1>
+<h2 id="路由选择协议概述">路由选择协议概述</h2>
+<h3 id="静态路由选择：">静态路由选择：</h3>
+<ul>
+<li>由<strong>人工配置</strong>的网络路由、默认路由、特定主机路由、黑洞路由等都属于静态路由。</li>
+<li>这种人工配置方式简单、开销小。但<strong>不能及时适应网络状态（流量、拓扑等）的变化</strong>。</li>
+<li>一般只在<strong>小规模网络</strong>中采用。</li>
+</ul>
+<h3 id="动态路由选择：">动态路由选择：</h3>
+<ul>
+<li>路由器通过路由选择协议<strong>自动获取路由信息</strong>。</li>
+<li>比较复杂、开销比较大。<strong>能较好地适应网络状态的变化</strong>。</li>
+<li>适用于<strong>大规模网络</strong>。</li>
+</ul>
+<h3 id="因特网所采用的路由选择协议的主要特点：">因特网所采用的路由选择协议的主要特点：</h3>
+<p><strong>自适应</strong>：动态路由选择，能较好地适应网络状态的变化<br>
+<strong>分布式</strong>：路由器之间交换路由信息<br>
+<strong>分层次</strong>：将整个因特网划分为许多较小的自治系统AS（Autonomous System）</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEJzZV"><img src="https://s1.ax1x.com/2022/03/19/qEJzZV.md.png" alt="qEJzZV.md.png"></a></p>
+<h3 id="常见的路由选择协议：">常见的路由选择协议：</h3>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEJTIS"><img src="https://s1.ax1x.com/2022/03/19/qEJTIS.md.png" alt="qEJTIS.md.png"></a></p>
+<h3 id="路由器的基本结构">路由器的基本结构</h3>
+<p>路由器是一种具有多个输入端口和输出端口的专用计算机，其任务是转发分组。</p>
+<p>路由器结构可以划分为两大部分，一个是<strong>路由选择部分</strong>，另一个是<strong>分组转发部分</strong>。</p>
+<p>路由选择部分的核心构件是<strong>路由选择处理机</strong>，它的任务是根据所使用的路由选择协议，周期性地与其他路由器进行路由信息的交互来更新路由表。</p>
+<p>分组转发部分由三部分构成，分别是交换结构、一组输入端口和一组输出端口。信号从某个输入端口进入路由器，物理层将信号转换成比特流送交数据链路层处理。数据链路层从比特流中识别出帧，去掉帧头和帧尾后送交网络层处理。</p>
+<p>如果送交网络层的分组是<strong>普通待转发的数据分组</strong>，则根据分组首部中的目的地址进行<strong>查表转发</strong>，若找不到匹配的转发条目，则丢弃该分组；否则按照匹配条目中所指示的端口进行转发。网络层更新数据分组首部中某些字段的值，例如将数据分组的生存时间减1。然后送交数据链路层进行封装。数据链路层将数据分组封装成帧，送交物理层处理。物理层将帧看作是比特流，将其变换成相应的电信号进行发送。</p>
+<p>如果送交网络层的分组是路由器之间交换路由信息的<strong>路由报文</strong>，则把这种分组<strong>送交路由选择处理机</strong>，路由选择处理机根据分组的内容，来更新自己的路由表。路由表一般仅包含<strong>从目的网络到下一跳的映射</strong>，路由表需要对网络拓扑变化的计算最优化。而转发表是从路由表得出的，转发表的结构应当使查找过程最优化。</p>
+<p>路由选择处理机除了处理收到的路由报文外，还会<strong>周期性地给其他路由器发送自己所知道的路由信息</strong>。路由器的各端口还应具有输入缓冲区和输出缓冲区。输入缓冲区用来暂存新进入路由器但还来不及处理的分组，输出缓冲区用来暂存已经处理完毕，但还来不及发送的分组。需要说明的是，路由器的端口一般都具有输入和输出的功能，我们图中分别给出输入端口和输出端口目的在于更好地演示路由器的基本工作过程。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEUpIf"><img src="https://s1.ax1x.com/2022/03/19/qEUpIf.md.png" alt="qEUpIf.md.png"></a></p>
+<h2 id="路由信息协议RIP（Routing-Information-Protocol）">路由信息协议RIP（Routing Information Protocol）</h2>
+<p>RIP要求自治系统AS内的每一个路由器都要维护从它自己到AS内其他每一个网络的距离记录。这是一组距离，称为“<strong>距离向量D-V（Distance-Vector）</strong>”。</p>
+<p>RIP使用<strong>跳数</strong>（Hop Count）作为度量（Metric）来衡量到达目的网络的距离。</p>
+<ul>
+<li>路由器到直连网络的距离定义为1。</li>
+<li>路由器到非直连网络的距离定义为所经过的路由器数加1。口允许一条路径最多只能包含15个路由器。</li>
+<li>“距离”等于16时相当于不可达。因此，RIP只适用于小型互联网。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qELPt1"><img src="https://s1.ax1x.com/2022/03/19/qELPt1.md.png" alt="qELPt1.md.png"></a></p>
+<p>RIP认为好的路由就是“<strong>距离短</strong>”的路由，也就是<strong>所通过路由器数量最少的路由</strong>。当到达同一目的网络有多条“距离相等”的路由时，可以进行<strong>等价负载均衡</strong>。</p>
+<p>RIP包含以下三个要点：</p>
+<ul>
+<li>和谁交换信息：仅和<strong>相邻路由器</strong>交换信息</li>
+<li>交换什么信息：自己的<strong>路由表</strong></li>
+<li>何时交换信息：<strong>周期性交换</strong>（例如每30秒）</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEODIA"><img src="https://s1.ax1x.com/2022/03/19/qEODIA.md.png" alt="qEODIA.md.png"></a></p>
+<h3 id="RIP的基本工作过程">RIP的基本工作过程</h3>
+<ol>
+<li>
+<p>路由器刚开始工作时，<strong>只知道自己到直连网络的距离为1</strong>。</p>
+</li>
+<li>
+<p>每个路由器仅<strong>和相邻路由器周期性地交换并更新路由信息</strong>。</p>
+</li>
+<li>
+<p>若干次交换和更新后，<strong>每个路由器都知道到达本AS内各网络的最短距离和下一跳地址</strong>，称为收敛。</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qEjB9I"><img src="https://s1.ax1x.com/2022/03/19/qEjB9I.md.png" alt="qEjB9I.md.png"></a></p>
+<h3 id="RIP的路由条目更新规则">RIP的路由条目更新规则</h3>
+<p>路由器C和D互为相邻路由器，它们之间周期性地交换并更新路由信息。路由器C的路由表中到达各目的网络的下一跳都记为问号，可以理解为路由器D并不需要关心路由器C的这些内容。</p>
+<p>假设路由器C的RIP更新报文发送周期到了，则路由器C将自己路由表中的相关路由信息封装到RIP更新报文中发送给路由器D。我们可以简单地理解为路由器C将自己的路由表发送给了路由器D。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qVp1O0"><img src="https://s1.ax1x.com/2022/03/19/qVp1O0.md.png" alt="qVp1O0.md.png"></a></p>
+<p>路由器D收到后对其进行改造，将到达各目的网络的下一跳都改为C，距离都增加1。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qVpBOx"><img src="https://s1.ax1x.com/2022/03/19/qVpBOx.md.png" alt="qVpBOx.md.png"></a></p>
+<p>现在路由器D根据改造的路由表来更新自己的路由表，更新规则如下图。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qVpnYQ"><img src="https://s1.ax1x.com/2022/03/19/qVpnYQ.md.png" alt="qVpnYQ.md.png"></a></p>
+<h2 id="开放最短路径优先OSFP的基本工作原理">开放最短路径优先OSFP的基本工作原理</h2>
+<h2 id="边界网关协议BGP的基本工作原理">边界网关协议BGP的基本工作原理</h2>
 
       
     </div>
@@ -566,7 +743,7 @@
         <p><span>Title:</span><a href="/2022/03/18/computerInternet-4/">计算机网络网课笔记-网络层</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Angie Lee</a></p>
         <p><span>Created:</span>2022-03-18, 16:29:48</p>
-        <p><span>Updated:</span>2022-03-18, 22:54:11</p>
+        <p><span>Updated:</span>2022-03-19, 21:45:54</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/03/18/computerInternet-4/" title="计算机网络网课笔记-网络层">https://angielee233.github.io/2022/03/18/computerInternet-4/</a>
             <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/18/computerInternet-4/　　By Angie Lee" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -596,7 +773,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">网络层概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">网络层提供的两种服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%99%9A%E7%94%B5%E8%B7%AF%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.1.</span> <span class="toc-text">面向连接的虚电路服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.2.</span> <span class="toc-text">无连接的数据报服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E7%94%B5%E8%B7%AF%E6%9C%8D%E5%8A%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">2.3.</span> <span class="toc-text">虚电路服务与数据报服务的比较</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">IPv4地址</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.</span> <span class="toc-text">分类编址的IPv4地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A%E7%B1%BB%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.1.</span> <span class="toc-text">A类地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E7%B1%BB%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.2.</span> <span class="toc-text">B类地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E7%B1%BB%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.3.</span> <span class="toc-text">C类地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABC%E7%B1%BBIP%E5%9C%B0%E5%9D%80%E7%B1%BB%E5%88%AB%E5%88%A4%E6%96%AD"><span class="toc-number">3.1.4.</span> <span class="toc-text">ABC类IP地址类别判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.5.</span> <span class="toc-text">特殊的IPv4地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="toc-number">3.2.</span> <span class="toc-text">划分子网的IPv4地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-number">3.2.1.</span> <span class="toc-text">子网掩码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E7%BB%86%E8%8A%82"><span class="toc-number">3.2.2.</span> <span class="toc-text">子网划分细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-number">3.2.3.</span> <span class="toc-text">默认子网掩码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="toc-number">3.3.</span> <span class="toc-text">无分类编址的IPv4地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CIDR%E5%9C%B0%E5%9D%80%E5%9D%97%E7%BB%86%E8%8A%82"><span class="toc-number">3.3.1.</span> <span class="toc-text">CIDR地址块细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%81%9A%E5%90%88%EF%BC%88%E6%9E%84%E9%80%A0%E8%B6%85%E7%BD%91%EF%BC%89"><span class="toc-number">3.3.2.</span> <span class="toc-text">路由聚合（构造超网）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv4%E5%9C%B0%E5%9D%80%E7%9A%84%E5%BA%94%E7%94%A8%E8%A7%84%E5%88%92"><span class="toc-number">3.4.</span> <span class="toc-text">IPv4地址的应用规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E9%95%BF%E7%9A%84%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81FLSM%EF%BC%88Fixed-Length-Subnet-Mask%EF%BC%89"><span class="toc-number">3.4.1.</span> <span class="toc-text">定长的子网掩码FLSM（Fixed Length Subnet Mask）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%95%BF%E7%9A%84%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81VLSM%EF%BC%88Variable-Length-Subnet-Mask%EF%BC%89"><span class="toc-number">3.4.2.</span> <span class="toc-text">变长的子网掩码VLSM（Variable Length Subnet Mask）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">IP数据报的发送和转发过程</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">网络层概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">网络层提供的两种服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%99%9A%E7%94%B5%E8%B7%AF%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.1.</span> <span class="toc-text">面向连接的虚电路服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.2.</span> <span class="toc-text">无连接的数据报服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E7%94%B5%E8%B7%AF%E6%9C%8D%E5%8A%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%9C%8D%E5%8A%A1%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">2.3.</span> <span class="toc-text">虚电路服务与数据报服务的比较</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">IPv4地址</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.</span> <span class="toc-text">分类编址的IPv4地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A%E7%B1%BB%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.1.</span> <span class="toc-text">A类地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B%E7%B1%BB%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.2.</span> <span class="toc-text">B类地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E7%B1%BB%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.3.</span> <span class="toc-text">C类地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ABC%E7%B1%BBIP%E5%9C%B0%E5%9D%80%E7%B1%BB%E5%88%AB%E5%88%A4%E6%96%AD"><span class="toc-number">3.1.4.</span> <span class="toc-text">ABC类IP地址类别判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="toc-number">3.1.5.</span> <span class="toc-text">特殊的IPv4地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="toc-number">3.2.</span> <span class="toc-text">划分子网的IPv4地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-number">3.2.1.</span> <span class="toc-text">子网掩码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86%E7%BB%86%E8%8A%82"><span class="toc-number">3.2.2.</span> <span class="toc-text">子网划分细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-number">3.2.3.</span> <span class="toc-text">默认子网掩码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80%E7%9A%84IPv4%E5%9C%B0%E5%9D%80"><span class="toc-number">3.3.</span> <span class="toc-text">无分类编址的IPv4地址</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CIDR%E5%9C%B0%E5%9D%80%E5%9D%97%E7%BB%86%E8%8A%82"><span class="toc-number">3.3.1.</span> <span class="toc-text">CIDR地址块细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%81%9A%E5%90%88%EF%BC%88%E6%9E%84%E9%80%A0%E8%B6%85%E7%BD%91%EF%BC%89"><span class="toc-number">3.3.2.</span> <span class="toc-text">路由聚合（构造超网）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv4%E5%9C%B0%E5%9D%80%E7%9A%84%E5%BA%94%E7%94%A8%E8%A7%84%E5%88%92"><span class="toc-number">3.4.</span> <span class="toc-text">IPv4地址的应用规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E9%95%BF%E7%9A%84%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81FLSM%EF%BC%88Fixed-Length-Subnet-Mask%EF%BC%89"><span class="toc-number">3.4.1.</span> <span class="toc-text">定长的子网掩码FLSM（Fixed Length Subnet Mask）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%95%BF%E7%9A%84%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81VLSM%EF%BC%88Variable-Length-Subnet-Mask%EF%BC%89"><span class="toc-number">3.4.2.</span> <span class="toc-text">变长的子网掩码VLSM（Variable Length Subnet Mask）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">IP数据报的发送和转发过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%8F%91%E9%80%81IP%E6%95%B0%E6%8D%AE%E6%8A%A5"><span class="toc-number">4.1.</span> <span class="toc-text">主机发送IP数据报</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E4%B8%BB%E6%9C%BA%E5%88%A4%E6%96%AD%E7%9B%AE%E7%9A%84%E4%B8%BB%E6%9C%BA%E6%98%AF%E5%90%A6%E4%B8%8E%E8%87%AA%E5%B7%B1%E5%9C%A8%E5%90%8C%E4%B8%80%E7%BD%91%E7%BB%9C"><span class="toc-number">4.1.1.</span> <span class="toc-text">源主机判断目的主机是否与自己在同一网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E4%B8%BB%E6%9C%BA%E5%88%A4%E6%96%AD%E9%97%B4%E6%8E%A5%E4%BA%A4%E4%BB%98%E6%89%80%E7%94%A8%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-number">4.1.2.</span> <span class="toc-text">源主机判断间接交付所用路由器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E8%BD%AC%E5%8F%91IP%E6%95%B0%E6%8D%AE%E6%8A%A5"><span class="toc-number">4.2.</span> <span class="toc-text">路由器转发IP数据报</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">静态路由配置及其可能产生的路由环路问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE"><span class="toc-number">5.1.</span> <span class="toc-text">静态路由配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E8%B7%AF%E7%94%B1"><span class="toc-number">5.2.</span> <span class="toc-text">默认路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%AE%9A%E4%B8%BB%E6%9C%BA%E8%B7%AF%E7%94%B1"><span class="toc-number">5.3.</span> <span class="toc-text">特定主机路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF%E5%AF%BC%E8%87%B4%E8%B7%AF%E7%94%B1%E7%8E%AF%E8%B7%AF"><span class="toc-number">5.4.</span> <span class="toc-text">静态路由配置错误导致路由环路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%81%9A%E5%90%88%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%BD%91%E7%BB%9C%E8%80%8C%E5%AF%BC%E8%87%B4%E8%B7%AF%E7%94%B1%E7%8E%AF%E8%B7%AF"><span class="toc-number">5.5.</span> <span class="toc-text">聚合不存在网络而导致路由环路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E8%80%8C%E5%AF%BC%E8%87%B4%E8%B7%AF%E7%94%B1%E7%8E%AF%E8%B7%AF"><span class="toc-number">5.6.</span> <span class="toc-text">网络故障而导致路由环路</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">路由选择协议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE%E6%A6%82%E8%BF%B0"><span class="toc-number">6.1.</span> <span class="toc-text">路由选择协议概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%EF%BC%9A"><span class="toc-number">6.1.1.</span> <span class="toc-text">静态路由选择：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%EF%BC%9A"><span class="toc-number">6.1.2.</span> <span class="toc-text">动态路由选择：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E6%89%80%E9%87%87%E7%94%A8%E7%9A%84%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9%EF%BC%9A"><span class="toc-number">6.1.3.</span> <span class="toc-text">因特网所采用的路由选择协议的主要特点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE%EF%BC%9A"><span class="toc-number">6.1.4.</span> <span class="toc-text">常见的路由选择协议：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="toc-number">6.1.5.</span> <span class="toc-text">路由器的基本结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E4%BF%A1%E6%81%AF%E5%8D%8F%E8%AE%AERIP%EF%BC%88Routing-Information-Protocol%EF%BC%89"><span class="toc-number">6.2.</span> <span class="toc-text">路由信息协议RIP（Routing Information Protocol）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RIP%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-number">6.2.1.</span> <span class="toc-text">RIP的基本工作过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RIP%E7%9A%84%E8%B7%AF%E7%94%B1%E6%9D%A1%E7%9B%AE%E6%9B%B4%E6%96%B0%E8%A7%84%E5%88%99"><span class="toc-number">6.2.2.</span> <span class="toc-text">RIP的路由条目更新规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E4%BC%98%E5%85%88OSFP%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">6.3.</span> <span class="toc-text">开放最短路径优先OSFP的基本工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%B9%E7%95%8C%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AEBGP%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">6.4.</span> <span class="toc-text">边界网关协议BGP的基本工作原理</span></a></li></ol></li></ol>
         
     </div>
     <style>
