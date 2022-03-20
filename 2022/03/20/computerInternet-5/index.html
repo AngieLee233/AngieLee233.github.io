@@ -22,11 +22,21 @@
 <meta property="og:site_name" content="小黎的小窝">
 <meta property="og:description" content="上次的网络层前前后后花了两天半，顺利完结撒花~ 终于到爷最爱的运输层啦！（bushi">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qezOfg.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qm9uFK.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qm9cT0.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qmChUP.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qmCXEq.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qmPn2D.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qmPuxe.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qmPYPf.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qmiCJf.md.png">
 <meta property="article:published_time" content="2022-03-20T08:40:05.833Z">
-<meta property="article:modified_time" content="2022-03-20T08:41:51.775Z">
+<meta property="article:modified_time" content="2022-03-20T15:38:33.520Z">
 <meta property="article:author" content="AngieLee">
 <meta property="article:tag" content="运输层">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/03/20/qezOfg.md.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -270,6 +280,65 @@
         <p>上次的网络层前前后后花了两天半，顺利完结撒花~</p>
 <p>终于到爷最爱的运输层啦！（bushi</p>
 <span id="more"></span>
+<h1>概述</h1>
+<ul>
+<li>之前课程所介绍的计算机网络体系结构中的物理层、数据链路层以及网络层它们共同解决了将主机通过异构网络互联起来所面临的问题，实现了<strong>主机到主机的通信</strong>。</li>
+<li>但实际上在计算机网络中进行<strong>通信的真正实体是位于通信两端主机中的进程</strong>。</li>
+<li><strong>如何为运行在不同主机上的应用进程提供直接的通信服务是运输层的任务</strong>，运输层协议又称为端到端协议。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qezOfg"><img src="https://s1.ax1x.com/2022/03/20/qezOfg.md.png" alt="qezOfg.md.png"></a></p>
+<p>运输层向高层用户屏蔽了下面网络核心的细节（如网络拓扑、所采用的路由选择协议等），它使应用进程看见的就<strong>好像是在两个运输层实体之间有一条端到端的逻辑通信信道</strong>。</p>
+<p>根据应用需求的不同，<strong>因特网的运输层</strong>为应用层提供了两种不同的运输协议，即<strong>面向连接的TCP</strong>和<strong>无连接的UDP</strong>，这两种协议就是本章要讨论的主要内容。</p>
+<h1>运输层端口号、复用与分用</h1>
+<h2 id="端口号">端口号</h2>
+<ul>
+<li>运行在计算机上的进程使用<strong>进程标识符PID</strong>来标志。</li>
+<li>因特网上的计算机并不是使用统一的操作系统，不同的操作系统（windows，Linux，Mac OS）又使用<strong>不同格式的进程标识符</strong>。</li>
+<li>为了使运行不同操作系统的计算机的应用进程之间能够进行网络通信，就必须<strong>使用统一的方法对TCP/IP体系的应用进程进行标识</strong>。</li>
+<li>TCP/IP体系的运输层使用<strong>端口号</strong>来区分应用层的不同应用进程。
+<ul>
+<li>端口号使用<strong>16比特</strong>表示，取值范围<strong>0~65535</strong>；
+<ul>
+<li><strong>熟知端口号</strong>：0~1023，IANA把这些端口号指派给了TCP/IP体系中最重要的一些应用协议，例如：FTP使用21/20，HTTP使用80，DNS使用53。</li>
+<li><strong>登记端口号</strong>：1024~49151，为没有熟知端口号的应用程序使用。使用这类端口号必须在IANA按照规定的手续登记，以防止重复，例如：Microsoft RDP 微软远程桌面使用的端口是3389。</li>
+<li><strong>短暂端口号</strong>：49152~65535，留给客户进程选择暂时使用。当服务器进程收到客户进程的报文时，就知道了客户进程所使用的动态端口号。通信结束后，这个端口号可供其他客户进程以后使用。</li>
+</ul>
+</li>
+<li><strong>端口号只具有本地意义</strong>，即端口号只是为了<strong>标识本计算机应用层中的各进程</strong>，在因特网中，<strong>不同计算机中的相同端口号是没有联系的</strong>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="发送方的复用与接收方的分用">发送方的复用与接收方的分用</h2>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qm9uFK"><img src="https://s1.ax1x.com/2022/03/20/qm9uFK.md.png" alt="qm9uFK.md.png"></a></p>
+<h2 id="TCP-IP体系的应用层常用协议所使用的运输层熟知端口号">TCP/IP体系的应用层常用协议所使用的运输层熟知端口号</h2>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qm9cT0"><img src="https://s1.ax1x.com/2022/03/20/qm9cT0.md.png" alt="qm9cT0.md.png"></a></p>
+<h2 id="端口号应用举例">端口号应用举例</h2>
+<p>如图所示，用户PC、DNS服务器、Web服务器通过交换机进行互联，它们处于同一个以太网中。假设Web服务器域名如图，DNS服务器中记录有该域名所对应的IP地址。</p>
+<p>我们在用户PC中使用网页浏览器来访问Web服务器的内容，在网页浏览器的地址栏中输入Web服务器的域名。用户PC中的DNS客户端进程会发送一个DNS查询请求报文，其内容如图。</p>
+<p>DNS查询请求报文需要使用运输层的UDP协议封装成UDP用户数据报，其首部中的源端口字段中的值在短暂端口号49151-65535挑选一个未被占用的用来标识客户端进程，例如49152。目的端口字段的值设置为53，这是DNS服务器端进程使用的熟知端口号。</p>
+<p>之后将UDP用户数据报封装在IP数据报中通过以太网发送给DNS服务器。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmChUP"><img src="https://s1.ax1x.com/2022/03/20/qmChUP.md.png" alt="qmChUP.md.png"></a></p>
+<p>DNS服务器收到该数据报后，从中解封出UDP用户数据报，UDP首部中的目的端口号为53，这表明应将UDP用户数据报的数据载荷部分，也就是DNS查询请求报文，交付给本服务器中的DNS服务器端进程。</p>
+<p>DNS服务器端进程解析DNS查询请求报文的内容，然后按其要求查找对应的IP地址。之后，会给用户PC发送DNS响应报文，其内容如图。</p>
+<p>DNS响应报文需要使用运输层的UDP协议封装成UDP用户数据报。其首部中的源端口字段的值设置为熟知端口号53，表明这是DNS服务器端进程所发送的UDP用户数据报。目的端口字段的值设置为49152，这是之前用户PC中发送DNS查询请求报文的DNS客户端进程所使用的短暂端口号。</p>
+<p>之后，将UDP用户数据报封装在IP数据报中，通过以太网发送给用户PC。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmCXEq"><img src="https://s1.ax1x.com/2022/03/20/qmCXEq.md.png" alt="qmCXEq.md.png"></a></p>
+<p>用户PC收到该数据报后，从中解封出UDP用户数据报。UDP首部中的目的端口号为49152，这表明应将该UDP用户数据报的数据载荷部分，也就是DNS响应报文，交付给用户PC中的DNS客户端进程。</p>
+<p>DNS客户端进程解析DNS相应报文的内容，就可知道自己之前所请求的Web服务器的域名所对应的IP地址。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmPn2D"><img src="https://s1.ax1x.com/2022/03/20/qmPn2D.md.png" alt="qmPn2D.md.png"></a></p>
+<p>现在，用户PC中的HTTP客户端进程可以向Web服务器发送HTTP请求报文了，其内容如图所示。</p>
+<p>HTTP请求报文需要使用运输层的TCP协议封装成TCP报文段，其首部中的源端口字段的值在短暂端口号49151-65535中挑选一个未被占用的，用来标识HTTP客户端进程。例如仍然使用之前用过的49152，目的端口字段的值设置为80，这是HTTP服务器端进程所使用的熟知端口号。</p>
+<p>之后将TCP报文段封装在IP数据报中，通过以太网发送给Web服务器。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmPuxe"><img src="https://s1.ax1x.com/2022/03/20/qmPuxe.md.png" alt="qmPuxe.md.png"></a></p>
+<p>Web服务器收到该数据报后，从中解封出TCP报文段。TCP首部中的目的端口号为80，这表明应该将该TCP报文段的数据载荷部分，也就是HTTP请求报文，交付给本服务器中的HTTP服务器端进程。</p>
+<p>HTTP服务器端进程解析HTTP请求报文的内容，然后按其要求查找首页内容。之后会给用户PC发送HTTP相应报文，其内容如图所示。HTTP相应报文需要使用运输层的TCP协议封装成TCP报文段，其首部中的源端口号字段的值设置为熟知端口号80，表明这是HTTP服务器端进程所发送的TCP报文段。目的端口字段的值设置为49152，这是之前用户PC中发送HTTP请求报文的HTTP客户端进程所使用的短暂端口号。</p>
+<p>之后，将TCP报文段封装在IP数据报中，通过以太网发送给用户PC。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmPYPf"><img src="https://s1.ax1x.com/2022/03/20/qmPYPf.md.png" alt="qmPYPf.md.png"></a></p>
+<p>用户PC收到该数据报后，从中解封出TCP报文段，TCP首部中的目的端口号为49152，这表明应该将该TCP报文段的数据载荷部分，也就是HTTP相应报文，交付给用户PC中的HTTP客户端进程。</p>
+<p>HTTP客户端进程解析HTTP相应报文的内容，并在网页浏览器中进行显示。这样，我们就可以在网页浏览器中看到Web服务器所提供的首页内容了。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmiCJf"><img src="https://s1.ax1x.com/2022/03/20/qmiCJf.md.png" alt="qmiCJf.md.png"></a></p>
+<h1>TCP和UDP的对比</h1>
+
       
     </div>
     
@@ -280,7 +349,7 @@
         <p><span>Title:</span><a href="/2022/03/20/computerInternet-5/">计算机网络网课笔记-运输层</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Angie Lee</a></p>
         <p><span>Created:</span>2022-03-20, 16:40:05</p>
-        <p><span>Updated:</span>2022-03-20, 16:41:51</p>
+        <p><span>Updated:</span>2022-03-20, 23:38:33</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/03/20/computerInternet-5/" title="计算机网络网课笔记-运输层">https://angielee233.github.io/2022/03/20/computerInternet-5/</a>
             <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/20/computerInternet-5/　　By Angie Lee" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -310,7 +379,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">运输层端口号、复用与分用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">2.1.</span> <span class="toc-text">端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%96%B9%E7%9A%84%E5%A4%8D%E7%94%A8%E4%B8%8E%E6%8E%A5%E6%94%B6%E6%96%B9%E7%9A%84%E5%88%86%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">发送方的复用与接收方的分用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP%E4%BD%93%E7%B3%BB%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82%E5%B8%B8%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BF%90%E8%BE%93%E5%B1%82%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">2.3.</span> <span class="toc-text">TCP&#x2F;IP体系的应用层常用协议所使用的运输层熟知端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text">端口号应用举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">TCP和UDP的对比</span></a></li></ol>
         
     </div>
     <style>
