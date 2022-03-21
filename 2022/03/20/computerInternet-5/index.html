@@ -31,8 +31,13 @@
 <meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qmPuxe.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qmPYPf.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/03/20/qmiCJf.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/qmrjPJ.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/qmsKqf.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/qm66Dx.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/qmcus1.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/qmjIDx.md.png">
 <meta property="article:published_time" content="2022-03-20T08:40:05.833Z">
-<meta property="article:modified_time" content="2022-03-20T15:38:33.520Z">
+<meta property="article:modified_time" content="2022-03-21T04:25:59.330Z">
 <meta property="article:author" content="AngieLee">
 <meta property="article:tag" content="运输层">
 <meta name="twitter:card" content="summary">
@@ -338,6 +343,22 @@
 <p>HTTP客户端进程解析HTTP相应报文的内容，并在网页浏览器中进行显示。这样，我们就可以在网页浏览器中看到Web服务器所提供的首页内容了。</p>
 <p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmiCJf"><img src="https://s1.ax1x.com/2022/03/20/qmiCJf.md.png" alt="qmiCJf.md.png"></a></p>
 <h1>TCP和UDP的对比</h1>
+<p>使用UDP协议的通信双方可以随时发送数据</p>
+<p>使用TCP协议的通信双方在进行数据传输前，需要通过三报文握手建立TCP连接。TCP连接建立成功后才能进行数据传输。数据传输结束后，需要使用四报文挥手来释放TCP连接。</p>
+<p>（这里的连接是指逻辑连接，而不是物理连接</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmrjPJ"><img src="https://s1.ax1x.com/2022/03/21/qmrjPJ.md.png" alt="qmrjPJ.md.png"></a></p>
+<p>图中是使用UDP协议的四台主机，其中任意一个主机都可以向其他主机发送广播，也可以向某个多播组发送多播，还可以向某台主机发送单播。也就是说，UDP支持一对一、一对多和一对全的通信。</p>
+<p>使用TCP协议的通信双方，在进行数据传输之前必须要使用三报文握手来建立连接，通信双方使用这条基于TCP连接的可靠信道进行通信。TCP仅支持单播，也就是一对一的通信。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmsKqf"><img src="https://s1.ax1x.com/2022/03/21/qmsKqf.md.png" alt="qmsKqf.md.png"></a></p>
+<p>发送方的应用进程将应用层报文交付给运输层的UDP，UDP直接给应用层报文添加一个UDP首部，使之成为UDP用户数据报，然后进行发送。接收方的UDP收到该UDP用户数据报后，去掉UDP首部，将应用层报文交付给应用进程。也就是说，UDP对应用进程交下来的报文既不合并也不拆分，而是保留这些报文的边界。</p>
+<p>发送方的TCP把应用进程交付下来的数据块仅仅看作是一连串的、无结构的字节流。TCP仅将字节流编号，并存储在自己的发送缓存中。TCP根据发送策略从发送缓存中提取一定数量的字节构造TCP报文段进行发送。接收方的TCP一方面从接收到的TCP报文段中，取出数据载荷部分并存储在接收缓存中，一方面将接收缓存中的一些字节交付给应用进程。TCP不保证接收方应用进程所收到的数据块与发送方应用进程所发出的数据块具有对应大小的关系。但接收方的应用进程收到的字节流必须和发送方应用进程发出的字节流完全一样。这是TCP实现可靠传输、流量控制、拥塞控制的基础。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qm66Dx"><img src="https://s1.ax1x.com/2022/03/21/qm66Dx.md.png" alt="qm66Dx.md.png"></a></p>
+<p>当运输层使用UDP协议时，向上提供无连接的不可靠传输服务。</p>
+<p>当运输层使用TCP协议时，向上提供面向连接的可靠传输服务。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmcus1"><img src="https://s1.ax1x.com/2022/03/21/qmcus1.md.png" alt="qmcus1.md.png"></a></p>
+<p>由于UDP不提供可靠传输服务，它仅在网际层的基础上添加了用于区分应用进程的端口，因此首部非常简单，仅有8个字节。</p>
+<p>TCP首部格式比UDP复杂得多，其最小长度为20字节，最大长度为60字节，因为TCP要实现可靠传输、流量控制、拥塞控制等服务，其首部自然会比较复杂。首部中的字段比较多、首部长度也比较长。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qmjIDx"><img src="https://s1.ax1x.com/2022/03/21/qmjIDx.md.png" alt="qmjIDx.md.png"></a></p>
 
       
     </div>
@@ -349,7 +370,7 @@
         <p><span>Title:</span><a href="/2022/03/20/computerInternet-5/">计算机网络网课笔记-运输层</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Angie Lee</a></p>
         <p><span>Created:</span>2022-03-20, 16:40:05</p>
-        <p><span>Updated:</span>2022-03-20, 23:38:33</p>
+        <p><span>Updated:</span>2022-03-21, 12:25:59</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/03/20/computerInternet-5/" title="计算机网络网课笔记-运输层">https://angielee233.github.io/2022/03/20/computerInternet-5/</a>
             <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/20/computerInternet-5/　　By Angie Lee" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
