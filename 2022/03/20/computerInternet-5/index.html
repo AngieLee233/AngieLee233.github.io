@@ -41,8 +41,18 @@
 <meta property="og:image" content="https://s1.ax1x.com/2022/03/21/quJsxO.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/03/21/quNBin.md.png">
 <meta property="og:image" content="https://s1.ax1x.com/2022/03/21/quaIKK.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/quryb6.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/qus4FU.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/qugOjH.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/qu2srd.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/quRVzD.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/quR7lD.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/quf94x.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/quf1xS.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/qubxSA.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/21/quL5b6.md.png">
 <meta property="article:published_time" content="2022-03-20T08:40:05.833Z">
-<meta property="article:modified_time" content="2022-03-21T13:43:10.992Z">
+<meta property="article:modified_time" content="2022-03-21T15:55:51.950Z">
 <meta property="article:author" content="AngieLee">
 <meta property="article:tag" content="运输层">
 <meta name="twitter:card" content="summary">
@@ -435,7 +445,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="快重传">快重传</h4>
+<h4 id="快重传算法">快重传算法</h4>
 <ul>
 <li>采用快重传算法可以<strong>让发送方尽早知道发生了个别报文段的丢失</strong>。</li>
 <li>所谓快重传，就是使发送方<strong>尽快进行重传</strong>，而<strong>不是等超时重传计时器超时</strong>再重传。
@@ -443,9 +453,135 @@
 <li>要求接收方不要等待自己发送数据时才进行捎带确认，而是要<strong>立即发送确认</strong></li>
 <li>即使收到了失序的报文段也要立即发出对已收到的报文段的<strong>重复确认</strong>。</li>
 <li>发送方一旦<strong>收到3个连续的重复确认</strong>，就将相应的报文段<strong>立即重传</strong>，而不是等该报文段的超时重传计时器超时再重传。</li>
+<li>对于个别丢失的报文段，发送方不会出现超时重传，也就不会误认为出现了拥塞（进而降低拥塞窗口cwnd为1），使用快重传可以使整个网络的吞吐量提高约20%。</li>
 </ul>
 </li>
 </ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/quryb6"><img src="https://s1.ax1x.com/2022/03/21/quryb6.md.png" alt="quryb6.md.png"></a></p>
+<h4 id="快恢复算法">快恢复算法</h4>
+<ul>
+<li>发送方一旦<strong>收到3个重复确认</strong>，就知道现在只是丢失了个别的报文段。于是不启动慢开始算法，而<strong>执行快恢复算法</strong>
+<ul>
+<li><strong>发送方将慢开始门限ssthresh值和拥塞窗口cwnd值调整为当前窗口的一半；开始执行拥塞避免算法</strong>。</li>
+<li>也有的快恢复实现是把快恢复开始时的拥塞窗口cwnd值再增大一些，即等于新的ssthresh＋3。
+<ul>
+<li>既然发送方收到3个重复的确认，就表明有3个数据报文段已经离开了网络：</li>
+<li>这3个报文段不再消耗网络资源而是停留在接收方的接收缓存中；</li>
+<li>可见现在网络中不是堆积了报文段而是减少了3个报文段。因此可以适当把拥塞窗口扩大些。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qus4FU"><img src="https://s1.ax1x.com/2022/03/21/qus4FU.md.png" alt="qus4FU.md.png"></a></p>
+<h1>TCP超时重传时间的选择</h1>
+<ul>
+<li>超时重传时间的选择是TCP最复杂的问题之一
+<ul>
+<li>超时重传时间RTO小于往返时间RTT，会引起报文段不必要的重传，使网络负荷增大。</li>
+<li>超时重传时间RTO的值远大于往返时间RTT，会使网络的空闲时间增大，降低了传输效率。</li>
+<li>综合以上两种情况可以得出，超时重传时间RTO的值应略大于往返时间RTT的值。</li>
+</ul>
+</li>
+<li><strong>不能直接使用某次测量得到的RTT样本来计算超时重传时间RTO</strong>。<s>（网络传输速率不是固定不变的，RTT这事潘子你把握不住</s><br>
+<a target="_blank" rel="noopener" href="https://imgtu.com/i/qugOjH"><img src="https://s1.ax1x.com/2022/03/21/qugOjH.md.png" alt="qugOjH.md.png"></a></li>
+</ul>
+<h2 id="加权平均往返时间RTTs">加权平均往返时间RTTs</h2>
+<ul>
+<li>利用每次测量得到的RTT样本，计算<strong>加权平均往返时间RTTs</strong>（又称为平滑的往返时间）。
+<ul>
+<li>起初，<strong>RTTs1=RTT1</strong>,</li>
+<li>之后的更新公式为：<strong>新的RTTs = (1-α)x 旧的RTTs + α x 新的RTT样本</strong></li>
+<li>在上式中，0≤a＜1：
+<ul>
+<li>若α很接近于0，则新RTT样本对RTTs的影响不大；</li>
+<li>若a很接近于1，则新RTT样本对RTTs的影响较大；</li>
+</ul>
+</li>
+<li>已成为建议标准的RFC6298推荐的α值为1/8，即0.125。</li>
+</ul>
+</li>
+<li>用这种方法得出的加权平均往返时间RTTs就比测量出的RTT值更加平滑。</li>
+<li>显然，超时重传时间RTO应略大于加权平均往返时间RTTs。</li>
+</ul>
+<h2 id="RFC6298建议的超时重传时间RTO计算方法">RFC6298建议的超时重传时间RTO计算方法</h2>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qu2srd"><img src="https://s1.ax1x.com/2022/03/21/qu2srd.md.png" alt="qu2srd.md.png"></a></p>
+<p>可以发现，RTTs和RTTD都是基于新的RTT样本进行计算的，如果测量到的样本不正确，那么计算出来的数值也不正确。然而往返时间RTT的测量是比较复杂的。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/quRVzD"><img src="https://s1.ax1x.com/2022/03/21/quRVzD.md.png" alt="quRVzD.md.png"></a></p>
+<p>从上图可以看出，当出现超时重传后，主机无法准确测量RTT。</p>
+<h2 id="karn算法及其修正">karn算法及其修正</h2>
+<ul>
+<li>针对<strong>出现超时重传时无法测准往返时间RTT</strong>的问题，<strong>Karn</strong>提出了一个<strong>算法</strong>：<strong>在计算加权平均往返时间RTTs时，只要报文段重传了，就不采用其往返时间RTT样本</strong>。也就是出现重传时，不重新计算RTTs，进而超时重传时间RTO也不会重新计算。
+<ul>
+<li>这又引起了新的问题。设想出现这样的情况：报文段的时延突然增大了很多，并且之后很长一段时间都会保持这种时延。因此在原来得出的重传时间内，不会收到确认报文段。于是就重传报文段。但根据Karn算法，不考虑重传的报文段的往返时间样本。这样，超时重传时间就无法更新。这会导致报文段反复被重传。</li>
+</ul>
+</li>
+<li>因此，要对<strong>Karn算法进行修正</strong>。方法是：<strong>报文段每重传一次，就把超时重传时间RTO增大一些</strong>。典型的做法是将新RTO的值取为旧RTO值的2倍。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/quR7lD"><img src="https://s1.ax1x.com/2022/03/21/quR7lD.md.png" alt="quR7lD.md.png"></a></p>
+<h1>TCP可靠传输的实现</h1>
+<p>TCP基于<strong>以字节为单位的滑动窗口</strong>来实现可靠传输</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/quf94x"><img src="https://s1.ax1x.com/2022/03/21/quf94x.md.png" alt="quf94x.md.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/quf1xS"><img src="https://s1.ax1x.com/2022/03/21/quf1xS.md.png" alt="quf1xS.md.png"></a></p>
+<p>（还有一个图没放上来，主要就是说接收方收到失序的数据，比如说当前想要31–51号的数据，但是收到了32和33，也就是31丢了。接收方不高兴了，说爷的31去哪了，于是发送ack给发送方。发送方收到后视若无睹，因为<s>真正的程序员从来不看warning</s>收到三次相同的重传请求才会进行重传，感觉可能缺失的数据堵路上啥的，这不一定是咱的问题啊，于是就继续发送后面的数据。过了一会接收方收到了它最爱的31号数据，很开心地告诉发送方自己收到了，发送ack说要34号数据。于是移动自己的滑动窗口，把31-33号数据交付给上层，然后把这些数据从自己的缓存里<s>拉出来</s>移出。接收方知道了发送方已经收到31-33号数据了，同样地移动滑动窗口，移出数据。如果发送方把自己滑动窗口内的所有数据都发送出去了，在收到接收方的确认之前都不会再移动窗口和发送数据。如果发送方一直等不到接收方的确认，就会<s>生气</s>超时重传，重新发送窗口内的数据。</p>
+<p><s>知道为啥我不放图了吗，因为动画实在是太多了</s></p>
+<ul>
+<li>虽然发送方的发送窗口是根据接收方的接收窗口设置的，但在同一时刻，<strong>发送方的发送窗口并不总是和接收方的接收窗口一样大</strong>。
+<ul>
+<li>网络传送窗口值需要经历一定的时间滞后，并且这个时间还是不确定的。</li>
+<li>发送方还可能根据网络当时的拥塞情况适当减小自己的发送窗口尺寸。</li>
+</ul>
+</li>
+<li>对于<strong>不按序到达的数据应如何处理</strong>，TCP并无明确规定。
+<ul>
+<li>如果接收方把不按序到达的数据一律丢弃，那么接收窗口的管理将会比较简单，但这样做对网络资源的利用不利，因为发送方会重复传送较多的数据。</li>
+<li>TCP通常对不按序到达的数据是先临时存放在接收窗口中，等到字节流中所缺少的字节收到后，再<strong>按序交付上层的应用进程</strong>。</li>
+</ul>
+</li>
+<li>TCP要求接收方必须有<strong>累积确认和捎带确认机制</strong>，这样可以减小传输开销。接收方可以在合适的时候发送确认，也可以在自己有数据要发送时把确认信息顺便捎带上。
+<ul>
+<li><strong>接收方不应过分推迟发送确认</strong>，否则会导致发送方不必要的超时重传，这反而浪费了网络的资源。</li>
+<li>TCP标准规定，确认推迟的时间不应超过0.5秒。若收到一连串具有最大长度的报文段，则必须每隔一个报文段就发送一个确认［RFC 1122］。</li>
+<li>捎带确认实际上并不经常发生，因为大多数应用程序很少同时在两个方向上发送数据。</li>
+</ul>
+</li>
+<li><strong>TCP的通信是全双工通信</strong>。通信中的每一方都在发送和接收报文段。因此，每一方都有自己的发送窗口和接收窗口。在谈到这些窗口时，一定要弄清楚是哪一方的窗口。</li>
+</ul>
+<h1>TCP的运输连接管理</h1>
+<ul>
+<li>TCP是面向连接的协议，它基于运输连接来传送TCP报文段。</li>
+<li>TCP运输连接的建立和释放是每一次面向连接的通信中必不可少的过程。</li>
+<li>TCP运输连接有以下三个阶段：
+<ol>
+<li>“三报文握手”建立TCP连接</li>
+<li>数据传送</li>
+<li>“四报文挥手”释放TCP连接</li>
+</ol>
+</li>
+<li>TCP的运输连接管理就是使运输连接的建立和释放都能正常地进行。</li>
+</ul>
+<h2 id="TCP的连接建立">TCP的连接建立</h2>
+<ul>
+<li>TCP的连接建立要解决以下三个问题：
+<ol>
+<li>使TCP双方能够确知对方的存在；</li>
+<li>使TCP双方能够协商一些参数（如最大窗口值、是否使用窗口扩大选项和时间戳选项以及服务质量等）；</li>
+<li>使TCP双方能够对运输实体资源（如缓存大小、连接表中的项目等）进行分配。</li>
+</ol>
+</li>
+</ul>
+<h3 id="“三报文握手”建立连接过程">“三报文握手”建立连接过程</h3>
+<p>假设两台要基于TCP进行通信的主机，其中一台主机中的某应用进程主动发起TCP连接建立，称为TCP客户，另一台主机中被动等待TCP连接建立的应用进程，称为TCP服务器。我们可以将TCP建立连接的过程比喻为<strong>握手</strong>，握手需要在TCP客户和服务器之间<strong>交换三个TCP报文段</strong>。</p>
+<p>最初，两端的TCP进程都处于<strong>关闭状态</strong>。一开始，TCP服务器进程首先<strong>创建传输控制块</strong>，用来存储TCP连接中的一些重要信息，例如TCP连接表、指向发送和接收缓存的指针、指向重传队列的指针、当前发送和接收序号等。之后，就<strong>准备接受TCP客户进程的连接请求</strong>。此时，TCP服务器进程就进入<strong>监听状态</strong>，等待TCP客户进程的连接请求。TCP服务器进程是<strong>被动等待来自TCP客户进程的连接请求</strong>，而不是主动发起。因此称为<strong>被动打开连接</strong>。</p>
+<p>TCP客户进程也是<strong>首先创建传输控制块</strong>，然后在打算建立TCP连接时向TCP服务器进程发送<strong>TCP连接请求报文段</strong>，并进入<strong>同步已发送状态</strong>。TCP连接请求报文段首部中的<strong>同步位SYN被设置为1，表明这是一个TCP连接请求报文段</strong>。序号字段seq被设置为一个初始值x作为TCP客户进程所选择的初始序号。请注意：TCP规定<strong>SYN被设置为1的报文段不能携带数据，但要消耗掉一个序号</strong>。由于TCP连接建立是由TCP客户进程主动发起的，因此称为<strong>主动打开连接</strong>。</p>
+<p>TCP服务器进程收到TCP连接请求报文段后，如果同意建立连接，则向TCP客户进程发送<strong>TCP连接请求确认报文段</strong>，并进入<strong>同步已接收状态</strong>。该报文段首部中的同步位<strong>SYN和确认位ACK都设置为1，表明这是一个TCP连接请求确认报文段</strong>。序号字段seq被设置为一个初始值y作为TCP服务器进程所选择的初始序号。确认号字段ack的值被设置成了x+1，这是对TCP客户进程所选择的初始序号的确认。请注意：这<strong>个报文段也不能携带数据，因为它是SYN被设置为1的报文段</strong>，但同样要消耗掉一个序号。</p>
+<p>TCP客户进程收到TCP连接请求确认报文段后，<strong>还要向TCP服务器进程发送一个普通的TCP确认报文段</strong>，并进入<strong>连接已建立状态</strong>。该报文段首部中的确认位<strong>ACK被设置为1，表明这是一个普通的TCP确认报文段</strong>。序号字段seq被设置为x+1，这是因为TCP客户进程发送的第一个TCP报文段的序号为x，并且不携带数据，因此第二个报文段的序号为x+1。请注意：<strong>TCP规定普通的TCP确认报文段可以携带数据</strong>。但如果<strong>不携带数据，则不消耗序号</strong>。在这种情况下，所发送的下一个数据报文段的序号仍是x+1。确认号字段ack被设置为y+1，这是对TCP服务器进程所选择的初始序号的确认。</p>
+<p>TCP服务器进程收到该确认报文段后，也进入连接已建立状态。现在，TCP双方都进入了连接已建立状态，它们可以基于已建立好的TCP连接进行可靠的数据传输了。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qubxSA"><img src="https://s1.ax1x.com/2022/03/21/qubxSA.md.png" alt="qubxSA.md.png"></a></p>
+<h3 id="“两报文握手”不可行的原因">“两报文握手”不可行的原因</h3>
+<p>假设使用两报文握手，此时TCP客户端进程一开始发送了一个TCP请求报文，但是由于网络状态不佳没有及时发送出去，TCP客户端进程<s>按捺不住</s>超时重传TCP报文，之后TCP服务器进程顺利收到了该TCP报文，于是快快乐乐地建立连接、传输数据、释放连接。此时最开始的<s>怨种</s>TCP报文弯弯绕绕终于到达了TCP服务器，之后TCP服务器以为还要再来一次，告诉TCP客户端进程<s>派大星我们去抓水母吧！我准备好了我准备好了</s>自己进入已连接状态，TCP客户端进程觉得莫名其妙<s>进入章鱼哥状态</s>不予理睬。这个时候TCP服务器进程一直星星眼地等待TCP客户端进程发送数据<s>但是到头来只是一个舔狗罢了</s>，导致<s>TCP服务器进程被伤透了心</s>资源被大量浪费。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/quL5b6"><img src="https://s1.ax1x.com/2022/03/21/quL5b6.md.png" alt="quL5b6.md.png"></a></p>
+<p>综上所述，<s>努力的结果可能只是让事情变得更糟</s>采用三报文握手而不是两报文握手来建立TCP连接，是为了防止<s>世界上多一个怨种</s>已失效的连接请求报文段突然又传送到了TCP服务器进程，因而导致错误。</p>
 
       
     </div>
@@ -457,7 +593,7 @@
         <p><span>Title:</span><a href="/2022/03/20/computerInternet-5/">计算机网络网课笔记-运输层</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Angie Lee</a></p>
         <p><span>Created:</span>2022-03-20, 16:40:05</p>
-        <p><span>Updated:</span>2022-03-21, 21:43:10</p>
+        <p><span>Updated:</span>2022-03-21, 23:55:51</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/03/20/computerInternet-5/" title="计算机网络网课笔记-运输层">https://angielee233.github.io/2022/03/20/computerInternet-5/</a>
             <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/20/computerInternet-5/　　By Angie Lee" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -487,7 +623,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">运输层端口号、复用与分用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">2.1.</span> <span class="toc-text">端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%96%B9%E7%9A%84%E5%A4%8D%E7%94%A8%E4%B8%8E%E6%8E%A5%E6%94%B6%E6%96%B9%E7%9A%84%E5%88%86%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">发送方的复用与接收方的分用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP%E4%BD%93%E7%B3%BB%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82%E5%B8%B8%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BF%90%E8%BE%93%E5%B1%82%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">2.3.</span> <span class="toc-text">TCP&#x2F;IP体系的应用层常用协议所使用的运输层熟知端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text">端口号应用举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">TCP和UDP的对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">TCP的流量控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">TCP的拥塞控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-number">5.1.</span> <span class="toc-text">拥塞控制算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%A2%E5%BC%80%E5%A7%8B%EF%BC%88slow-star%EF%BC%89%E5%92%8C%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D%EF%BC%88congestion-avoidance%EF%BC%89"><span class="toc-number">5.1.1.</span> <span class="toc-text">慢开始（slow-star）和拥塞避免（congestion avoidance）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%87%8D%E4%BC%A0%EF%BC%88fast-retransmit%EF%BC%89%E5%92%8C%E5%BF%AB%E6%81%A2%E5%A4%8D%EF%BC%88fast-recovery%EF%BC%89"><span class="toc-number">5.1.2.</span> <span class="toc-text">快重传（fast retransmit）和快恢复（fast recovery）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%87%8D%E4%BC%A0"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">快重传</span></a></li></ol></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">运输层端口号、复用与分用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">2.1.</span> <span class="toc-text">端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%96%B9%E7%9A%84%E5%A4%8D%E7%94%A8%E4%B8%8E%E6%8E%A5%E6%94%B6%E6%96%B9%E7%9A%84%E5%88%86%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">发送方的复用与接收方的分用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP%E4%BD%93%E7%B3%BB%E7%9A%84%E5%BA%94%E7%94%A8%E5%B1%82%E5%B8%B8%E7%94%A8%E5%8D%8F%E8%AE%AE%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E8%BF%90%E8%BE%93%E5%B1%82%E7%86%9F%E7%9F%A5%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">2.3.</span> <span class="toc-text">TCP&#x2F;IP体系的应用层常用协议所使用的运输层熟知端口号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text">端口号应用举例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">TCP和UDP的对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">TCP的流量控制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">TCP的拥塞控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-number">5.1.</span> <span class="toc-text">拥塞控制算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%85%A2%E5%BC%80%E5%A7%8B%EF%BC%88slow-star%EF%BC%89%E5%92%8C%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D%EF%BC%88congestion-avoidance%EF%BC%89"><span class="toc-number">5.1.1.</span> <span class="toc-text">慢开始（slow-star）和拥塞避免（congestion avoidance）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%87%8D%E4%BC%A0%EF%BC%88fast-retransmit%EF%BC%89%E5%92%8C%E5%BF%AB%E6%81%A2%E5%A4%8D%EF%BC%88fast-recovery%EF%BC%89"><span class="toc-number">5.1.2.</span> <span class="toc-text">快重传（fast retransmit）和快恢复（fast recovery）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E9%87%8D%E4%BC%A0%E7%AE%97%E6%B3%95"><span class="toc-number">5.1.2.1.</span> <span class="toc-text">快重传算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%AB%E6%81%A2%E5%A4%8D%E7%AE%97%E6%B3%95"><span class="toc-number">5.1.2.2.</span> <span class="toc-text">快恢复算法</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">TCP超时重传时间的选择</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%9D%83%E5%B9%B3%E5%9D%87%E5%BE%80%E8%BF%94%E6%97%B6%E9%97%B4RTTs"><span class="toc-number">6.1.</span> <span class="toc-text">加权平均往返时间RTTs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RFC6298%E5%BB%BA%E8%AE%AE%E7%9A%84%E8%B6%85%E6%97%B6%E9%87%8D%E4%BC%A0%E6%97%B6%E9%97%B4RTO%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95"><span class="toc-number">6.2.</span> <span class="toc-text">RFC6298建议的超时重传时间RTO计算方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#karn%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E4%BF%AE%E6%AD%A3"><span class="toc-number">6.3.</span> <span class="toc-text">karn算法及其修正</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">TCP可靠传输的实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">TCP的运输连接管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E7%9A%84%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B"><span class="toc-number">8.1.</span> <span class="toc-text">TCP的连接建立</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E4%B8%89%E6%8A%A5%E6%96%87%E6%8F%A1%E6%89%8B%E2%80%9D%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E8%BF%87%E7%A8%8B"><span class="toc-number">8.1.1.</span> <span class="toc-text">“三报文握手”建立连接过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E4%B8%A4%E6%8A%A5%E6%96%87%E6%8F%A1%E6%89%8B%E2%80%9D%E4%B8%8D%E5%8F%AF%E8%A1%8C%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">8.1.2.</span> <span class="toc-text">“两报文握手”不可行的原因</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
