@@ -15,12 +15,12 @@
 
 
 
-<meta name="description" content="小黎今天肝计网的时候，发现有个地方加粗失效了但是下面的加粗又是可以的！小黎上网找了找原因发现…震惊！真相竟然是这个…（一天天震惊震惊的，怎么不吓死你">
+<meta name="description" content="小黎今天肝计网的时候，发现有个地方加粗失效了 但是下面的加粗又是可以的！ 小黎上网找了找原因发现… 震惊！真相竟然是这个… （一天天震惊震惊的，怎么不吓死你">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于MarkDown语法中加粗失效的问题">
 <meta property="og:url" content="https://angielee233.github.io/2022/03/01/md-20220301/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="小黎今天肝计网的时候，发现有个地方加粗失效了但是下面的加粗又是可以的！小黎上网找了找原因发现…震惊！真相竟然是这个…（一天天震惊震惊的，怎么不吓死你">
+<meta property="og:description" content="小黎今天肝计网的时候，发现有个地方加粗失效了 但是下面的加粗又是可以的！ 小黎上网找了找原因发现… 震惊！真相竟然是这个… （一天天震惊震惊的，怎么不吓死你">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s4.ax1x.com/2022/03/01/bMHNi6.png">
 <meta property="article:published_time" content="2022-02-28T17:36:30.733Z">
@@ -269,46 +269,60 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>小黎今天肝计网的时候，发现有个地方加粗失效了<br>但是下面的加粗又是可以的！<br>小黎上网找了找原因发现…<br>震惊！真相竟然是这个…<br><del>（一天天震惊震惊的，怎么不吓死你</del></p>
+        <p>小黎今天肝计网的时候，发现有个地方加粗失效了<br>
+但是下面的加粗又是可以的！<br>
+小黎上网找了找原因发现…<br>
+震惊！真相竟然是这个…<br>
+<s>（一天天震惊震惊的，怎么不吓死你</s></p>
 <span id="more"></span>
-
-<h1 id="事件起因"><a href="#事件起因" class="headerlink" title="事件起因"></a>事件起因</h1><p>效果就是下图那样啦，上面的式子不能加粗，下面的可以（这个笔记写太快了，有很多小问题，忽略就好啦…</p>
+<h1>事件起因</h1>
+<p>效果就是下图那样啦，上面的式子不能加粗，下面的可以（这个笔记写太快了，有很多小问题，忽略就好啦…</p>
 <p><a target="_blank" rel="noopener" href="https://imgtu.com/i/bMHNi6"><img src="https://s4.ax1x.com/2022/03/01/bMHNi6.png" alt="bMHNi6.png"></a></p>
-<h1 id="事件分析"><a href="#事件分析" class="headerlink" title="事件分析"></a>事件分析</h1><p>后面小黎上网发现，加粗的开始标记符（就是前面两个小星星），和结束标记符（就是后面的两个小星星）对前后内容是有要求的！</p>
-<h2 id="开始前先了解一下CommonMark规范吧"><a href="#开始前先了解一下CommonMark规范吧" class="headerlink" title="开始前先了解一下CommonMark规范吧"></a>开始前先了解一下CommonMark规范吧</h2><blockquote>
+<h1>事件分析</h1>
+<p>后面小黎上网发现，加粗的开始标记符（就是前面两个小星星），和结束标记符（就是后面的两个小星星）对前后内容是有要求的！</p>
+<h2 id="开始前先了解一下CommonMark规范吧">开始前先了解一下CommonMark规范吧</h2>
+<blockquote>
 <p>Markdown将<code>*</code>与<code>_</code>作为强调指示符。被单个<code>*</code>或<code>_</code>包裹的文本将被HTML<code>&lt;em&gt;</code>标签包裹（也就是斜体）；被两个包裹的将被HTML<code>&lt;strong&gt;</code>标签包裹（也就是粗体）。</p>
 </blockquote>
 <p>先说几个关键词的意思吧~</p>
-<h3 id="定界符序列（delimiter-run）"><a href="#定界符序列（delimiter-run）" class="headerlink" title="定界符序列（delimiter run）"></a>定界符序列（delimiter run）</h3><p>定界符类指的是：</p>
+<h3 id="定界符序列（delimiter-run）">定界符序列（delimiter run）</h3>
+<p>定界符类指的是：</p>
 <ul>
 <li>一个或一串非转义的<code>*</code>；</li>
 <li>一个或一串非转义的<code>_</code>。</li>
 </ul>
-<h3 id="左侧定界符序列（left-flanking-delimiter-run）"><a href="#左侧定界符序列（left-flanking-delimiter-run）" class="headerlink" title="左侧定界符序列（left-flanking delimiter run）"></a>左侧定界符序列（left-flanking delimiter run）</h3><p>左侧定界符序列是一个定界符序列，且：</p>
+<h3 id="左侧定界符序列（left-flanking-delimiter-run）">左侧定界符序列（left-flanking delimiter run）</h3>
+<p>左侧定界符序列是一个定界符序列，且：</p>
 <ul>
 <li>后面不能是空白；</li>
 <li>当前面没有空白或标点符号时，后面不能是标点符号。</li>
 </ul>
-<h3 id="右侧定界符序列（right-flanking-delimiter-run）"><a href="#右侧定界符序列（right-flanking-delimiter-run）" class="headerlink" title="右侧定界符序列（right-flanking delimiter run）"></a>右侧定界符序列（right-flanking delimiter run）</h3><p>右侧定界符序列是一个定界符序列，且：</p>
+<h3 id="右侧定界符序列（right-flanking-delimiter-run）">右侧定界符序列（right-flanking delimiter run）</h3>
+<p>右侧定界符序列是一个定界符序列，且：</p>
 <ul>
 <li>前面不能是空白；</li>
 <li>当后面没有空白或标点符号时，前面不能是标点符号。</li>
 </ul>
-<h2 id="结合一下车祸现场吧"><a href="#结合一下车祸现场吧" class="headerlink" title="结合一下车祸现场吧"></a>结合一下车祸现场吧</h2><p>结合上方的例子，后面的<code>**</code>的前面是标点符号，但后面却不是空白或标点符号，所以它不是右侧定界符序列，不会被当作是结束粗体的标识符，自然粗体就不生效了。</p>
+<h2 id="结合一下车祸现场吧">结合一下车祸现场吧</h2>
+<p>结合上方的例子，后面的<code>**</code>的前面是标点符号，但后面却不是空白或标点符号，所以它不是右侧定界符序列，不会被当作是结束粗体的标识符，自然粗体就不生效了。</p>
 <p>（就是人家的自我认知出了点差错，怪我怪我…</p>
-<h2 id="可是，为什么要这么定义？"><a href="#可是，为什么要这么定义？" class="headerlink" title="可是，为什么要这么定义？"></a>可是，为什么要这么定义？</h2><p>为了能支持嵌套分隔符序列，<code>**one **two two **three** two two** one**</code>：</p>
+<h2 id="可是，为什么要这么定义？">可是，为什么要这么定义？</h2>
+<p>为了能支持嵌套分隔符序列，<code>**one **two two **three** two two** one**</code>：</p>
 <blockquote>
 <p><strong>one <strong>two two <strong>three</strong> two two</strong> one</strong></p>
 </blockquote>
 <p>这里就不具体说了，只能说懂的都懂（bushi</p>
-<p>这样的影响是什么呢，就是使用非空格分词语言（比如中文）的用户只能<strong>骂骂咧咧</strong><font size=1><del>地继续用下去</del></font></p>
-<h1 id="那怎么办！解决方案呢！"><a href="#那怎么办！解决方案呢！" class="headerlink" title="那怎么办！解决方案呢！"></a>那怎么办！解决方案呢！</h1><h2 id="你多加个空格不就行了"><a href="#你多加个空格不就行了" class="headerlink" title="你多加个空格不就行了"></a>你多加个空格不就行了</h2><p>相信大多数非强迫症患者会采用这个方案（就像我，但是感觉根源还是<strong>懒</strong></p>
+<p>这样的影响是什么呢，就是使用非空格分词语言（比如中文）的用户只能<strong>骂骂咧咧</strong><font size=1><s>地继续用下去</s></font></p>
+<h1>那怎么办！解决方案呢！</h1>
+<h2 id="你多加个空格不就行了">你多加个空格不就行了</h2>
+<p>相信大多数非强迫症患者会采用这个方案（就像我，但是感觉根源还是<strong>懒</strong></p>
 <p>可是哪个中国人写字没事加空格啊！</p>
-<h2 id="好吧，那试试零宽空格（zero-width-space，ZWSP）"><a href="#好吧，那试试零宽空格（zero-width-space，ZWSP）" class="headerlink" title="好吧，那试试零宽空格（zero-width space，ZWSP）"></a>好吧，那试试零宽空格（zero-width space，ZWSP）</h2><p>ZWSP长这样！锵锵！</p>
+<h2 id="好吧，那试试零宽空格（zero-width-space，ZWSP）">好吧，那试试零宽空格（zero-width space，ZWSP）</h2>
+<p>ZWSP长这样！锵锵！</p>
 <blockquote>
 <p>​</p>
 </blockquote>
-<p>什么？你说看不到？<del>其实聪明的人才看得到</del></p>
+<p>什么？你说看不到？<s>其实聪明的人才看得到</s></p>
 <p>看不到就对啦，ZWSP是一种不可打印的<code>Unicode</code>字符（<code>U+200B</code>），用于可能需要换行处。</p>
 <p>我们可以使用ZWSP<strong>指定长文字的换行位置</strong>；只有当荧幕宽度不足以单行显示时ZWSP才会起作用。</p>
 <p>举个例子，没有使用 ZWSP 时是这样的：</p>
@@ -319,10 +333,10 @@
 <blockquote>
 <p>LongLongLongLongLongLongLongLongLongLongLongLongLongLongLong​BreakBeforeHereLongLongLongLongLongLongLongLongLongLongLongLongLongLongText</p>
 </blockquote>
-<p>由于 ZWSP 这种特殊属性，它也被用于<del>绕过敏感词检查</del>、创造不可复制的伪链接等等。</p>
+<p>由于 ZWSP 这种特殊属性，它也被用于<s>绕过敏感词检查</s>、创造不可复制的伪链接等等。</p>
 <p>回到之前的问题，只要在需要加空格的地方加上ZWSP就好啦~</p>
 <p>这个字符可以在<a target="_blank" rel="noopener" href="https://unicode-table.com/en/200B/">这里</a>复制，点击copy就好啦</p>
-<p><del>懒得截图了，还得上传图床</del></p>
+<p><s>懒得截图了，还得上传图床</s></p>
 
       
     </div>
@@ -370,7 +384,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E8%B5%B7%E5%9B%A0"><span class="toc-number">1.</span> <span class="toc-text">事件起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">事件分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%89%8D%E5%85%88%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCommonMark%E8%A7%84%E8%8C%83%E5%90%A7"><span class="toc-number">2.1.</span> <span class="toc-text">开始前先了解一下CommonMark规范吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%95%8C%E7%AC%A6%E5%BA%8F%E5%88%97%EF%BC%88delimiter-run%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">定界符序列（delimiter run）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A6%E4%BE%A7%E5%AE%9A%E7%95%8C%E7%AC%A6%E5%BA%8F%E5%88%97%EF%BC%88left-flanking-delimiter-run%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">左侧定界符序列（left-flanking delimiter run）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%B3%E4%BE%A7%E5%AE%9A%E7%95%8C%E7%AC%A6%E5%BA%8F%E5%88%97%EF%BC%88right-flanking-delimiter-run%EF%BC%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">右侧定界符序列（right-flanking delimiter run）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E5%90%88%E4%B8%80%E4%B8%8B%E8%BD%A6%E7%A5%B8%E7%8E%B0%E5%9C%BA%E5%90%A7"><span class="toc-number">2.2.</span> <span class="toc-text">结合一下车祸现场吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E6%98%AF%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%99%E4%B9%88%E5%AE%9A%E4%B9%89%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">可是，为什么要这么定义？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%82%A3%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E5%91%A2%EF%BC%81"><span class="toc-number">3.</span> <span class="toc-text">那怎么办！解决方案呢！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E5%A4%9A%E5%8A%A0%E4%B8%AA%E7%A9%BA%E6%A0%BC%E4%B8%8D%E5%B0%B1%E8%A1%8C%E4%BA%86"><span class="toc-number">3.1.</span> <span class="toc-text">你多加个空格不就行了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%BD%E5%90%A7%EF%BC%8C%E9%82%A3%E8%AF%95%E8%AF%95%E9%9B%B6%E5%AE%BD%E7%A9%BA%E6%A0%BC%EF%BC%88zero-width-space%EF%BC%8CZWSP%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">好吧，那试试零宽空格（zero-width space，ZWSP）</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">事件起因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">事件分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%89%8D%E5%85%88%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8BCommonMark%E8%A7%84%E8%8C%83%E5%90%A7"><span class="toc-number">2.1.</span> <span class="toc-text">开始前先了解一下CommonMark规范吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E7%95%8C%E7%AC%A6%E5%BA%8F%E5%88%97%EF%BC%88delimiter-run%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">定界符序列（delimiter run）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A6%E4%BE%A7%E5%AE%9A%E7%95%8C%E7%AC%A6%E5%BA%8F%E5%88%97%EF%BC%88left-flanking-delimiter-run%EF%BC%89"><span class="toc-number">2.1.2.</span> <span class="toc-text">左侧定界符序列（left-flanking delimiter run）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%B3%E4%BE%A7%E5%AE%9A%E7%95%8C%E7%AC%A6%E5%BA%8F%E5%88%97%EF%BC%88right-flanking-delimiter-run%EF%BC%89"><span class="toc-number">2.1.3.</span> <span class="toc-text">右侧定界符序列（right-flanking delimiter run）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E5%90%88%E4%B8%80%E4%B8%8B%E8%BD%A6%E7%A5%B8%E7%8E%B0%E5%9C%BA%E5%90%A7"><span class="toc-number">2.2.</span> <span class="toc-text">结合一下车祸现场吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E6%98%AF%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%99%E4%B9%88%E5%AE%9A%E4%B9%89%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">可是，为什么要这么定义？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">那怎么办！解决方案呢！</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%A0%E5%A4%9A%E5%8A%A0%E4%B8%AA%E7%A9%BA%E6%A0%BC%E4%B8%8D%E5%B0%B1%E8%A1%8C%E4%BA%86"><span class="toc-number">3.1.</span> <span class="toc-text">你多加个空格不就行了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A5%BD%E5%90%A7%EF%BC%8C%E9%82%A3%E8%AF%95%E8%AF%95%E9%9B%B6%E5%AE%BD%E7%A9%BA%E6%A0%BC%EF%BC%88zero-width-space%EF%BC%8CZWSP%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">好吧，那试试零宽空格（zero-width space，ZWSP）</span></a></li></ol></li></ol>
         
     </div>
     <style>

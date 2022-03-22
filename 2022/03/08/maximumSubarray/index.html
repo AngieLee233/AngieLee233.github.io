@@ -271,14 +271,17 @@
 <p>子数组是数组中的一个连续部分</p>
 <p>提示：</p>
 <ul>
-<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 10^5</li>
-<li>-10^4 &lt;&#x3D; nums[i] &lt;&#x3D; 10^4</li>
+<li>1 &lt;= nums.length &lt;= 10^5</li>
+<li>-10^4 &lt;= nums[i] &lt;= 10^4</li>
 </ul>
 <span id="more"></span>
-
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-subarray/">53.最大子数组和</a></p>
 <p>小黎一开始想用前缀和来做的，就是当前前缀和减去目前最小前缀和，和当前ans取max。但是这样的话对于包含第0个元素的答案是不行的，后面感觉这不就是动态规划的思想嘛，于是转头写动态规划了。</p>
-<p>状态转移方程很直观，就是要么取之前数组和当前元素组合成一个数组，要么这个数组新开一个。设$f(i)$为数组前$i$个元素的最大前缀和，状态转移方程为：<br>$$<br>f(i) &#x3D; max(f(i - 1) + nums[i], nums[i])<br>$$<br>由于状态转移方程只和前一个结果有关，所以用一个变量存储之前的结果就行。取遍历过程中的最大值作为结果就好。</p>
+<p>状态转移方程很直观，就是要么取之前数组和当前元素组合成一个数组，要么这个数组新开一个。设$f(i)$为数组前$i$个元素的最大前缀和，状态转移方程为：<br>
+$$<br>
+f(i) = max(f(i - 1) + nums[i], nums[i])<br>
+$$<br>
+由于状态转移方程只和前一个结果有关，所以用一个变量存储之前的结果就行。取遍历过程中的最大值作为结果就好。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxSubArray</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> pre = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> ans = pre;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            pre = <span class="built_in">max</span>(nums[i] + pre, nums[i]);</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, pre);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>

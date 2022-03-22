@@ -268,17 +268,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>给你一个包含<code>n</code>个整数的数组<code>nums</code>，判断<code>nums</code>中是否存在三个元素a，b，c，使得a + b + c &#x3D; 0？请你找出所有和为0且不重复的三元组。</p>
+        <p>给你一个包含<code>n</code>个整数的数组<code>nums</code>，判断<code>nums</code>中是否存在三个元素a，b，c，使得a + b + c = 0？请你找出所有和为0且不重复的三元组。</p>
 <p>注意：答案中不可以包含重复的三元组。</p>
 <p>提示：</p>
 <ul>
-<li>0 &lt;&#x3D; nums.length &lt;&#x3D; 3000</li>
-<li>-10^5 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5</li>
+<li>0 &lt;= nums.length &lt;= 3000</li>
+<li>-10^5 &lt;= nums[i] &lt;= 10^5</li>
 </ul>
 <span id="more"></span>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/3sum/">15.三数之和</a></p>
-<p><del>又到了爷最爱的去重环节</del></p>
-<p>感觉提到去重就离不开排序，让这些<del>蛇鼠一窝</del>相同的元素放在一起，会比较好处理。</p>
+<p><s>又到了爷最爱的去重环节</s></p>
+<p>感觉提到去重就离不开排序，让这些<s>蛇鼠一窝</s>相同的元素放在一起，会比较好处理。</p>
 <p>首先遍历第一个元素，如果第一个元素就大于0，那么后续肯定无法组合出和为0的数组，直接返回答案就行。</p>
 <p>为了去重，如果已经开始列举第一个元素了，且和之前列举的相同，则continue。</p>
 <p>然后开始求第二、三个元素，弄两个指针left和right（小黎这里直接用的j和k），初始化left为第一个元素的后一个指针，right为数组的最后一个。</p>

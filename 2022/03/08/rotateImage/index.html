@@ -15,12 +15,12 @@
 
 
 
-<meta name="description" content="给定一个$n\times n$的二维矩阵matrix表示一个图像。请你将图像顺时针旋转90度。 你必须在原地旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。 提示：  n &#x3D;&#x3D; matrix.length &#x3D;&#x3D; matrix[i].length 1 &lt;&#x3D; n &lt;&#x3D; 20 -1000 &lt;&amp;#">
+<meta name="description" content="给定一个$n\times n$的二维矩阵matrix表示一个图像。请你将图像顺时针旋转90度。 你必须在原地旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。 提示：  n &#x3D;&#x3D; matrix.length &#x3D;&#x3D; matrix[i].length 1 &lt;&#x3D; n &lt;&#x3D; 20 -1000 &lt;&#x3D; matrix[i][j] &lt;&#x3D; 1000">
 <meta property="og:type" content="article">
 <meta property="og:title" content="旋转图像">
 <meta property="og:url" content="https://angielee233.github.io/2022/03/08/rotateImage/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="给定一个$n\times n$的二维矩阵matrix表示一个图像。请你将图像顺时针旋转90度。 你必须在原地旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。 提示：  n &#x3D;&#x3D; matrix.length &#x3D;&#x3D; matrix[i].length 1 &lt;&#x3D; n &lt;&#x3D; 20 -1000 &lt;&amp;#">
+<meta property="og:description" content="给定一个$n\times n$的二维矩阵matrix表示一个图像。请你将图像顺时针旋转90度。 你必须在原地旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。 提示：  n &#x3D;&#x3D; matrix.length &#x3D;&#x3D; matrix[i].length 1 &lt;&#x3D; n &lt;&#x3D; 20 -1000 &lt;&#x3D; matrix[i][j] &lt;&#x3D; 1000">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg">
 <meta property="article:published_time" content="2022-03-08T03:59:47.889Z">
@@ -274,16 +274,15 @@
 <p>你必须在<strong>原地</strong>旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。</p>
 <p>提示：</p>
 <ul>
-<li>n &#x3D;&#x3D; matrix.length &#x3D;&#x3D; matrix[i].length</li>
-<li>1 &lt;&#x3D; n &lt;&#x3D; 20</li>
-<li>-1000 &lt;&#x3D; matrix[i][j] &lt;&#x3D; 1000</li>
+<li>n == matrix.length == matrix[i].length</li>
+<li>1 &lt;= n &lt;= 20</li>
+<li>-1000 &lt;= matrix[i][j] &lt;= 1000</li>
 </ul>
 <span id="more"></span>
-
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/rotate-image/">48.旋转图像</a></p>
-<p><del>感觉有我幼儿园那会脑筋急转弯那味了</del></p>
-<p><img src="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg"></p>
-<p>观察图片<del>易得</del>，可以把旋转进行分解，分解成转置和镜面，<strong>转置别写错了</strong></p>
+<p><s>感觉有我幼儿园那会脑筋急转弯那味了</s></p>
+<p><img src="https://assets.leetcode.com/uploads/2020/08/28/mat1.jpg" alt=""></p>
+<p>观察图片<s>易得</s>，可以把旋转进行分解，分解成转置和镜面，<strong>转置别写错了</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; ++j)&#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[j][i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n / <span class="number">2</span>; ++j)&#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[i][n - j - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>

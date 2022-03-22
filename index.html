@@ -467,7 +467,7 @@
       
           
               <p>序列化是将一个数据结构或者对象转换为连续的比特位的操作，进而可以将转换后的数据存储在一个文件或者内存中，同时也可以通过网络传输到另一个计算机环境，采取相反方式重构得到原数据。</p>
-<p>请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 &#x2F; 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。</p>
+<p>请设计一个算法来实现二叉树的序列化与反序列化。这里不限定你的序列 / 反序列化算法执行逻辑，你只需要保证一个二叉树可以被序列化为一个字符串并且将这个字符串反序列化为原始的树结构。</p>
 <p>提示：</p>
 <ul>
 <li>树中结点数在范围<code>[0, 10^4]</code>内</li>
@@ -615,8 +615,7 @@
           
               <p>一条包含字母<code>A-Z</code>的消息通过以下映射进行了 编码 ：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x27;A&#x27; -&gt; &quot;1&quot;</span><br><span class="line">&#x27;B&#x27; -&gt; &quot;2&quot;</span><br><span class="line">...</span><br><span class="line">&#x27;Z&#x27; -&gt; &quot;26&quot;</span><br></pre></td></tr></table></figure>
-
-<p>要 解码 已编码的消息，所有数字必须基于上述映射的方法，反向映射回字母（可能有多种方法）。例如，”11106” 可以映射为：</p>
+<p>要 解码 已编码的消息，所有数字必须基于上述映射的方法，反向映射回字母（可能有多种方法）。例如，“11106” 可以映射为：</p>
 <ul>
 <li><code>&quot;AAJF&quot;</code>，将消息分组为<code>(1 1 10 6)</code></li>
 <li><code>&quot;KJF&quot;</code>，将消息分组为<code>(11 10 6)</code></li>
@@ -779,7 +778,7 @@
       
           
               <p>给你一个<strong>无重复元素</strong>的整数数组<code>candidates</code>和一个目标整数<code>target</code>，找出<code>candidates</code>中可以使数字和为目标数<code>target</code>的<em>所有</em> <strong>不同组合</strong>，并以列表形式返回。你可以按<strong>任意顺序</strong>返回这些组合。</p>
-<p>对于<code>candidates</code>中的<strong>同一个</strong>数字可以<strong>无限制重复被选取</strong>。如果至少一个数字的被选数量不同，则两种组合是不同的。 </p>
+<p>对于<code>candidates</code>中的<strong>同一个</strong>数字可以<strong>无限制重复被选取</strong>。如果至少一个数字的被选数量不同，则两种组合是不同的。</p>
 <p>对于给定的输入，保证和为<code>target</code>的不同组合数少于<code>150</code>个。</p>
 <p>提示：</p>
 <ul>
@@ -859,10 +858,11 @@
 <p>构造这个链表的<strong>深拷贝</strong>。 深拷贝应该正好由<code>n</code>个<strong>全新</strong>节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的<code>next</code>指针和<code>random</code>指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针能够表示相同的链表状态。复制链表中的指针都不应指向原链表中的节点 。</p>
 <p>例如，如果原链表中有<code>X</code>和<code>Y</code>两个节点，其中<code>X.random --&gt; Y</code>。那么在复制链表中对应的两个节点<code>x</code>和<code>y</code>，同样有<code>x.random --&gt; y</code>。</p>
 <p>返回复制链表的头节点。</p>
-<p>用一个由<code>n</code>个节点组成的链表来表示输入&#x2F;输出中的链表。每个节点用一个<code>[val, random_index]</code>表示：</p>
+<p>用一个由<code>n</code>个节点组成的链表来表示输入/输出中的链表。每个节点用一个<code>[val, random_index]</code>表示：</p>
 <ul>
 <li><code>val</code>：一个表示<code>Node.val</code>的整数。</li>
-<li><code>random_index</code>：随机指针指向的节点索引（范围从<code>0</code>到<code>n-1</code>）；如果不指向任何节点，则为<code>null</code>。<br>你的代码<strong>只</strong>接受原链表的头节点<code>head</code>作为传入参数。</li>
+<li><code>random_index</code>：随机指针指向的节点索引（范围从<code>0</code>到<code>n-1</code>）；如果不指向任何节点，则为<code>null</code>。<br>
+你的代码<strong>只</strong>接受原链表的头节点<code>head</code>作为传入参数。</li>
 </ul>
 <p>提示：</p>
 <ul>

@@ -254,12 +254,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p>给你一个包含<code>n</code>个整数的数组<code>nums</code>，判断<code>nums</code>中是否存在三个元素a，b，c，使得a + b + c &#x3D; 0？请你找出所有和为0且不重复的三元组。</p>
+              <p>给你一个包含<code>n</code>个整数的数组<code>nums</code>，判断<code>nums</code>中是否存在三个元素a，b，c，使得a + b + c = 0？请你找出所有和为0且不重复的三元组。</p>
 <p>注意：答案中不可以包含重复的三元组。</p>
 <p>提示：</p>
 <ul>
-<li>0 &lt;&#x3D; nums.length &lt;&#x3D; 3000</li>
-<li>-10^5 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5</li>
+<li>0 &lt;= nums.length &lt;= 3000</li>
+<li>-10^5 &lt;= nums[i] &lt;= 10^5</li>
 </ul>
           
       
@@ -331,8 +331,8 @@
               <p>给定一个可包含重复数字的序列<code>nums</code>，按任意顺序返回所有不重复的全排列。</p>
 <p>提示：</p>
 <ul>
-<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 8</li>
-<li>-10 &lt;&#x3D; nums[i] &lt;&#x3D; 10</li>
+<li>1 &lt;= nums.length &lt;= 8</li>
+<li>-10 &lt;= nums[i] &lt;= 10</li>
 </ul>
           
       
@@ -407,10 +407,10 @@
 <p>请你判断是否可能完成所有课程的学习？如果可以，返回<code>true</code>；否则，返回<code>false</code>。</p>
 <p>提示：</p>
 <ul>
-<li>1 &lt;&#x3D; numCourses &lt;&#x3D; 10^5</li>
-<li>0 &lt;&#x3D; prerequisites.length &lt;&#x3D; 5000</li>
-<li>prerequisites[i].length &#x3D;&#x3D; 2</li>
-<li>0 &lt;&#x3D; ai, bi &lt; numCourses</li>
+<li>1 &lt;= numCourses &lt;= 10^5</li>
+<li>0 &lt;= prerequisites.length &lt;= 5000</li>
+<li>prerequisites[i].length == 2</li>
+<li>0 &lt;= ai, bi &lt; numCourses</li>
 <li>prerequisites[i]中的所有课程对互不相同</li>
 </ul>
           
@@ -561,9 +561,9 @@
               <p>给你一个整数数组<code>nums</code>和一个整数<code>k</code>，请你统计并返回该数组中和为<code>k</code>的连续子数组的个数。</p>
 <p>提示：</p>
 <ul>
-<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 2 * 10^4</li>
-<li>-1000 &lt;&#x3D; nums[i] &lt;&#x3D; 1000</li>
-<li>-10^7 &lt;&#x3D; k &lt;&#x3D; 10^7</li>
+<li>1 &lt;= nums.length &lt;= 2 * 10^4</li>
+<li>-1000 &lt;= nums[i] &lt;= 1000</li>
+<li>-10^7 &lt;= k &lt;= 10^7</li>
 </ul>
           
       
@@ -643,8 +643,8 @@
 </ul>
 <p>提示：</p>
 <ul>
-<li>1 &lt;&#x3D; s.length &lt;&#x3D; 10^4</li>
-<li><code>s</code>包含英文大小写字母、数字和空格<code>&#39; &#39;</code></li>
+<li>1 &lt;= s.length &lt;= 10^4</li>
+<li><code>s</code>包含英文大小写字母、数字和空格<code>' '</code></li>
 <li><code>s</code>中至少存在一个单词</li>
 </ul>
           
@@ -717,7 +717,7 @@
               <p>给定一个字符串<code>s</code>，请你找出其中不含有重复字符的最长子串的长度。</p>
 <p>提示：</p>
 <ul>
-<li>0 &lt;&#x3D; s.length &lt;&#x3D; 5 * 10^4</li>
+<li>0 &lt;= s.length &lt;= 5 * 10^4</li>
 <li><code>s</code>由英文字母、数字、符号和空格组成</li>
 </ul>
           
@@ -791,9 +791,9 @@
 <p>你必须在<strong>原地</strong>旋转图像，这意味着你需要直接修改输入的二维矩阵。请不要使用另一个矩阵来旋转图像。</p>
 <p>提示：</p>
 <ul>
-<li>n &#x3D;&#x3D; matrix.length &#x3D;&#x3D; matrix[i].length</li>
-<li>1 &lt;&#x3D; n &lt;&#x3D; 20</li>
-<li>-1000 &lt;&#x3D; matrix[i][j] &lt;&#x3D; 1000</li>
+<li>n == matrix.length == matrix[i].length</li>
+<li>1 &lt;= n &lt;= 20</li>
+<li>-1000 &lt;= matrix[i][j] &lt;= 1000</li>
 </ul>
           
       
@@ -871,10 +871,10 @@
 <p>提示:</p>
 <ul>
 <li>节点数的范围$[0, 10^4]$.</li>
-<li>$-10^5$ &lt;&#x3D; Node.val &lt;&#x3D; $10^5$</li>
+<li>$-10^5$ &lt;= Node.val &lt;= $10^5$</li>
 <li>节点值唯一</li>
 <li>root是合法的二叉搜索树</li>
-<li>$-10^5$ &lt;&#x3D; key &lt;&#x3D; $10^5$</li>
+<li>$-10^5$ &lt;= key &lt;= $10^5$</li>
 </ul>
           
       
@@ -947,8 +947,8 @@
 <p>子数组是数组中的一个连续部分</p>
 <p>提示：</p>
 <ul>
-<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 10^5</li>
-<li>-10^4 &lt;&#x3D; nums[i] &lt;&#x3D; 10^4</li>
+<li>1 &lt;= nums.length &lt;= 10^5</li>
+<li>-10^4 &lt;= nums[i] &lt;= 10^4</li>
 </ul>
           
       
