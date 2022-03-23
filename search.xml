@@ -22,6 +22,26 @@
             
             <tag> 应用层 </tag>
             
+            <tag> C/S </tag>
+            
+            <tag> P2P </tag>
+            
+            <tag> DHCP </tag>
+            
+            <tag> DNS </tag>
+            
+            <tag> FTP </tag>
+            
+            <tag> 电子邮件 </tag>
+            
+            <tag> 万维网 </tag>
+            
+            <tag> HTTP </tag>
+            
+            <tag> cookie </tag>
+            
+            <tag> 代理服务器 </tag>
+            
         </tags>
       
     </entry>
