@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>操作系统网课笔记-操作系统启动过程</title>
+      <link href="/2022/03/23/operatingSystem-1/"/>
+      <url>/2022/03/23/operatingSystem-1/</url>
+      
+        <content type="html"><![CDATA[<p>小黎开始上新的网课啦！</p><p>选的是B站上哈工大的操作系统网课，希望这次也能坚持下来吧~</p><span id="more"></span><h1>计算机工作机理</h1><h2 id="从图灵机到通用图灵机">从图灵机到通用图灵机</h2><p>例如要计算映射f(3)，其中f(x)=-x。</p><ul><li>图灵机<ol><li>在纸带上用编码写下3</li><li>移动读写指针将3读到控制器中</li><li>控制器中有一套控制电路对应这个映射（这和人脑中的知识相对应），控制电路开始运转，求出f(3)=-3</li><li>控制器将结果-3写出到纸带上。</li></ol></li></ul><p>虽然这台图灵机能够算出f(3)，当然也能算出f(4)等，但是这个图灵机控制器中只有计算相反数的逻辑，只能计算相反数，能力还是太弱了。</p><ul><li>通用图灵机<ol><li>在纸带上用编码写出f的规则，再写上3</li><li>控制器将f的规则读入到控制器中，用f的规则设置控制器</li><li>控制器将3读入，并用此时控制器中的计算规则计算得出-3</li><li>控制器将结果-3写到纸带上。</li></ol></li></ul><p>其中通用的含义就是说这个图灵机可以计算许许多多的f。</p><p><a href="https://imgtu.com/i/qJzGXq"><img src="https://s1.ax1x.com/2022/03/24/qJzGXq.md.png" alt="qJzGXq.md.png"></a></p><p>类比来说，图灵机就像一个只能做一道菜的厨师，而通用图灵机就像一个能看懂菜谱，根据菜谱做出多种不同的菜的厨师。</p><p>上面对通用图灵机的描述中还有一些东西比较模糊，其中最为关键的是两件事：一是f的规则到底是什么，二是“学会”的含义是什么。冯·诺依曼用存储程序思想对这两件事给出了完美的诠释：</p><ul><li>f的规则是一个指令序列</li><li>“学会”的含义就是让计算机将这个指令序列中的指令逐条取出并解释执行。</li></ul><h2 id="从通用图灵机到计算机">从通用图灵机到计算机</h2><p>存储程序的主要思想：将程序和数据存放到计算机内部的<strong>存储器</strong>中，计算机在程序的控制下一步一步进行处理</p><ol><li>首先把程序放到存储器（内存）里</li><li>然后用PC(IP)指针指向它</li><li>之后不断地<strong>取指-执行</strong></li></ol><p><a href="https://imgtu.com/i/qJzbHf"><img src="https://s1.ax1x.com/2022/03/24/qJzbHf.md.png" alt="qJzbHf.md.png"></a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小黎与操作系统的快乐星球 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机网络网课笔记-应用层</title>
       <link href="/2022/03/22/computerInternet-6/"/>
       <url>/2022/03/22/computerInternet-6/</url>

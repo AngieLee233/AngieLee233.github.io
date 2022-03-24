@@ -15,18 +15,21 @@
 
 
 
-<meta name="description" content="数字n代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且有效的括号组合。 提示：  1 &lt;&#x3D; n &lt;&#x3D; 8">
+<meta name="description" content="小黎开始上新的网课啦！ 选的是B站上哈工大的操作系统网课，希望这次也能坚持下来吧~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="括号生成">
-<meta property="og:url" content="https://angielee233.github.io/2022/03/10/generateParentheses/index.html">
+<meta property="og:title" content="操作系统网课笔记-操作系统启动过程">
+<meta property="og:url" content="https://angielee233.github.io/2022/03/23/operatingSystem-1/index.html">
 <meta property="og:site_name" content="小黎的小窝">
-<meta property="og:description" content="数字n代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且有效的括号组合。 提示：  1 &lt;&#x3D; n &lt;&#x3D; 8">
+<meta property="og:description" content="小黎开始上新的网课啦！ 选的是B站上哈工大的操作系统网课，希望这次也能坚持下来吧~">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-10T05:47:05.035Z">
-<meta property="article:modified_time" content="2022-03-10T05:55:29.856Z">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/24/qJzGXq.md.png">
+<meta property="og:image" content="https://s1.ax1x.com/2022/03/24/qJzbHf.md.png">
+<meta property="article:published_time" content="2022-03-23T06:45:55.195Z">
+<meta property="article:modified_time" content="2022-03-24T15:43:40.789Z">
 <meta property="article:author" content="AngieLee">
-<meta property="article:tag" content="递归">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2022/03/24/qJzGXq.md.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -60,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>括号生成 | 小黎的小窝</title>
+<title>操作系统网课笔记-操作系统启动过程 | 小黎的小窝</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -223,11 +226,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-generateParentheses" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-operatingSystem-1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/03/10/generateParentheses/" class="article-date">
-      <time datetime="2022-03-10T05:47:05.035Z" itemprop="datePublished">2022-03-10</time>
+      <a href="/2022/03/23/operatingSystem-1/" class="article-date">
+      <time datetime="2022-03-23T06:45:55.195Z" itemprop="datePublished">2022-03-23</time>
 </a>
 
 
@@ -242,7 +245,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      括号生成
+      操作系统网课笔记-操作系统启动过程
     </h1>
   
 
@@ -251,13 +254,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E7%AE%97%E6%B3%95%E9%A2%98%E4%BA%92%E7%9B%B8%E6%8A%98%E7%A3%A8%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/">小黎与算法题互相折磨的前世今生</a>
+    <a class="article-category-link" href="/categories/%E5%B0%8F%E9%BB%8E%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BF%AB%E4%B9%90%E6%98%9F%E7%90%83/">小黎与操作系统的快乐星球</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%92%E5%BD%92/" rel="tag">递归</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -267,17 +270,50 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>数字<code>n</code>代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且<strong>有效的</strong>括号组合。</p>
-<p>提示：</p>
-<ul>
-<li><code>1 &lt;= n &lt;= 8</code></li>
-</ul>
+        <p>小黎开始上新的网课啦！</p>
+<p>选的是B站上哈工大的操作系统网课，希望这次也能坚持下来吧~</p>
 <span id="more"></span>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/generate-parentheses/">22.括号生成</a></p>
-<p><s>看到输入范围是[1,8]有没有让你产生一个大胆的想法</s></p>
-<p>很明显的一个递归（其实回溯也行<s>只是我懒得写</s>），递归出口就是左括号和右括号数目均符合条件，记上这个可行解就行。对于左括号或者右括号的数目大于目标值，以及右括号的数目多于左括号的情况，明显是不可行解，直接退出就行。</p>
-<p>然后就是很简单的递归了<s>我只能说懂的都懂</s></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;string&gt; <span class="title">generateParenthesis</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        vector&lt;string&gt; ans;</span><br><span class="line">        <span class="built_in">generate</span>(<span class="number">0</span>, <span class="number">0</span>, n, <span class="string">&quot;&quot;</span>, ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">generate</span><span class="params">(<span class="type">int</span> leftCount, <span class="type">int</span> rightCount, <span class="type">int</span> target, string curr, vector&lt;string&gt;&amp; ans)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(leftCount == target &amp;&amp; rightCount == target)&#123;</span><br><span class="line">            ans.<span class="built_in">push_back</span>(curr);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(rightCount &gt; target || leftCount &gt; target || rightCount &gt; leftCount)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">generate</span>(leftCount + <span class="number">1</span>, rightCount, target, curr + <span class="string">&#x27;(&#x27;</span>, ans);</span><br><span class="line">        <span class="built_in">generate</span>(leftCount, rightCount + <span class="number">1</span>, target, curr + <span class="string">&#x27;)&#x27;</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1>计算机工作机理</h1>
+<h2 id="从图灵机到通用图灵机">从图灵机到通用图灵机</h2>
+<p>例如要计算映射f(3)，其中f(x)=-x。</p>
+<ul>
+<li>图灵机
+<ol>
+<li>在纸带上用编码写下3</li>
+<li>移动读写指针将3读到控制器中</li>
+<li>控制器中有一套控制电路对应这个映射（这和人脑中的知识相对应），控制电路开始运转，求出f(3)=-3</li>
+<li>控制器将结果-3写出到纸带上。</li>
+</ol>
+</li>
+</ul>
+<p>虽然这台图灵机能够算出f(3)，当然也能算出f(4)等，但是这个图灵机控制器中只有计算相反数的逻辑，只能计算相反数，能力还是太弱了。</p>
+<ul>
+<li>通用图灵机
+<ol>
+<li>在纸带上用编码写出f的规则，再写上3</li>
+<li>控制器将f的规则读入到控制器中，用f的规则设置控制器</li>
+<li>控制器将3读入，并用此时控制器中的计算规则计算得出-3</li>
+<li>控制器将结果-3写到纸带上。</li>
+</ol>
+</li>
+</ul>
+<p>其中通用的含义就是说这个图灵机可以计算许许多多的f。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qJzGXq"><img src="https://s1.ax1x.com/2022/03/24/qJzGXq.md.png" alt="qJzGXq.md.png"></a></p>
+<p>类比来说，图灵机就像一个只能做一道菜的厨师，而通用图灵机就像一个能看懂菜谱，根据菜谱做出多种不同的菜的厨师。</p>
+<p>上面对通用图灵机的描述中还有一些东西比较模糊，其中最为关键的是两件事：一是f的规则到底是什么，二是“学会”的含义是什么。冯·诺依曼用存储程序思想对这两件事给出了完美的诠释：</p>
+<ul>
+<li>f的规则是一个指令序列</li>
+<li>“学会”的含义就是让计算机将这个指令序列中的指令逐条取出并解释执行。</li>
+</ul>
+<h2 id="从通用图灵机到计算机">从通用图灵机到计算机</h2>
+<p>存储程序的主要思想：将程序和数据存放到计算机内部的<strong>存储器</strong>中，计算机在程序的控制下一步一步进行处理</p>
+<ol>
+<li>首先把程序放到存储器（内存）里</li>
+<li>然后用PC(IP)指针指向它</li>
+<li>之后不断地<strong>取指-执行</strong></li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/qJzbHf"><img src="https://s1.ax1x.com/2022/03/24/qJzbHf.md.png" alt="qJzbHf.md.png"></a></p>
+
       
     </div>
     
@@ -285,13 +321,13 @@
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2022/03/10/generateParentheses/">括号生成</a></p>
+        <p><span>Title:</span><a href="/2022/03/23/operatingSystem-1/">操作系统网课笔记-操作系统启动过程</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Angie Lee</a></p>
-        <p><span>Created:</span>2022-03-10, 13:47:05</p>
-        <p><span>Updated:</span>2022-03-10, 13:55:29</p>
+        <p><span>Created:</span>2022-03-23, 14:45:55</p>
+        <p><span>Updated:</span>2022-03-24, 23:43:40</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2022/03/10/generateParentheses/" title="括号生成">https://angielee233.github.io/2022/03/10/generateParentheses/</a>
-            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/10/generateParentheses/　　By Angie Lee" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2022/03/23/operatingSystem-1/" title="操作系统网课笔记-操作系统启动过程">https://angielee233.github.io/2022/03/23/operatingSystem-1/</a>
+            <span class="copy-path" data-clipboard-text="From https://angielee233.github.io/2022/03/23/operatingSystem-1/　　By Angie Lee" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -303,16 +339,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2022/03/10/longestValidParentheses/">
-                    最长有效括号
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2022/03/09/linkedListCycleII/">
-                    环形链表
+                <a href="/2022/03/22/computerInternet-6/">
+                    计算机网络网课笔记-应用层
                 </a>
             </div>
         
@@ -324,7 +354,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">计算机工作机理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%9B%BE%E7%81%B5%E6%9C%BA%E5%88%B0%E9%80%9A%E7%94%A8%E5%9B%BE%E7%81%B5%E6%9C%BA"><span class="toc-number">1.1.</span> <span class="toc-text">从图灵机到通用图灵机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E9%80%9A%E7%94%A8%E5%9B%BE%E7%81%B5%E6%9C%BA%E5%88%B0%E8%AE%A1%E7%AE%97%E6%9C%BA"><span class="toc-number">1.2.</span> <span class="toc-text">从通用图灵机到计算机</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -360,7 +390,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"括号生成　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"操作系统网课笔记-操作系统启动过程　| 小黎的小窝　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -380,15 +410,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2022/03/10/longestValidParentheses/" title="Pre: 最长有效括号">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2022/03/09/linkedListCycleII/" title="Next: 环形链表">
+            <a href="/2022/03/22/computerInternet-6/" title="Next: 计算机网络网课笔记-应用层">
                 <i class="fa fa-angle-right"></i>
             </a>
         
